@@ -195,7 +195,7 @@
                 </div>
                 <div class="metro-sections" data-bind="foreach: sections">
                     <div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">
-                        <div data-bind="attr: { id: uniqueId, class: tileClasses }">
+                        <div data-bind="attr: { id: uniqueId, 'class': tileClasses }">
                             <!-- ko if: tileImage -->
                             <div class="tile-image">
                                 <img data-bind="attr: { src: tileImage }" src="img/Internet%20Explorer.png" />
@@ -203,7 +203,7 @@
                             <!-- /ko -->
                             <!-- ko if: iconSrc -->
                             <!-- ko if: slides().length == 0 -->
-                            <div data-bind="attr: { class: iconClasses }">
+                            <div data-bind="attr: { 'class': iconClasses }">
                                 <img data-bind="attr: { src: iconSrc }" src="img/Internet%20Explorer.png" />
                             </div>
                             <!-- /ko -->
@@ -221,7 +221,7 @@
                             <span class="tile-counter" data-bind="html: counter">10</span>
                             <!-- /ko -->
                             <!-- ko if: subContent -->
-                            <div data-bind="attr: { class: subContentClasses }, html: subContent">
+                            <div data-bind="attr: { 'class': subContentClasses }, html: subContent">
                                 subContent
                             </div>
                             <!-- /ko -->
