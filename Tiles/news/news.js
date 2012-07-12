@@ -25,7 +25,7 @@ function load_news(tile, div) {
                                             '<a target="_blank" class="news_link" href="' + entry.link + '">' + entry.title + '</a>';
                                             
 
-                        if (!_.isEmpty(entry.xmlNode)) {
+                        if (entry.xmlNode != null) {
                             var thumbnails = entry.xmlNode.getElementsByTagNameNS("http://search.yahoo.com/mrss/", "thumbnail");
                             var thumbnail = _.first(thumbnails);
                             if (thumbnail != null) {
