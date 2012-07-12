@@ -2,7 +2,7 @@
 // Part of Droptiles project.
 
 function flickr_load(tile, div) {
-    var url = "http://api.flickr.com/services/feeds/photos_public.gne?lang=en-us&format=json&tags=child&jsoncallback=?";
+    var url = "http://api.flickr.com/services/feeds/photos_public.gne?lang=en-us&format=json&tags=nature&jsoncallback=?";
     var numberToDisplay = 10;
 
     $.getJSON(url, function (data) {        
