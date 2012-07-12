@@ -346,7 +346,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             .animate({
                 'margin-left': 0,
                 'opacity': 1
-            }, 500, 'swing');
+            }, 1000, 'swing');
     }
 
     this.launchApp = function (id, title, url, loaded) {
