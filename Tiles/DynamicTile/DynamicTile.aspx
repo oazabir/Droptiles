@@ -12,6 +12,8 @@
         margin-bottom: 20px;
     }   
     
+    
+    
     #DynamicTable caption {margin: 0 0 .5em; font-weight: bold; font-size: 14pt; }
 </style>
 
@@ -53,4 +55,10 @@
 </table>
 <center>This data came from an ASPX page.</center>
 
+    <form>
+        <label>Search</label>
+        <input name="search" class="metro-text-box" type="text"  />
+        <br />
+        <input class="metro-button" type="button" value="Search" onclick="alert('You can do all sorts of things inside a tile.')" />
+    </form>
 </div>
