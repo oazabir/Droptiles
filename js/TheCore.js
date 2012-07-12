@@ -92,7 +92,7 @@ var Tile = function (param, ui) {
             el.click(function (event) {
                 if ($(this).data("noclick") == true) 
                     return;
-                if (event.target.nodeName == "A" && event.target.parentNode.nodeName == "A") 
+                if ($(event.target).parents("a").length > 0)
                     return;
                 if (self.appInNewWindow) {
                     var open_link = window.open('', '_blank');
