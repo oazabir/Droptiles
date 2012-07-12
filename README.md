@@ -31,3 +31,4 @@ I am the Chief Architect of SaaS Platform, BT (aka British Telecom). Ex Co-Found
 * *Droptiles* is a minimalistic framework to build apps on top of it. It’s not a full blown CMS, which you need to spend months learning in order to customize it. The codebase is small, and highly reusable – making it very easy to build bespoke sites on top of it.
 * *Droptiles* will force your developers to use industry best practices. For instance, using MVVM architecture, building sites on top of cross-browser CSS and JS frameworks, pluggable architecture where features are dynamically loaded and so on.
 * *Droptiles* is built specifically to be integrated with existing ASP.NET/PHP/JSP/Ruby web applications, where most other CMS are built to be run as a standalone app.
+>>>>>>> b0db937274d1482d59b6d1bbf651c2af53396445
