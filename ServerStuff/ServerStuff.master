@@ -1,0 +1,92 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ServerStuff.master.cs" Inherits="ServerStuff" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Droptiles - Metro style Live Tile enabled Web 2.0 Dashboard" />
+    <meta name="author" content="Omar AL Zabir" />
+    <meta name="copyright" content="2012, Omar AL Zabir" />
+    <meta name="license" content="Free for personal use. For commercial use, contact me for License. http://oazabir.github.com/Droptiles/" />
+    
+    <title>Metroboard - Web 2.0 Dashboard in metro style</title>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <%--<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">--%>
+    <link rel="stylesheet" type="text/css" href="../css/metro-autofit.css">
+    
+    <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-ui-1.8.21.custom.min.js"></script>
+    <script type="text/javascript" src="../js/jQueryEnhancement.js"></script>
+    <script type="text/javascript" src="../js/jQuery.MouseWheel.js"></script>
+    <script type="text/javascript" src="../js/Knockout-2.1.0.js"></script>
+    <script type="text/javascript" src="../js/cookie.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/Bootstrap-tooltip.js"></script> 
+    <script type="text/javascript" src="../js/Bootstrap.dropdown.js"></script>
+    <script type="text/javascript" src="../js/Underscore.js"></script>
+    <script type="text/javascript" src="../js/jQuery.hashchange.js"></script>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <script type="text/javascript" src="../js/User.js"></script>
+
+    <% if (Profile.IsAnonymous) { %>
+    <script type="text/javascript">
+        window.currentUser = new User({
+            firstName: "None",
+            lastName: "Anonymous",
+            photo: "img/User No-Frame.png",
+            isAnonymous: true
+        });
+    </script>
+    <% } else { %>
+    <script type="text/javascript">
+        window.currentUser = new User({
+            firstName: "<%= Profile.Firstname %>",
+            lastName: "<%= Profile.Lastname %>",
+            photo: "img/User No-Frame.png",
+            isAnonymous: false
+        });
+    </script>
+    <% } %>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+
+    <script type="text/javascript">
+        // Bootstrap initialization
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
+    
+    
+</head>
+<body>
+    <div class="metro appnavbar">
+        <ul>
+            <li>
+                <a class="backbutton" href="Breakout.aspx" data-bind="click: closeApp">
+                    <img src="../img/Metro-Back-48.png" />
+                </a>
+            </li>
+            <li>
+                <h1 class="start">Login</h1>
+            </li>
+            </ul>
+    </div>
+
+    <div class="appnavbar_space"></div>
+
+        
+    <asp:ContentPlaceHolder ID="body" runat="server">
+
+    </asp:ContentPlaceHolder>
+</body>
+</html>

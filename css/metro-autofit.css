@@ -353,20 +353,24 @@ body {
     position: relative;
     /*padding-top: 90px;*/
     background-color: #fff;
-    background-repeat: repeat-x;    
+    background-repeat: repeat;    
     }
 
 .theme-cyan {
         background-image: url(../img/MetroBackgroundCyan.png);
+        background-repeat: repeat;    
 }
 .theme-green {
         background-image: url(../img/windows8_metro_green_1920_1080.jpg);
+        background-repeat: repeat;    
 }
 .theme-darkblue {
         background-image: url(../img/MetroBackgroundDarkBlue.png);
+        background-repeat: repeat;    
 }
 .theme-red {
         background-image: url(../img/MetroBackgroundRed.png);
+        background-repeat: repeat;    
 }
 .theme-tiles {
         background-image: url(../img/MetroBackgroundTiles.png);

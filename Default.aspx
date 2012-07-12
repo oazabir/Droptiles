@@ -45,9 +45,9 @@
             anon_last_name: 'Anonymous',
             anon_photo: 'img/User No-Frame.png',
 
-            login_page: "Login.aspx",
-            logout_page: "Logout.aspx",
-            settings_page: "Settings.aspx"
+            login_page: "ServerStuff/Login.aspx",
+            logout_page: "ServerStuff/Logout.ashx",
+            settings_page: "ServerStuff/Settings.aspx"
         };
 
         var viewModel = new DashboardModel("Start", [], window.currentUser, ui, TileBuilders);
@@ -143,7 +143,7 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li><a class="active" href="?"><i class="icon-th-large"></i>Dashboard</a></li>
-                            <li><a data-bind="click: apps" href="#apps"><i class="icon-shopping-cart"></i>Apps</a></li>
+                            <li><a href="ServerStuff/AppStore.aspx"><i class="icon-shopping-cart"></i>Apps</a></li>
                             <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-gift"></i>I want this!</a></li>
                             <li>
                                 <form id="googleForm" class="navbar-search pull-left" action="http://www.google.com/search" target="_blank">
@@ -153,7 +153,7 @@
                         </ul>
                         <ul class="nav pull-right">
                             <li><a href="javascript:fullscreen()"><i class="icon-facetime-video"></i>Go Fullscreen</a></li>
-                            <li><a href="Logout.ashx"><i class="icon-refresh"></i>Start over</a></li>
+                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-refresh"></i>Start over</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tint"></i>Theme<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -166,7 +166,7 @@
                             </li>
                             <li><a data-bind="click: settings" href="#settings"><i class="icon-cog"></i>Settings</a></li>
                             <li data-bind="if: user().isAnonymous"><a data-bind="click: login" href="#login"><i class="icon-user"></i>Login</a></li>
-                            <li data-bind="if: !user().isAnonymous"><a href="Logout.ashx"><i class="icon-user"></i>Logout</a></li>
+                            <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-user"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
