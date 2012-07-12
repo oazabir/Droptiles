@@ -90,15 +90,17 @@ var Tile = function (param, ui) {
         });
         if (!_.isEmpty(self.appUrl)) {
             el.click(function (event) {
-                if (event.target.nodeName !== "A" && event.target.parentNode.nodeName !== "A") {
-                    if (self.appInNewWindow) {
-                        var open_link = window.open('', '_blank');
-                        open_link.location = self.appUrl;
-                    }
-                    else if ($(this).data("noclick") !== true) {
-                        self.launch();
-                    }
+                if ($(this).data("noclick") == true) 
+                    return;
+                if (event.target.nodeName == "A" && event.target.parentNode.nodeName == "A") 
+                    return;
+                if (self.appInNewWindow) {
+                    var open_link = window.open('', '_blank');
+                    open_link.location = self.appUrl;
                 }
+                else {
+                    self.launch();
+                }                
             });
         }
 
@@ -259,7 +261,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         self.makeSortable();
         self.animateTiles();
         self.subscribeToChange();
-        _.delay(self.showMetroSections, 1000);
+        _.delay(self.showMetroSections, 500);
     }
 
     this.subscribeToChange = function () {
@@ -496,14 +498,13 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             },
             stop: function (event, o) {
                 //console.log(o);
-                o.item.data("noclick", false);
                 $(ui.trash).fadeOut();
 
                 self.recalcIndex();
                 self.onTileOrderChange();
 
                 //self.reflow();
-                return true;
+                o.item.data("noclick", false);
             }
         });
     }

@@ -191,7 +191,7 @@
             </div>
             <div id="metro-sections-container" class="metro">
                 <div id="trash" class="trashcan">
-                    <img src="img/Trashcan.svg" width="64" height="64" />
+                    <img src="img/Trashcan.png" width="64" height="64" />
                 </div>
                 <div class="metro-sections" data-bind="foreach: sections">
                     <div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">
