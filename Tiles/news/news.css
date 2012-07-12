@@ -1,0 +1,28 @@
+﻿
+.news_item {
+    margin-left: 20px; 
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.news_thumbnail {
+    margin: 10px 5px 2px 0px;
+    
+    float: left;
+    width: 60px;
+    clear: both;
+}
+
+a.news_link{
+    color: #ffd800;
+    clear: both;
+}
+
+a.news_detail {    
+    margin-top: 5px;
+    text-align: justify;
+    font-size: 80%;
+    text-decoration: none;
+    color: white;
+    clear: both;
+}

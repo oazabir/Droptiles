@@ -1,0 +1,46 @@
+﻿div.weather {
+	margin: 20px;
+	overflow: hidden;    
+}
+ 
+.weather h2 {
+	color: white;
+	text-shadow: #808080 1px 1px 0;
+    text-align: right;
+}
+ 
+.weather p {
+	font-size: 12pt;
+	margin: 5px 0 0;
+    float: right;
+    clear: right;
+    width: 140px;
+    text-align: right;
+}
+
+.weather img {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+ 
+.weather p span {
+	font-size: 12pt;
+}
+
+p.weather_tomorrow {
+    font-size: 10pt;
+}
+ 
+.weather a:link, .weather a:active, .weather a:visited {
+	display: block;
+	clear: both;
+	text-decoration: none;
+	color: #222;
+	font-size: 8pt;
+}
+ 
+.weather a:hover {
+	color: #000;
+	text-decoration: underline;
+}

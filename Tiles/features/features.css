@@ -1,0 +1,19 @@
+﻿div.feature {
+    padding: 10px 20px 10px 20px;
+}
+
+.feature h2 {
+    color: white;
+    font-size: 14pt;
+}
+
+.feature img.float_left {
+    float: left;
+    margin: 0 5px 5px 0;
+    max-height: 80px;
+}
+
+.feature .feature_detail p{
+    font-size: 10pt;
+    text-align: justify;
+}
