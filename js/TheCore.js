@@ -229,7 +229,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
 
     this.removeTile = function (id) {
         var tile = self.getTile(id);
-        ko.utils.arrayForEach(self.sections(), function (section) {            
+        ko.utils.arrayForEach(self.sections(), function (section) {
             //ko.utils.arrayRemoveItem(section.tiles(), tile);
             section.tiles.remove(tile);
         });
@@ -254,12 +254,12 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     }
 
     this.init = function () {
-        self.showMetroSections();
         self.attachTiles();
         //self.reflow();
         self.makeSortable();
         self.animateTiles();
         self.subscribeToChange();
+        _.delay(self.showMetroSections, 1000);
     }
 
     this.subscribeToChange = function () {
@@ -283,7 +283,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             var tiles = _.string.strRight(section, '~').split(".");
 
             var sectionTiles = [];
-           
+
             var index = 0;
             _.each(tiles, function (tile) {
                 if (tile.length > 0) {
@@ -304,7 +304,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
                     }
                 }
             });
-            
+
             var newSection = new Section({
                 name: sectionName,
                 tiles: sectionTiles
@@ -313,7 +313,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
 
         });
 
-        
+
         self.hideMetroSections();
         self.sections(sectionArray);
         self.init();
@@ -352,7 +352,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     this.launchApp = function (id, title, url, loaded) {
 
         self.hideMetroSections();
-        
+
         self.appRunning = true;
         self.currentApp = url;
 
@@ -374,13 +374,13 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
                loaded();
                $(this).css('visibility', 'visible');
            });
-            
+
 
         location.hash = id;
     }
 
     this.closeApp = function () {
-        $('#' +ui.app_iframe_id).remove();
+        $('#' + ui.app_iframe_id).remove();
         self.showNavBar();
 
         this.appRunning = false;
