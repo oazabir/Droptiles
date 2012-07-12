@@ -10,7 +10,7 @@
 .feature img.float_left {
     float: left;
     margin: 0 5px 5px 0;
-    max-height: 80px;
+    height: 80px;
 }
 
 .feature .feature_detail p{
