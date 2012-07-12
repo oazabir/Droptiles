@@ -21,7 +21,7 @@ Todolist
 	[done] * Decorate the page with the right tiles.
 	[done] * Some apps like Gmail, Youtube requires new window.
 	[done] * Search bar google
-	* Browser version check.	
+	[done] * Browser version check.	
 3. Implement server side behaviors:
 	[done] * Default.aspx
 		* If no cookie present then
@@ -34,7 +34,7 @@ Todolist
 	[done] * Drag & Drop API to save tile order against ASP.NET profile.
 	[done] * Load tiles from ASP.NET profile during revisit.
 	* Streaming Content Proxy.
-4. Async load of tile from client side via content proxy.
+[done] 4. Async load of tile from client side via content proxy.
 5. App Store
 	* Dashboard like interface to show apps as tiles.
 	* Clicking on tile shows detail view of the app.
@@ -49,8 +49,8 @@ Todolist
 	* Chrome Games Apps
 	[done] * Features tile
 	* Find more JSONP services and make tiles out of them.
-7. Build the GitHub pages.
-8. Setup GitHub codebase and downloadable zip.
+[done] 7. Build the GitHub pages.
+[done] 8. Setup GitHub codebase and downloadable zip.
 9. Write article on Codeproject, InfoQ
 10. Publish Youtube video tutorial
 11. Advertise on Dropthings page.
