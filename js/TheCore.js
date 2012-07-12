@@ -88,8 +88,7 @@ var Tile = function (param, ui) {
                 c_sub.animate({ "height": 0, "opacity": 0 }, 200);
             }
         });
-        if (!_.isEmpty(self.appUrl))
-        {
+        if (!_.isEmpty(self.appUrl)) {
             el.click(function (event) {
                 if (event.target.nodeName !== "A" && event.target.parentNode.nodeName !== "A") {
                     if (self.appInNewWindow) {
@@ -104,23 +103,27 @@ var Tile = function (param, ui) {
         }
 
         if (_.isArray(self.cssSrc)) {
+            var head = $('head');
             _.each(self.cssSrc, function (url) {
-                $('head').append('<link rel="stylesheet" type="text/css" href="' + url + '" />');
+                $("<link>")
+                  .appendTo(head)
+                  .attr({ type: 'text/css', rel: 'stylesheet' })
+                  .attr('href', url);
             });
         }
 
         if (!_.isEmpty(self.slidesFrom)) {
-            $.get((_.isArray(self.slidesFrom) ? self.slidesFrom : [self.slidesFrom]), 
+            $.get((_.isArray(self.slidesFrom) ? self.slidesFrom : [self.slidesFrom]),
                 function (slides) {
                     _.each(slides, function (slide) {
                         self.slides.push(slide);
                     });
                     self.loadScripts(div);
-                });            
+                });
         }
         else {
             self.loadScripts(div);
-        }                
+        }
     }
 
     this.loadScripts = function (div) {
