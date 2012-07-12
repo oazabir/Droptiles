@@ -3,7 +3,7 @@ Droptiles is a "Windows 8 Start" like Web 2.0 Dashboard. It compromises of Live 
 Droptiles is built almost entirely of HTML, Javascript and CSS and thus highly portable to any platform. The sample project is built using ASP.NET to show some server side integration, like Signup, Login and getting dynamic data from server. But with very little change you can port it to PHP, Ruby, JSP or any other platform.
 Droptiles is inspired by [Dropthings](http://dropthings.omaralzabir.com/), which is another Web 2.0 Dashboard.
 
-![Droptiles screenshot](https://github.com/oazabir/Droptiles/raw/gh-pages/images/Screenshot600.png)
+![Droptiles screenshot](https://github.com/oazabir/Droptiles/raw/master/doc/Screenshot600.png)
 
 ### Features
 * Metro style user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
