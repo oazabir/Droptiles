@@ -187,7 +187,7 @@
             <div id="browser_incompatible" class="alert">
                 <button class="close" data-dismiss="alert">×</button>
                 <strong>Warning!</strong>
-                Your browser is incompatible with Droptiles. Please use Internet Explorer 9+ or Chrome or Firefox.
+                Your browser is incompatible with Droptiles. Please use Internet Explorer 9+, Chrome, Firefox oe Safari.
             </div>
             <div id="metro-sections-container" class="metro">
                 <div id="trash" class="trashcan">
