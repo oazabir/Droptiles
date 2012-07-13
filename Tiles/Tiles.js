@@ -22,15 +22,16 @@ window.DefaultTiles = [
            { id: "wikipedia1", name: "wikipedia" },           
            { id: "email1", name: "email" },
            { id: "maps1", name: "maps" },
-           { id: "youtube1", name: "youtube" },
-           { id: "ie1", name: "ie" },
-           { id: "dynamicTile1", name: "dynamicTile" },
            { id: "angrybirds1", name: "angrybirds" },
-           { id: "cuttherope1", name: "cutTheRope" }
-        ]
+           { id: "cuttherope1", name: "cutTheRope" },
+           //{ id: "youtube1", name: "youtube" },
+           //{ id: "ie1", name: "ie" },
+           { id: "buy1", name: "buy" },
+            { id: "dynamicTile1", name: "dynamicTile" }
+]
     },
     {
-        name: "Dummy", tiles: [
+        name: "Buy", tiles: [
             
         ]
     }
@@ -260,6 +261,17 @@ window.TileBuilders = {
             tileImage: "img/CutTheRope.png",
             appUrl: "http://www.cuttherope.ie/"
         };
-    }
+    },
+
+    buy : function (uniqueId) {
+    return {
+        uniqueId: uniqueId,
+        name: "buy",
+        color: "bg-color-blueDark",
+        size: 'tile-double tile-double-vertical',
+        slidesFrom: ["tiles/buy/buy.html"],
+        cssSrc: ["tiles/buy/buy.css"]
+    };
+}
     
 };

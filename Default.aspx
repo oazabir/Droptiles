@@ -6,132 +6,10 @@
     <script type="text/javascript" src="js/TheCore.js"></script>
     <script type="text/javascript" src="Tiles/Tiles.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-    <script type="text/javascript">
-        var ui = {
-            subcontent_height: 50,
-            metro_sections_selector: '.metro-sections',
-            metro_section_selector: '.metro-section',
-            metro_section: 'metro-section',
-            hover_metro_section: 'hover-metro-section',
-            metro_section_overflow: 'metro-section-overflow',
-            app_iframe_id: 'app_iframe',
-            app_iframe_zindex: 60000,
-            navbar: '#navbar',
-            navbar_zindex: '60001',
-            tile: 'tile',
-            tile_content_main_selector: '.tile-content-main',
-            tile_selector: '.tile',
-            tile_color: 'bg-color-blue',
-            tile_icon_size: 'tile-icon-large',
-            tile_icon_src: 'img/update.png',
-            tile_subContent_color: 'bg-color-blueDark',
-            tile_multi_content_selector: '.tile-multi-content',
-            tile_multi_content: 'tile-multi-content',
-            tile_content_slide_delay: 10000,
-            tile_content_sub_selector: '.tile-content-sub',
-            tile_content_sub: 'tile-content-sub',
-            trash: '#trash',
-            position_cookie: 'tiles',
-            splash_screen_zindex: 65000,
-            splash_screen_icon_class: 'tile-icon-large',
-            signin_splash_color: 'bg-color-green',
-            signin_splash_icon: 'img/User No-Frame.png',
-            settings_splash_color: 'bg-color-purple',
-            settings_splash_icon: 'img/configure.png',
-            appStore_splash_color: 'bg-color-blue',
-            appStore_splash_icon: 'img/App Store.png',
-            anon_first_name: 'John',
-            anon_last_name: 'Anonymous',
-            anon_photo: 'img/User No-Frame.png',
-
-            login_page: "ServerStuff/Login.aspx",
-            logout_page: "ServerStuff/Logout.ashx",
-            settings_page: "ServerStuff/Settings.aspx"
-        };
-
-        var viewModel = new DashboardModel("Start", [], window.currentUser, ui, TileBuilders);
-
-        $(document).ready(function () {
-
-            $('#content').css('visibility', 'visible');
-            
-            ko.applyBindings(viewModel);
-
-            // See if user has a previous session where page setup was stored
-            var cookie = readCookie("p");
-            if (cookie != null && cookie.length > 0) {
-                try {
-                    viewModel.loadSectionsFromString(cookie);
-                } catch (e) {
-                    viewModel.loadSectionsFromString(DefaultTiles);
-                }
-            }
-            else {
-                viewModel.loadSectionsFromString(DefaultTiles);
-            }
-
-            viewModel.onTileOrderChange = function () {                
-                var newOrder = viewModel.toSectionString();
-                if (newOrder !== DefaultTiles) {
-                    createCookie("p", newOrder, 2);
-
-                    if (!window.currentUser.isAnonymous) {
-                        $.get("SaveTiles.aspx");
-                    }
-                }
-            }
-            
-            $(window).resize(function () {
-                viewModel.resize();
-            });
-
-            $("body").on("mousewheel", function (event, delta, deltaX, deltaY) {
-                window.scrollBy(-delta*100, 0);
-            });
-
-            $("#navbar").tooltip({
-                title: "I am still here. Come here to go back to Dashboard",
-                animate: true,
-                placement: 'bottom',
-                trigger: 'manual'
-            });
-            
-            
-            // Bind an event to window.onhashchange that, when the hash changes, gets the
-            // hash and adds the class "selected" to any matching nav link.
-            $(window).hashchange(function () {
-                var hash = location.hash;
-
-                if (hash == "" || hash == "#") {
-                    if (viewModel.appRunning)
-                        viewModel.closeApp();
-                }
-            })
-
-            $('#googleSearchText').keypress(function (e) {
-                if (e.keyCode == 13)
-                    $('#googleForm').submit();
-            });
-
-            //_.delay(function () {
-            //    $('#email_omar').attr('href', 'mailto:' + 'omaralzabir' + '@' + 'gmail' + '.com');
-            //}, 1000);
-            
-            if ($.browser.msie && parseInt($.browser.version) < 9)
-                $("#browser_incompatible").show();
-                
-        });
-
-       
-    </script>
-   
-
+    <script type="text/javascript" src="js/Dashboard.js"></script>
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-
-
     <div id="body">
         <div id="navbar" class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -233,9 +111,7 @@
         </div>
         <div id="copyright">
             Copyright 2012 Omar AL Zabir. 
-            Free for personal use. 
-            For commercial distribution,         
-            <a href="http://oazabir.github.com/Droptiles/">Click here</a>
+            For license or to get the code, <a href="http://oazabir.github.com/Droptiles/">Click here</a>
         </div>
     </div>
 

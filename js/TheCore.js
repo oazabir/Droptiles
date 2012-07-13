@@ -3,41 +3,57 @@
 /// <reference path="Knockout-2.1.0.js" />
 /// <reference path="Underscore.js" />
 
-// Copyright 2012 Omar AL Zabir
-// This is part of Droptiles open source project.
+/* 
+    Copyright 2012 Omar AL Zabir
+    This is the core framework for the Droptiles experience. It has:
+        * The object models that are bound to the UI.eg. Section, Tile
+        * The main ViewModel that initiaites and orchestrates the Dashboard experience.
 
-var Tile = function (param, ui) {
+    You can use thie Core framework on any page to deliver a dashboard
+    experience. All you need is the html markup to bind to the UI (just
+    copy from Default.aspx) and bind the DashboardModel using Knockout.
+*/
+
+/*
+    Tile model class. Holds the runtime data for a tile that is bound to the UI
+    to deliver the tile experience.
+
+    Takes in a param which holds the data for the tile and the UI config. UI 
+    config comes from the Dashboard.js, passed to it by the Default.aspx.
+    Param comes from the Tiles.js which returns the tile parameters. 
+*/
+var Tile = function (param, ui, viewModel) {
     var self = this;
 
-    this.uniqueId = param.uniqueId;
-    this.name = param.name;
-    this.index = param.index || 0;
-    this.size = param.size || "";
-    this.color = param.color || ui.tile_color;
-    this.additionalClass = param.additionalClass || "";
-    this.tileImage = param.tileImage || "";
+    this.uniqueId = param.uniqueId; // unique ID of a tile, Weather1, Weather2. Each instance must have unique ID.
+    this.name = param.name; // unique name of a tile, eg Weather. 
+    this.index = param.index || 0; // order of tile on the screen. Calculated at run time.
+    this.size = param.size || ""; // Size of the tile. eg tile-double, tile-double-vertical
+    this.color = param.color || ui.tile_color;  // Color of tile. eg bg-color-blue
+    this.additionalClass = param.additionalClass || ""; // Some additional class if you want to pass to further customize the tile
+    this.tileImage = param.tileImage || ""; // Tile background image that fills the tile.
 
-    this.cssSrc = param.cssSrc || [];
-    this.scriptSrc = param.scriptSrc || [];
-    this.initFunc = param.initFunc || "";
-    this.initParams = param.initParams || {};
-    this.slidesFrom = param.slidesFrom || [];
+    this.cssSrc = param.cssSrc || [];   // CSS files to load at runtime.
+    this.scriptSrc = param.scriptSrc || []; // Javascript files to load at runtime.
+    this.initFunc = param.initFunc || ""; // After loading javascript, which function to call.
+    this.initParams = param.initParams || {}; // Parameters to pass to the initial function.
+    this.slidesFrom = param.slidesFrom || []; // HTML pages to load and inject as slides inside the tiles that rotate.
 
-    this.appTitle = param.appTitle || "";
-    this.appUrl = param.appUrl || "";
-    this.appInNewWindow = param.appInNewWindow || false;
+    this.appTitle = param.appTitle || ""; // Title of the application when launched by clicking on tile.
+    this.appUrl = param.appUrl || "";   // URL of the application to launch.
+    this.appInNewWindow = param.appInNewWindow || false; // To load the app on new browser window outside the Dashboard.
 
-    this.iconStyle = param.iconStyle || ui.tile_icon_size;
-    this.iconAdditionalClass = param.iconAdditionalClass || "";
-    this.iconSrc = param.iconSrc || ui.tile_icon_src;
-    this.appIcon = param.appIcon || this.iconSrc;
+    this.iconStyle = param.iconStyle || ui.tile_icon_size; // Tile icon size.
+    this.iconAdditionalClass = param.iconAdditionalClass || ""; // Additional class for the tile icon.
+    this.iconSrc = param.iconSrc || ui.tile_icon_src; // Icon url
+    this.appIcon = param.appIcon || this.iconSrc; // Icon to show when full screen app being launched.
 
-    this.label = ko.observable(param.label || "");
-    this.counter = ko.observable(param.counter || "");
-    this.subContent = ko.observable(param.subContent || "");
-    this.subContentColor = param.subContentColor || ui.tile_subContent_color;
+    this.label = ko.observable(param.label || ""); // Bottom left label 
+    this.counter = ko.observable(param.counter || ""); // Bottom right counter
+    this.subContent = ko.observable(param.subContent || ""); // Content that comes up when mouse hover
+    this.subContentColor = param.subContentColor || ui.tile_subContent_color; // Color for content
 
-    this.slides = ko.observableArray(param.slides || []);
+    this.slides = ko.observableArray(param.slides || []); // Tile content that rotates. Collection of html strings.
 
     this.tileClasses = ko.computed(function () {
         return [ui.tile,
@@ -72,9 +88,13 @@ var Tile = function (param, ui) {
         return [ui.tile_content_sub, this.subContentColor].join(" ");
     }, this);
 
+    /*
+        This attaches dynamic behavior to each tile.         
+    */
     this.attach = function (div) {
         var el = $(div);
         el.unbind("mouseenter mouseleave");
+
         el.mouseenter(function () {
             el = $(this);
             if (el.hasClass(ui.tile_multi_content_selector)) {
@@ -88,12 +108,20 @@ var Tile = function (param, ui) {
                 c_sub.animate({ "height": 0, "opacity": 0 }, 200);
             }
         });
+
+        // On click, launch the app either inside dashboard or in a new browser tab
         if (!_.isEmpty(self.appUrl)) {
             el.click(function (event) {
-                if ($(this).data("noclick") == true) 
+                // Drag & drop just happened. Prevent incorrect click event.
+                if ($(this).data("noclick") == true)
                     return;
+
+                // If the item clicked on the tile is a link or inside a link, don't
+                // lauch app. Let browser do the hyperlink click behavior.
                 if ($(event.target).parents("a").length > 0)
                     return;
+
+                // Open app in new browser window. Not all websites like IFRAMEing.
                 if (self.appInNewWindow) {
                     var open_link = window.open('', '_blank');
                     open_link.location = self.appUrl;
@@ -104,8 +132,11 @@ var Tile = function (param, ui) {
             });
         }
 
+        // If tile has css to load, then load all CSS.
         if (_.isArray(self.cssSrc)) {
             var head = $('head');
+
+            // This needs to be exactly like this to work in IE 8.
             _.each(self.cssSrc, function (url) {
                 $("<link>")
                   .appendTo(head)
@@ -114,12 +145,17 @@ var Tile = function (param, ui) {
             });
         }
 
+        // If tile has a collection of html pages as slides, then load them
+        // and inject them inside tile so that they rotate.
         if (!_.isEmpty(self.slidesFrom)) {
             $.get((_.isArray(self.slidesFrom) ? self.slidesFrom : [self.slidesFrom]),
                 function (slides) {
                     _.each(slides, function (slide) {
                         self.slides.push(slide);
                     });
+
+                    // After loading the htmls, load the JS so that they
+                    // can use the html elements.
                     self.loadScripts(div);
                 });
         }
@@ -128,6 +164,7 @@ var Tile = function (param, ui) {
         }
     }
 
+    // Loads the javascripts on a tile dynamically. Called from .attach()
     this.loadScripts = function (div) {
         if (!_.isEmpty(self.scriptSrc)) {
             $.getScript(self.scriptSrc, function () {
@@ -143,8 +180,13 @@ var Tile = function (param, ui) {
         }
     }
 
+    /*
+        Launch the full screen app
+    */
     this.launch = function () {
         var tileDiv = $('#' + self.uniqueId);
+
+        // Make the tileDIv explode into full screen
         var clone = $("<div/>")
             .addClass(self.tileClasses())
             .css({
@@ -162,6 +204,8 @@ var Tile = function (param, ui) {
                 width: "100%",
                 height: "100%"
             }, 500, function () {
+                // Launch the full screen app inside an IFRAME. ViewModel has
+                // this feature.
                 viewModel.launchApp(self.name, self.appTitle, self.appUrl, function () {
                     clone.fadeOut();
                 });
@@ -181,19 +225,20 @@ var Tile = function (param, ui) {
     }
 };
 
-var Section = function (section) {
+/*
+    Section holds a collection of tiles. Each group of tiles you see
+    huddled together on screen, are sections.
+*/
+var Section = function (section, viewModel) {
     var self = this;
 
-    this.name = ko.observable(section.name);
-    this.uniqueId = _.uniqueId('section_');
+    this.name = ko.observable(section.name); // Name of a section. Can be used to show some title over section.
+    this.uniqueId = _.uniqueId('section_'); // Unique ID generated at runtime and stored on the section Div.
+
     this.tiles = ko.observableArray(section.tiles);
 
-    this.sortedTiles = ko.computed(function () {
-        return self.tiles().sort(function (left, right) {
-            return left.index == right.index ? 0 :
-                (left.index < right.index ? -1 : 1)
-        });
-    }, this);
+    // Returns tiles sorted by index so that they are shown on the 
+    // dashboard in right order.
 
     this.getTilesSorted = function () {
         return self.tiles().sort(function (left, right) {
@@ -201,6 +246,8 @@ var Section = function (section) {
                 (left.index < right.index ? -1 : 1)
         });
     }
+
+    this.sortedTiles = ko.computed(this.getTilesSorted, this);
 
     this.getTile = function(uniqueId) {
         return ko.utils.arrayFirst(self.tiles(), function(tile) {
@@ -222,12 +269,6 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     this.timerId = 0;
 
     this.onTileOrderChange = function () { }
-
-    this.addTile = function (tile) {
-        self.sections()[0].tiles.push(tile);
-        self.makeTile($('#' + tile.uniqueId));
-        self.reflow();
-    }
 
     this.removeTile = function (id) {
         var tile = self.getTile(id);
@@ -299,7 +340,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
                         }
                         else {
                             var tileParams = builder(tileId);
-                            var newTile = new Tile(tileParams, ui);
+                            var newTile = new Tile(tileParams, ui, self);
                             newTile.index = index++;
                             sectionTiles.push(newTile);
                         }
@@ -310,7 +351,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             var newSection = new Section({
                 name: sectionName,
                 tiles: sectionTiles
-            });
+            }, self);
             sectionArray.push(newSection);
 
         });
@@ -348,7 +389,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             .animate({
                 'margin-left': 0,
                 'opacity': 1
-            }, 1000, 'swing');
+            }, 500, 'swing');
     }
 
     this.launchApp = function (id, title, url, loaded) {
@@ -453,15 +494,6 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         }, ui.tile_content_slide_delay);
     }
 
-    //this.resetTiles = function () {
-    //    var dynamicSection = $(ui.metro_section_selector + '+.' + ui.metro_section_overflow).each(function () {
-    //        var section = $(this);
-    //        var prevSection = section.prev();
-    //        $(ui.tile_selector, section).appendTo(prevSection);
-    //        section.remove();
-    //    });
-    //}
-
     this.attachTiles = function (tiles) {
         ko.utils.arrayForEach(self.sections(), function (section) {
             ko.utils.arrayForEach(section.tiles(), function (tile) {
@@ -545,6 +577,16 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             });
         });
     }
+
+    //this.resetTiles = function () {
+    //    var dynamicSection = $(ui.metro_section_selector + '+.' + ui.metro_section_overflow).each(function () {
+    //        var section = $(this);
+    //        var prevSection = section.prev();
+    //        $(ui.tile_selector, section).appendTo(prevSection);
+    //        section.remove();
+    //    });
+    //}
+
 
     //this.reflow = function (fromIndex) {
     //    var metroSectionHeight = $(window).height(); 

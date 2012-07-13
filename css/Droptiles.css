@@ -279,9 +279,12 @@ html[xmlns] .clearfix{display:block;}
 .metro hr{color:#fff;background-color:#fff;}
 .metro .metro-replies .metro-reply{background:#1c1c1c;}.metro .metro-replies .metro-reply *{color:#ffffff;}
 
-#options_bar {
-    
+
+.tile input, .tile select {
+    color: black;
+    background-color: #ccc;
 }
+                                                       
 .highlight {
     border: 4px solid yellow;
 }
@@ -406,7 +409,6 @@ body {
     width: 100%;
     min-height: 100%;            
 }
-
 
 #navbar {
   
