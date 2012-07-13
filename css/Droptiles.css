@@ -313,6 +313,10 @@ html, body {
     /*text-shadow: 0 0 1px rgba(255,255,255,0.3);*/
 }
 
+.appstore #start {
+    color: black;
+}
+
 #user {
     position: fixed;
     top: 80px;
@@ -360,6 +364,15 @@ body {
     background-repeat: repeat;    
     }
 
+.appstore {
+    background-color: #fff;        
+}
+
+.theme-white {
+        background-image: none;
+        background-color: #fff;
+        background-repeat: repeat;    
+}
 .theme-cyan {
         background-image: url(../img/MetroBackgroundCyan.png);
         background-repeat: repeat;    
@@ -384,6 +397,14 @@ body {
 .metro-section {
     width: 910px !important;
     height: 99% !important;
+    position: relative;    
+}
+
+.metro-section-title {
+    
+    font-size: 20pt;
+    height: 40px;
+    color: black;
     position: relative;    
 }
 
@@ -496,3 +517,23 @@ body {
     color: red;
     display:none;
 }
+
+.appstore .tile {
+    border: 1px solid lightgray;
+}
+
+.appstore .backbutton {
+    left: 40px;
+    top: 70px;
+    position: fixed;
+}
+
+.appstore #start {
+    left: 100px;
+}
+.appstore .selected{border:0;background:#219297;}
+.appstore .selected *{color:#fff !important;}
+.appstore .selected b.check:after{right:5px;top:-40px;}
+.appstore .selected{border:4px #219297 solid;}
+.appstore .selected b.check {width:0;height:0;border-top:30px solid #219297;border-left:30px solid transparent;position:absolute;display:block;right:0;}
+.appstore .selected b.check:after{position:absolute;content:"\2713";color:#fff;top:-35px;right:0px;}

@@ -22,7 +22,7 @@
                     <div class="nav-collapse">
                         <ul class="nav">
                             <li><a class="active" href="?"><i class="icon-th-large"></i>Dashboard</a></li>
-                            <li><a href="ServerStuff/AppStore.aspx"><i class="icon-shopping-cart"></i>Apps</a></li>
+                            <li><a href="AppStore.aspx"><i class="icon-shopping-cart"></i>Apps</a></li>
                             <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-gift"></i>I want this!</a></li>
                             <li>
                                 <form id="googleForm" class="navbar-search pull-left" action="http://www.google.com/search" target="_blank">

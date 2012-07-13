@@ -3,6 +3,8 @@
 // This file holds the definition of tiles and which tiles appear by default 
 // to new visitors. 
 
+
+// The default tile setup offered to new users.
 window.DefaultTiles = [
     {
         name :"Section1",
@@ -36,6 +38,8 @@ window.DefaultTiles = [
     }
 ];
 
+
+// Convert it to a serialized string
 window.DefaultTiles = _.map(window.DefaultTiles, function (section) {
     return "" + section.name + "~" + (_.map(section.tiles, function (tile) {
         return "" + tile.id + "," + tile.name;
@@ -43,7 +47,7 @@ window.DefaultTiles = _.map(window.DefaultTiles, function (section) {
 }).join("|");
         
 
-
+// Definition of the tiles, their default values.
 window.TileBuilders = {
 
     weather: function (uniqueId) {
@@ -217,7 +221,7 @@ window.TileBuilders = {
             label: "News",
             color: "bg-color-pink",
             size: "tile-double",
-            appUrl: "http://www.wikipedia.org",
+            appUrl: "http://www.bbc.co.uk/news/world/",
             scriptSrc: ["tiles/news/news.js"],
             cssSrc: ["tiles/news/news.css"],
             initFunc: "load_news"            
@@ -271,6 +275,7 @@ window.TileBuilders = {
         slidesFrom: ["tiles/buy/buy.html"],
         cssSrc: ["tiles/buy/buy.css"]
     };
+
 }
     
 };

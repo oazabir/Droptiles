@@ -55,6 +55,8 @@ var Tile = function (param, ui, viewModel) {
 
     this.slides = ko.observableArray(param.slides || []); // Tile content that rotates. Collection of html strings.
 
+    this.onTileClick = function (tile) { }
+
     this.tileClasses = ko.computed(function () {
         return [ui.tile,
             this.size,
@@ -110,27 +112,31 @@ var Tile = function (param, ui, viewModel) {
         });
 
         // On click, launch the app either inside dashboard or in a new browser tab
-        if (!_.isEmpty(self.appUrl)) {
-            el.click(function (event) {
-                // Drag & drop just happened. Prevent incorrect click event.
-                if ($(this).data("noclick") == true)
-                    return;
+        el.click(function (event) {
+            // Drag & drop just happened. Prevent incorrect click event.
+            if ($(this).data("noclick") == true)
+                return;
 
-                // If the item clicked on the tile is a link or inside a link, don't
-                // lauch app. Let browser do the hyperlink click behavior.
-                if ($(event.target).parents("a").length > 0)
-                    return;
+            if (self.onTileClick(self) == false)
+                return;
 
-                // Open app in new browser window. Not all websites like IFRAMEing.
+            // If the item clicked on the tile is a link or inside a link, don't
+            // lauch app. Let browser do the hyperlink click behavior.
+            if ($(event.target).parents("a").length > 0)
+                return;
+
+            // Open app in new browser window. Not all websites like IFRAMEing.
+            if (!_.isEmpty(self.appUrl)) {
                 if (self.appInNewWindow) {
                     var open_link = window.open('', '_blank');
                     open_link.location = self.appUrl;
                 }
                 else {
                     self.launch();
-                }                
-            });
-        }
+                }
+            }
+        });
+        
 
         // If tile has css to load, then load all CSS.
         if (_.isArray(self.cssSrc)) {
@@ -236,7 +242,7 @@ var Section = function (section, viewModel) {
     this.uniqueId = _.uniqueId('section_'); // Unique ID generated at runtime and stored on the section Div.
 
     this.tiles = ko.observableArray(section.tiles);
-
+    
     // Returns tiles sorted by index so that they are shown on the 
     // dashboard in right order.
 
@@ -269,6 +275,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     this.timerId = 0;
 
     this.onTileOrderChange = function () { }
+    this.onTileClick = function (tile) { }
 
     this.removeTile = function (id) {
         var tile = self.getTile(id);
@@ -498,6 +505,9 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         ko.utils.arrayForEach(self.sections(), function (section) {
             ko.utils.arrayForEach(section.tiles(), function (tile) {
                 tile.attach($('#' + tile.uniqueId));
+                tile.onTileClick = function (t) {
+                    return self.onTileClick(t);
+                }
             });
         });
     }

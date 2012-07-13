@@ -1,8 +1,8 @@
 ﻿/*
-    Droptiles - Dashboard javascript
+    Droptiles - App Store Script
     Copyright 2012, Omar AL Zabir
 
-    Builds the dashboard experience by using the Droptiles Core.
+    Builds the App Store experience showcasing the available tiles.
 */
 
 
@@ -55,7 +55,7 @@ var ui = {
 // This is the viewModel for the entire Dashboard. The starting point.
 // It takes the currentUser (defined in the Droptiles.master), the UI config (as above)
 // and the TileBuilders that comes from Tiles.js.
-var viewModel = new DashboardModel("Start", [], window.currentUser, ui, TileBuilders);
+var viewModel = new DashboardModel("App Store", [], window.currentUser, ui, TileBuilders);
 
 $(document).ready(function () {
 
@@ -66,52 +66,22 @@ $(document).ready(function () {
     // UI to viewModel.
     ko.applyBindings(viewModel);
 
-    // See if user has a previous session where page setup was stored
-    var cookie = readCookie("p");
-    if (cookie != null && cookie.length > 0) {
-        try {
-            viewModel.loadSectionsFromString(cookie);
-        } catch (e) {
-            // Failed to load saved tiles. Load the default tiles.
-            viewModel.loadSectionsFromString(DefaultTiles);
-        }
-    }
-    else {
-        // No cookie, load default tiles. Defined in Tiles.js
-        viewModel.loadSectionsFromString(DefaultTiles);
-    }
+    viewModel.switchTheme('theme-white');
+    viewModel.loadSectionsFromString(window.AppStoreTiles);
 
-    var addedApps = readCookie("add");
-    if (addedApps != null) {
-        var tileNames = addedApps.split(",");
-        _.each(tileNames, function (name) {
-            if (!_.isEmpty(name)) {
-                var builder = TileBuilders[name];
-                var newTileDef = builder(_.uniqueId(name));
-                var newTile = new Tile(newTileDef, ui, viewModel);
-                newTile.index = 0;
+    createCookie("add", "");
 
-                _.each(viewModel.sections()[0].tiles(), function (tile) {
-                    tile.index++;
-                });
-                viewModel.sections()[0].tiles.push(newTile);
+    viewModel.onTileClick = function (tile) {
+        $('#' + tile.uniqueId).addClass("selected");
 
-                createCookie("add", "");
-            }
-        });
-    }
+        var cookie = readCookie("add");
+        if (cookie == null)
+            cookie = tile.name;
+        else
+            cookie += "," + tile.name;
+        createCookie("add", cookie);
 
-    // Whenever tile changes due to drag & drop or removing a tile,
-    // save the position of the tiles in the cookie.
-    viewModel.onTileOrderChange = function () {
-        var newOrder = viewModel.toSectionString();
-        if (newOrder !== DefaultTiles) {
-            createCookie("p", newOrder, 2);
-
-            if (!window.currentUser.isAnonymous) {
-                $.get("SaveTiles.aspx");
-            }
-        }
+        return false;
     }
 
     $(window).resize(function () {
@@ -128,24 +98,6 @@ $(document).ready(function () {
         animate: true,
         placement: 'bottom',
         trigger: 'manual'
-    });
-
-
-    // Handles browser back button. When user presses the back button,
-    // it detects it and closes the current app.
-    $(window).hashchange(function () {
-        var hash = location.hash;
-
-        if (hash == "" || hash == "#") {
-            if (viewModel.appRunning)
-                viewModel.closeApp();
-        }
-    })
-
-    // The google search bar behavior on the navigation bar.
-    $('#googleSearchText').keypress(function (e) {
-        if (e.keyCode == 13)
-            $('#googleForm').submit();
     });
 
     // Supports only IE 9+, Chrome, Firefox, Safari
