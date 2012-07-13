@@ -16,6 +16,7 @@
 * **Enterprise Dashboard** aggregating data from various systems and offering a launch pad for intranet/internet applications.
 * Web 2.0 Portal offering portlets in the form of tiles. Aggregating data from various services and as a launch pad for different services.
 * Touch enabled Kiosk front-end.
+* Content aggregator for News and Research purpose.
 
 ### Who am I?
 I am the Chief Architect of SaaS Platform, BT (aka British Telecom). Microsoft MVP on ASP.NET/IIS. Ex Co-Founder and CTO of the first Web 2.0 Social Start Page - Pageflakes, owner of popular open source projects - [Dropthings](http://dropthings.omaralzabir.com), [Codeuml.com](http://codeuml.com). 

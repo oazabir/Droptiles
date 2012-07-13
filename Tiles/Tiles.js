@@ -24,15 +24,14 @@ window.DefaultTiles = [
            { id: "maps1", name: "maps" },
            { id: "angrybirds1", name: "angrybirds" },
            { id: "cuttherope1", name: "cutTheRope" },
-           //{ id: "youtube1", name: "youtube" },
-           //{ id: "ie1", name: "ie" },
-           { id: "buy1", name: "buy" },
-            { id: "dynamicTile1", name: "dynamicTile" }
-]
+           { id: "dynamicTile1", name: "dynamicTile" },
+           { id: "buy1", name: "buy" }]
     },
     {
-        name: "Buy", tiles: [
-            
+        name: "Section3", tiles: [
+           { id: "youtube1", name: "youtube" },
+           { id: "ie1", name: "ie" },
+
         ]
     }
 ];
