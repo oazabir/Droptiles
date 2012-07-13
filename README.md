@@ -5,6 +5,8 @@
 *Droptiles* is built almost entirely of **HTML, Javascript and CSS** and thus highly portable to any platform. The sample project is built using ASP.NET to show some server side integration, like Signup, Login and getting dynamic data from server. But with very little change you can port it to **PHP, Ruby, JSP** or any other platform.
 *Droptiles* is the sequel of my [Dropthings](http://dropthings.omaralzabir.com/), which is the first Open Source Web 2.0 Dashboard.
 
+[See it live!](http://droptiles.com) 
+
 ### Features
 * Metro style user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
 * Drag & Drop tiles to personalize the experience. 
@@ -14,15 +16,15 @@
 
 ### How can you use Droptiles
 * **Enterprise Dashboard** aggregating data from various systems and offering a launch pad for intranet/internet applications.
-* Web 2.0 Portal offering portlets in the form of tiles. Aggregating data from various services and as a launch pad for different services.
-* Touch enabled Kiosk front-end.
-* Content aggregator for News and Research purpose.
+* **Web 2.0 Portal** offering portlets in the form of tiles. Aggregating data from various services and as a launch pad for different services.
+* **Touch enabled Kiosk** front-end.
+* **Content aggregator** for News and Research purpose.
 
 ### Who am I?
 I am the Chief Architect of SaaS Platform, BT (aka British Telecom). Microsoft MVP on ASP.NET/IIS. Ex Co-Founder and CTO of the first Web 2.0 Social Start Page - Pageflakes, owner of popular open source projects - [Dropthings](http://dropthings.omaralzabir.com), [Codeuml.com](http://codeuml.com). 
 
 ### License
-*Droptiles* is Open Source. It is free for personal use as long as you keep the copyright notices intact. In order to buy license, go to the [Droptiles production site](http://www.droptiles.com/) and there's a tile on the right side to place the order through Paypal.
+*Droptiles* is **Open Source**. It is free for personal use as long as you keep the copyright notices intact. In order to buy license, go to the [Droptiles production site](http://www.droptiles.com/) and there's a tile on the right side to place the order through Paypal.
 
 ### Technologies
 * [jQuery](http://jquery.com/) for all client side effects.
