@@ -35,6 +35,11 @@ Follow me on [my blog](http://omaralzabir.com) for future updates.
 * [Bootstrap](http://twitter.github.com/bootstrap/) for cross-browser CSS framework and jQuery plugins.
 
 ### Screenshots
+#### App Store
+![App Store](https://github.com/oazabir/Droptiles/raw/master/doc/AppStore.png)
+
+AppStore offers new applications
+
 #### Tiles are mini apps, built using Javascript
 ![Tiles](https://github.com/oazabir/Droptiles/raw/master/doc/Tiles.png)
 
