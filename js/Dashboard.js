@@ -1,4 +1,8 @@
-﻿/*
+﻿/// <reference path="jquery-1.7.2.min.js" />
+/// <reference path="TheCore.js" />
+/// <reference path="Underscore.js" />
+
+/*
     Droptiles - Dashboard javascript
     Copyright 2012, Omar AL Zabir
 
