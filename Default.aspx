@@ -112,7 +112,7 @@
         </div>
         <div id="copyright">
             Copyright 2012 Omar AL Zabir. 
-            For license or to get the code, <a href="http://oazabir.github.com/Droptiles/">Click here</a>
+            For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>
     </div>
 

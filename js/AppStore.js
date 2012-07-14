@@ -1,4 +1,9 @@
-﻿/*
+﻿/// <reference path="jquery-1.7.2.min.js" />
+/// <reference path="TheCore.js" />
+/// <reference path="cookie.js" />
+/// <reference path="Underscore.js" />
+
+/*
     Droptiles - App Store Script
     Copyright 2012, Omar AL Zabir
 
@@ -72,14 +77,17 @@ $(document).ready(function () {
     createCookie("add", "");
 
     viewModel.onTileClick = function (tile) {
-        $('#' + tile.uniqueId).addClass("selected");
+        $('#' + tile.uniqueId).toggleClass("selected");
 
-        var cookie = readCookie("add");
-        if (cookie == null)
-            cookie = tile.name;
+        var cookie = readCookie("add") + "";
+
+        var tiles = cookie.split(",");
+        if (_.contains(tiles, tile.name))
+            tiles = _.filter(tiles, function (t) { return t != tile.name; })
         else
-            cookie += "," + tile.name;
-        createCookie("add", cookie);
+            tiles.push(tile.name);
+
+        createCookie("add", tiles.join(","));
 
         return false;
     }

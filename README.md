@@ -5,7 +5,7 @@
 *Droptiles* is built almost entirely of **HTML, Javascript and CSS** and thus highly portable to any platform. The sample project is built using ASP.NET to show some server side integration, like Signup, Login and getting dynamic data from server. But with very little change you can port it to **PHP, Ruby, JSP** or any other platform.
 *Droptiles* is the sequel of my [Dropthings](http://dropthings.omaralzabir.com/), which is the first Open Source Web 2.0 Dashboard.
 
-[See it live!](http://droptiles.com) 
+### [See it live!](http://droptiles.com) 
 
 ### Features
 * Metro style user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
@@ -21,7 +21,9 @@
 * **Content aggregator** for News and Research purpose.
 
 ### Who am I?
-I am the Chief Architect of SaaS Platform, BT (aka British Telecom). Microsoft MVP on ASP.NET/IIS. Ex Co-Founder and CTO of the first Web 2.0 Social Start Page - Pageflakes, owner of popular open source projects - [Dropthings](http://dropthings.omaralzabir.com), [Codeuml.com](http://codeuml.com). 
+I am Omar AL Zabir, the Chief Architect of SaaS Platform, BT (aka British Telecom). Microsoft MVP on ASP.NET/IIS. Ex Co-Founder and CTO of the first Web 2.0 Social Start Page - Pageflakes, owner of popular open source projects - [Dropthings](http://dropthings.omaralzabir.com), [Codeuml.com](http://codeuml.com). 
+
+Follow me on [my blog](http://omaralzabir.com) for future updates.
 
 ### License
 *Droptiles* is **Open Source**. It is free for personal use as long as you keep the copyright notices intact. In order to buy license, go to the [Droptiles production site](http://www.droptiles.com/) and there's a tile on the right side to place the order through Paypal.
@@ -56,3 +58,5 @@ External applications can run inside Droptiles offering a seamless integration e
 * *Droptiles* will force your developers to use industry best practices. For instance, using MVVM architecture, building sites on top of cross-browser CSS and JS frameworks, pluggable architecture where features are dynamically loaded and so on.
 * *Droptiles* is built specifically to be integrated with existing ASP.NET/PHP/JSP/Ruby web applications, where most other CMS are built to be run as a standalone app.
 
+### Documentation
+Please go over to the [Wiki](https://github.com/oazabir/Droptiles/wiki) for detail project documentation.

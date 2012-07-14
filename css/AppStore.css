@@ -19,8 +19,8 @@
 
 .appstore .selected{border:0;background:#219297;}
 .appstore .selected *{color:#fff !important;}
-.appstore .selected b.check:after{right:5px;top:-40px;}
-.appstore .selected{border:4px #219297 solid;}
-.appstore .selected b.check {width:0;height:0;border-top:30px solid #219297;border-left:30px solid transparent;position:absolute;display:block;right:0;}
-.appstore .selected b.check:after{position:absolute;content:"\2713";color:#fff;top:-35px;right:0px;}
+.appstore .selected b.check:after{right:10px;top:-40px;}
+.appstore .selected{border:1px #219297 solid;}
+.appstore .selected b.check {width:0;height:0;border-top:30px solid #f00;border-left:30px solid transparent;position:absolute;display:block;right:0;}
+.appstore .selected b.check:after{position:absolute;content:"\2713";color:#fff;top:-35px;right:0px; font-size: 16pt;}
 
