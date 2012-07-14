@@ -261,6 +261,19 @@ var Section = function (section, viewModel) {
         });
     }
 
+    this.addTile = function (tile) {
+        self.tiles.push(tile);
+        _.defer(function () {
+            tile.attach($('#' + tile.uniqueId));
+        });
+    }
+
+    this.show = function () {
+        var sectionDiv = $('#' + self.uniqueId);
+        //$(window).animate({'scrollLeft': sectionDiv.offset().left});
+        $(window).scrollLeft(sectionDiv.offset().left-100);
+    }
+
 };
 
 var DashboardModel = function (title, sections, user, ui, tileBuilder) {
@@ -515,14 +528,15 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     this.makeSortable = function () {
         $(ui.trash).droppable({
             tolerance: 'touch',
+            hoverClass: 'highlight',
             over: function (event, o) {
-                $(this).animate({ "zoom": "1.5" });
+                //$(this).animate({ "zoom": "1.5" });
             },
             out: function (event, o) {
-                $(this).animate({ "zoom": "1.0" });
+                //$(this).animate({ "zoom": "1.0" });
             },
             drop: function (event, o) {
-                $(this).animate({ "zoom": "1.0" });
+                //$(this).animate({ "zoom": "1.0" });
                 var tileId = o.draggable[0].id;
                 self.removeTile(tileId);
             }

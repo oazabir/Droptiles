@@ -81,25 +81,34 @@ $(document).ready(function () {
         viewModel.loadSectionsFromString(DefaultTiles);
     }
 
-    var addedApps = readCookie("add");
-    if (addedApps != null) {
-        var tileNames = addedApps.split(",");
-        _.each(tileNames, function (name) {
-            if (!_.isEmpty(name)) {
-                var builder = TileBuilders[name];
-                var newTileDef = builder(_.uniqueId(name));
-                var newTile = new Tile(newTileDef, ui, viewModel);
-                newTile.index = 0;
+    // If we have the "add" cookie, then it means user went to app store
+    // and then added some apps. The name of the apps are passed as a 
+    // comma delimited cookie. So, add those tiles on the Dashboard.
+    _.delay(function(){
+        var addedApps = readCookie("add");
+        if (!_.isEmpty(addedApps)) {
+            var sections = viewModel.sections();
+            var lastSection = sections[sections.length - 1];
+            var sectionTiles = lastSection.tiles();
+            lastSection.show();
 
-                _.each(viewModel.sections()[0].tiles(), function (tile) {
-                    tile.index++;
-                });
-                viewModel.sections()[0].tiles.push(newTile);
+            var tileNames = addedApps.split(",");
+            _.each(tileNames, function (name) {
+                if (!_.isEmpty(name)) {
+                    var builder = TileBuilders[name];
+                    var newTileDef = builder(_.uniqueId(name));
+                    var newTile = new Tile(newTileDef, ui, viewModel);
+                
+                    newTile.index = sectionTiles.length;
+                
+                    lastSection.addTile(newTile);                    
+                }
+            });
 
-                createCookie("add", "");
-            }
-        });
-    }
+            createCookie("p", viewModel.toSectionString(), 2);
+            createCookie("add", "");
+        }
+    }, 1000);
 
     // Whenever tile changes due to drag & drop or removing a tile,
     // save the position of the tiles in the cookie.

@@ -5,6 +5,7 @@
 .feature h2 {
     color: white;
     font-size: 14pt;
+    line-height: 14pt;
 }
 
 .feature img.float_left {

@@ -36,9 +36,9 @@ Todolist
 	* Streaming Content Proxy.
 [done] 4. Async load of tile from client side via content proxy.
 5. App Store
-	* Dashboard like interface to show apps as tiles.
+	[done] * Dashboard like interface to show apps as tiles.
 	* Clicking on tile shows detail view of the app.
-	* Clicking install on an app will add the app to the server or cookie
+	[done] * Clicking install on an app will add the app to the server or cookie
 6. Apps
 	[done] * Weather app
 	[done] * Flickr Photo

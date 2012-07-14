@@ -1,0 +1,26 @@
+﻿#metro-sections-container {
+    top: 110px;
+}
+
+.appstore .tile {
+    border: 1px solid lightgray;
+}
+
+.appstore .backbutton {
+    left: 40px;
+    top: 60px;
+    position: fixed;
+}
+
+.appstore #start {
+    left: 100px;
+    top: 70px
+}
+
+.appstore .selected{border:0;background:#219297;}
+.appstore .selected *{color:#fff !important;}
+.appstore .selected b.check:after{right:5px;top:-40px;}
+.appstore .selected{border:4px #219297 solid;}
+.appstore .selected b.check {width:0;height:0;border-top:30px solid #219297;border-left:30px solid transparent;position:absolute;display:block;right:0;}
+.appstore .selected b.check:after{position:absolute;content:"\2713";color:#fff;top:-35px;right:0px;}
+
