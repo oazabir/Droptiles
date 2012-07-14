@@ -400,8 +400,7 @@ body {
     position: relative;    
 }
 
-.metro-section-title {
-    
+.metro-section-title {    
     font-size: 20pt;
     height: 40px;
     color: black;
@@ -415,12 +414,12 @@ body {
 .metro-sections {
     width: 4000px;    
     position: relative;
-    height: 100%;
+    min-height: 100%;
 }
         
 #content {
     width: 80%;
-    height: 100%;
+    min-height: 100%;
     margin-top: 50px;
     margin-left: 40px;            
 }
@@ -443,8 +442,8 @@ body {
 
 #trash {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 50px;
+    left: 50%;
     width: 64px;
     height: 64px;
     display: none;
@@ -516,4 +515,62 @@ body {
     top: 60px;
     color: red;
     display:none;
+}
+
+
+/* Scrollbar for IE */
+html, body
+{
+    scrollbar-face-color: #6e6e6e;
+    scrollbar-highlight-color: #353535;
+    scrollbar-3dlight-color: #353535;
+    scrollbar-darkshadow-color: #353535;
+    scrollbar-shadow-color: #353535;
+    scrollbar-arrow-color: #000000;
+    scrollbar-track-color: #353535;
+}
+        
+/*scroll bar for safari & chrome*/
+
+::-webkit-scrollbar {
+width: 15px;
+height: 15px;
+cursor: move;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+height: 1px;
+display: block;
+/*background-color: #353535;*/
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement,
+::-webkit-scrollbar-button:horizontal:end:increment {
+height: 1px;
+display: block;
+/*background-color: #353535;*/
+}
+
+::-webkit-scrollbar-track-piece {
+background-color: #353535;
+cursor: move;
+}
+
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal
+{
+/*background-color: #AAAAAA;*/
+border: 1px solid #AAAAAA;
+-webkit-border-radius: 6px;
+}
+        
+.unselectable 
+{
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }

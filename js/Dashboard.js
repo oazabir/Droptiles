@@ -129,7 +129,8 @@ $(document).ready(function () {
 
     // Mouse wheel behavior for side scrolling.
     $("body").on("mousewheel", function (event, delta, deltaX, deltaY) {
-        window.scrollBy(-delta * 50, 0);
+        if ($(document).height() <= $(window).height())
+            window.scrollBy(-delta * 50, 0);
     });
 
     $("#navbar").tooltip({
