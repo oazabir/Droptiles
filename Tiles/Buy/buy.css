@@ -2,3 +2,7 @@
     font-size: 8pt;
     margin: 20px;
 }
+
+    #buy input, #buy select {
+        color: black;
+    }

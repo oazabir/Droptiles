@@ -26,7 +26,7 @@
                             <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-gift"></i>I want this!</a></li>
                             <li>
                                 <form id="googleForm" class="navbar-search pull-left" action="http://www.google.com/search" target="_blank">
-                                    <input id="googleSearchText" type="text" class="search-query span2" name="q" placeholder="Search">
+                                    <input id="googleSearchText" type="text" class="search-query span2" name="q" placeholder="Google">
                                 </form>
                             </li>
                         </ul>

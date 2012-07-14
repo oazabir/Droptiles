@@ -77,7 +77,23 @@ $(document).ready(function () {
     createCookie("add", "");
 
     viewModel.onTileClick = function (tile) {
-        $('#' + tile.uniqueId).toggleClass("selected");
+        var div = $('#' + tile.uniqueId);
+        if (div.toggleClass("selected").hasClass("selected")) {
+            div.tooltip({
+                title: 'The app is added. Go back to Dashboard',
+                trigger: 'manual',
+                location: 'top'
+            });
+
+            _.defer(function () {
+                div.tooltip('show');
+                _.delay(function () {
+                    div.tooltip("hide");
+                }, 5000);
+            });
+        }
+        else {
+        }
 
         var cookie = readCookie("add") + "";
 
