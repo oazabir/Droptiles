@@ -13,7 +13,6 @@ function flickr_load(tile, div) {
         $.each(data.items.reverse(), function (i, item) {
             if (item.tags.length < 150) {
                 var sourceSquare = item.media.m;
-                //(item.media.m).replace("_m.jpg", "_s.jpg");
                 var sourceOrig = (item.media.m).replace("_m.jpg", ".jpg");
 
                 var htmlString = '<div class="flickr_item"> <a target="_blank" href="' + sourceOrig +
