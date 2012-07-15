@@ -3,10 +3,20 @@
 
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    
+    <!--
     <script type="text/javascript" src="js/TheCore.js?v=1"></script>
     <script type="text/javascript" src="Tiles/Tiles.js?v=1"></script>
     <script type="text/javascript" src="js/Dashboard.js?v=1"></script>
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    -->
+    <!-- 
+        If you change any of the above javascript files, make sure you run the Combine.bat
+        file in the /js folder to generate the CombinedDashboard.js file again. And then don't
+        forget to update the ?v=#. Otherwise user's will have cached copies in their browser
+        and won't get the newly deployed file. -->
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=1"></script>
+    
     
 </asp:Content>
 
@@ -110,7 +120,7 @@
             </div>
         </div>
         <div id="copyright">
-            Copyright 2012 Omar AL Zabir. 
+            Copyright 2012 Omar AL Zabir. This is Open Source. 
             For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>
     </div>

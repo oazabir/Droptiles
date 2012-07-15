@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/droptiles.css?v=1">
-    
+    <!--
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
     <script type="text/javascript" src="js/jQueryEnhancement.js"></script>
@@ -26,6 +26,13 @@
     <script type="text/javascript" src="js/Bootstrap.dropdown.js"></script>
     <script type="text/javascript" src="js/Underscore.js"></script>
     <script type="text/javascript" src="js/jQuery.hashchange.js"></script>
+    -->
+    <!-- 
+        If you change any of the above javascript files, make sure you run the Combine.bat
+        file in the /js folder to generate the CombinedDashboard.js file again. And then don't
+        forget to update the ?v=#. Otherwise user's will have cached copies in their browser
+        and won't get the newly deployed file. -->
+    <script type="text/javascript" src="js/Combined.js"></script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
