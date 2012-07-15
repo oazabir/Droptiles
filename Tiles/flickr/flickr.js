@@ -6,7 +6,9 @@
 
 
 function flickr_load(tile, div) {
-    var url = "http://api.flickr.com/services/feeds/photos_public.gne?lang=en-us&format=json&tags=nature&jsoncallback=?";
+    //var url = "http://api.flickr.com/services/feeds/photos_public.gne?lang=en-us&format=json&tags=waterfall&jsoncallback=?";
+    //var url = "http://api.flickr.com/services/feeds/photos_faves.gne?id=36587311@N08&format=json&jsoncallback=?";
+    var url = "http://api.flickr.com/services/feeds/groups_pool.gne?id=1642523@N22&format=json&jsoncallback=?";
     
     $.getJSON(url, function (data) {        
         var ctr = 0;
