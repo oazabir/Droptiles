@@ -14,6 +14,10 @@
 * Server side platform neutral implementation. Can be ported to PHP, JSP easily.
 * Live tiles. Tiles are mini-apps, loading data from variety of sources.
 
+It even has its own App Store!
+
+![App Store](https://github.com/oazabir/Droptiles/raw/master/doc/AppStore.png)
+
 ### How can you use Droptiles
 * **Enterprise Dashboard** aggregating data from various systems and offering a launch pad for intranet/internet applications.
 * **Web 2.0 Portal** offering portlets in the form of tiles. Aggregating data from various services and as a launch pad for different services.
