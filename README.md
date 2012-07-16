@@ -1,7 +1,7 @@
 ![Droptiles screenshot](https://github.com/oazabir/Droptiles/raw/master/doc/Screenshot600.png)
 
 ### Introduction
-*Droptiles* is a **Windows 8 Start** like **Metro style** Web 2.0 Dashboard. It builds the experience using **Tiles**. Tiles are **mini apps** that can fetch data from external sources. Clicking on a tile launches the full app. Apps can be from any existing website to customized website specifically built to fit the Dashboard experience. 
+*Droptiles* is an `Open Source` **Windows 8 Start** like **Metro style** Web 2.0 Dashboard. It builds the experience using **Tiles**. Tiles are **mini apps** that can fetch data from external sources. Clicking on a tile launches the full app. Apps can be from any existing website to customized website specifically built to fit the Dashboard experience. 
 *Droptiles* is built almost entirely of **HTML, Javascript and CSS** and thus highly portable to any platform. The sample project is built using ASP.NET to show some server side integration, like Signup, Login and getting dynamic data from server. But with very little change you can port it to **PHP, Ruby, JSP** or any other platform.
 *Droptiles* is the sequel of my [Dropthings](http://dropthings.omaralzabir.com/), which is the first Open Source Web 2.0 Dashboard.
 
