@@ -15,7 +15,7 @@
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="js/CombinedDashboard.js?v=1"></script>
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=2"></script>
     
     
 </asp:Content>

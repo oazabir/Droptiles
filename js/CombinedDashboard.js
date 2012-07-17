@@ -1141,7 +1141,7 @@ $(document).ready(function () {
             createCookie("p", newOrder, 2);
 
             if (!window.currentUser.isAnonymous) {
-                $.get("SaveTiles.aspx");
+                $.get("ServerStuff/SaveTiles.aspx");
             }
         }
     }
