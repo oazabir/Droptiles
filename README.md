@@ -5,7 +5,7 @@
 *Droptiles* is built almost entirely of **HTML, Javascript and CSS** and thus highly portable to any platform. The sample project is built using ASP.NET to show some server side integration, like Signup, Login and getting dynamic data from server. But with very little change you can port it to **PHP, Ruby, JSP** or any other platform.
 *Droptiles* is the sequel of my [Dropthings](http://dropthings.omaralzabir.com/), which is the first Open Source Web 2.0 Dashboard.
 
-### [See it live!](http://droptiles.com), go to [Droptiles.com](http://droptiles.com)
+### [See it live!](http://droptiles.com), go to [Droptiles.com](http://droptiles.com), for Project documentation, read the [Codeproject article](http://www.codeproject.com/Articles/421601/Droptiles-Metro-style-Live-Tiles-powered-Web-Dashb).
 
 ### Features
 * Metro style user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
