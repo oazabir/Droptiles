@@ -178,9 +178,6 @@
     <Content Include="packages\Microsoft.ScriptManager.jQuery.1.6.2\lib\Microsoft.ScriptManager.jQuery.dll" />
     <Content Include="packages\Microsoft.ScriptManager.jQuery.UI.Combined.1.8.11\lib\Microsoft.ScriptManager.jQuery.UI.Combined.dll" />
     <Content Include="packages\Modernizr.2.0.6\Content\Scripts\modernizr-2.0.6-development-only.js" />
-    <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
-    <Content Include="Scripts\jquery-1.6.2.js" />
-    <Content Include="Scripts\jquery-1.6.2.min.js" />
     <Content Include="ServerStuff\Breakout.aspx" />
     <Content Include="ServerStuff\Login.aspx" />
     <Content Include="ServerStuff\SaveTiles.aspx" />
@@ -217,6 +214,8 @@
     <Content Include="packages\repositories.config" />
     <Content Include="ServerStuff\Logout.ashx" />
     <Content Include="ServerStuff\ServerStuff.master" />
+    <None Include="Properties\PublishProfiles\droptiles - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\droptiles - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppStore.aspx.cs">
