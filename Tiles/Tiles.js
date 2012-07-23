@@ -244,7 +244,7 @@ window.TileBuilders = {
 
     dynamicTile: function (uniqueId) {
         return {
-            niqueId: uniqueId,
+            uniqueId: uniqueId,
             name: "dynamicTile",
             color: "bg-color-darkBlue",
             size: "tile-triple tile-double-vertical",
