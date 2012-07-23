@@ -33,7 +33,7 @@ public partial class Settings : System.Web.UI.Page
                     return;
                 }
 
-                if (!Membership.GetUser(Profile.UserName).ChangePassword(currentPassword, newPassword))
+                if (!Membership.GetUser(UserProfile.CurrentUser.UserName).ChangePassword(currentPassword, newPassword))
                 {
                     MessagePanel.Visible = true;
                     Message.Text = "Invalid old password or new passwords are in invalid format.";
@@ -41,9 +41,10 @@ public partial class Settings : System.Web.UI.Page
                 }
             }
 
-            Profile.Firstname = firstName;
-            Profile.Lastname = lastname;
-            Profile.Save();
+            var profile = UserProfile.CurrentUser;
+            profile.Firstname = firstName;
+            profile.Lastname = lastname;
+            profile.Save();
             Response.Redirect("Breakout.aspx");
         }
         catch (Exception x)

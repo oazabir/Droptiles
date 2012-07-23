@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Droptiles.master.cs" Inherits="Droptiles" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="Droptiles" Codebehind="Droptiles.master.cs" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +42,7 @@
     
     <script type="text/javascript" src="js/User.js"></script>
 
-    <% if (Profile.IsAnonymous) { %>
+    <% if (!Context.User.Identity.IsAuthenticated) { %>
     <script type="text/javascript">
         window.currentUser = new User({
             firstName: "None",
@@ -54,8 +54,8 @@
     <% } else { %>
     <script type="text/javascript">
         window.currentUser = new User({
-            firstName: "<%= Profile.Firstname %>",
-            lastName: "<%= Profile.Lastname %>",
+            firstName: "<%= UserProfile.CurrentUser.Firstname %>",
+            lastName: "<%= UserProfile.CurrentUser.Lastname %>",
             photo: "img/User No-Frame.png",
             isAnonymous: false
         });

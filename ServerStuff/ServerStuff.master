@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ServerStuff.master.cs" Inherits="ServerStuff" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="ServerStuff" Codebehind="ServerStuff.master.cs" %>
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AppStore.aspx.cs" Inherits="Tiles_AppStore" MasterPageFile="Droptiles.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Tiles_AppStore" MasterPageFile="Droptiles.master" Codebehind="AppStore.aspx.cs" %>
 <asp:Content runat="server" ContentPlaceHolderID="head">
     <!-- Copyright 2012 Omar AL Zabir -->
     <script type="text/javascript" src="js/TheCore.js?v=1"></script>

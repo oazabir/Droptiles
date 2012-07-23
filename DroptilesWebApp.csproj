@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{211D779B-18DA-4CBD-9938-63B0ECE7D25B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestApp</RootNamespace>
+    <AssemblyName>TestApp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppStore.aspx" />
+    <Content Include="App_Data\aspnetdb.mdf" />
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>aspnetdb.mdf</DependentUpon>
+    </Content>
+    <Content Include="css\AppStore.css" />
+    <Content Include="css\bootstrap-responsive.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\Droptiles.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="doc\Apps.png" />
+    <Content Include="doc\AppStore.png" />
+    <Content Include="doc\DynamicTile.png" />
+    <Content Include="doc\Screenshot.png" />
+    <Content Include="doc\Screenshot200.png" />
+    <Content Include="doc\Screenshot300.png" />
+    <Content Include="doc\Screenshot600.png" />
+    <Content Include="doc\Sequence.png" />
+    <Content Include="doc\TileDesign.png" />
+    <Content Include="doc\Tiles.png" />
+    <Content Include="doc\Todo.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="img\Amazon.png" />
+    <Content Include="img\AngryBirds.jpg" />
+    <Content Include="img\App Store alt.png" />
+    <Content Include="img\AppStore\AngryBirds.png" />
+    <Content Include="img\AppStore\Box.png" />
+    <Content Include="img\AppStore\CutTheRope.png" />
+    <Content Include="img\AppStore\Flickr.png" />
+    <Content Include="img\AppStore\News.png" />
+    <Content Include="img\AppStore\Weather.png" />
+    <Content Include="img\AppStore\YouTube.png" />
+    <Content Include="img\avatar474_2.gif" />
+    <Content Include="img\back-black.png" />
+    <Content Include="img\back.png" />
+    <Content Include="img\background.jpg" />
+    <Content Include="img\Calendar.png" />
+    <Content Include="img\Configure alt 3.png" />
+    <Content Include="img\Configure.png" />
+    <Content Include="img\CutTheRope.png" />
+    <Content Include="img\Desktop.png" />
+    <Content Include="img\Facebook alt 3.png" />
+    <Content Include="img\Flickr alt 1.png" />
+    <Content Include="img\glyphicons-halflings-white.png" />
+    <Content Include="img\glyphicons-halflings.png" />
+    <Content Include="img\Gmail alt.png" />
+    <Content Include="img\Google Maps.png" />
+    <Content Include="img\Internet Explorer.png" />
+    <Content Include="img\jpegtran.exe" />
+    <Content Include="img\Left.png" />
+    <Content Include="img\Libraries.png" />
+    <Content Include="img\Metro-Back-48.png" />
+    <Content Include="img\MetroBackgroundCyan.png" />
+    <Content Include="img\MetroBackgroundDarkBlue.png" />
+    <Content Include="img\MetroBackgroundGray.png" />
+    <Content Include="img\MetroBackgroundRed.png" />
+    <Content Include="img\MetroBackgroundTiles.png" />
+    <Content Include="img\next-black.png" />
+    <Content Include="img\next.png" />
+    <Content Include="img\optipng.exe" />
+    <Content Include="img\Sunny.png" />
+    <Content Include="img\Trashcan.png" />
+    <Content Include="img\Update.png" />
+    <Content Include="img\User No-Frame.png" />
+    <Content Include="img\Wikipedia alt 1.png" />
+    <Content Include="img\windows8_metro_green_1920_1080.jpg" />
+    <Content Include="img\YouTube.png" />
+    <Content Include="js\AppStore.js" />
+    <Content Include="js\Bootstrap-tooltip.js" />
+    <Content Include="js\Bootstrap.dropdown.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\Combined.js" />
+    <Content Include="js\CombinedDashboard.js" />
+    <Content Include="js\cookie.js" />
+    <Content Include="js\Dashboard.js" />
+    <Content Include="js\jquery-1.7.2.min.js" />
+    <Content Include="js\jquery-ui-1.8.21.custom.min.js" />
+    <Content Include="js\jQuery.hashchange.js" />
+    <Content Include="js\jQuery.MouseWheel.js" />
+    <Content Include="js\jQueryEnhancement.js" />
+    <Content Include="js\Knockout-2.1.0.js" />
+    <Content Include="js\TheCore.js" />
+    <Content Include="js\Underscore.js" />
+    <Content Include="js\User.js" />
+    <None Include="packages\jQuery.1.6.2\Content\Scripts\jquery-1.6.2-vsdoc.js" />
+    <Content Include="packages\jQuery.1.6.2\Content\Scripts\jquery-1.6.2.js" />
+    <Content Include="packages\jQuery.1.6.2\Content\Scripts\jquery-1.6.2.min.js">
+      <DependentUpon>jquery-1.6.2.js</DependentUpon>
+    </Content>
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.all.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.base.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.button.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.core.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\Content\Scripts\jquery-ui-1.8.11.min.js">
+      <DependentUpon>jquery-ui-1.8.11.js</DependentUpon>
+    </Content>
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.1.0\lib\net40\System.Web.Providers.dll" />
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.1.0\readme.html" />
+    <Content Include="packages\Microsoft.ScriptManager.jQuery.1.6.2\lib\Microsoft.ScriptManager.jQuery.dll" />
+    <Content Include="packages\Microsoft.ScriptManager.jQuery.UI.Combined.1.8.11\lib\Microsoft.ScriptManager.jQuery.UI.Combined.dll" />
+    <Content Include="packages\Modernizr.2.0.6\Content\Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\jquery-1.6.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.2.js" />
+    <Content Include="Scripts\jquery-1.6.2.min.js" />
+    <Content Include="ServerStuff\Breakout.aspx" />
+    <Content Include="ServerStuff\Login.aspx" />
+    <Content Include="ServerStuff\SaveTiles.aspx" />
+    <Content Include="ServerStuff\Settings.aspx" />
+    <Content Include="ServerStuff\Signup.aspx" />
+    <Content Include="Tiles\AppStoreTiles.js" />
+    <Content Include="Tiles\Buy\buy.css" />
+    <Content Include="Tiles\Buy\buy.html" />
+    <Content Include="Tiles\DynamicTile\DynamicTile.aspx" />
+    <Content Include="Tiles\features\feature1.html" />
+    <Content Include="Tiles\features\feature2.html" />
+    <Content Include="Tiles\features\feature3.html" />
+    <Content Include="Tiles\features\features.css" />
+    <Content Include="Tiles\flickr\flickr.css" />
+    <Content Include="Tiles\flickr\flickr.js" />
+    <Content Include="Tiles\flickr\flickr_interesting.css" />
+    <Content Include="Tiles\flickr\flickr_interesting.js" />
+    <Content Include="Tiles\news\news.css" />
+    <Content Include="Tiles\news\news.js" />
+    <Content Include="Tiles\Tiles.js" />
+    <Content Include="Tiles\weather\jQuery.simpleWeather.js" />
+    <Content Include="Tiles\weather\weather.css" />
+    <Content Include="Tiles\weather\weather.js" />
+    <Content Include="Web.config" />
+    <Content Include="packages\jQuery.1.6.2\jQuery.1.6.2.nupkg" />
+    <Content Include="packages\jQuery.UI.Combined.1.8.11\jQuery.UI.Combined.1.8.11.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Providers.Core.1.0\Microsoft.AspNet.Providers.Core.1.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Providers.LocalDB.1.0\content\web.config.transform" />
+    <Content Include="packages\Microsoft.AspNet.Providers.LocalDB.1.0\Microsoft.AspNet.Providers.LocalDB.1.0.nupkg" />
+    <Content Include="packages\Microsoft.AspNet.Providers.LocalDB.1.0\tools\Install.ps1" />
+    <Content Include="packages\Microsoft.ScriptManager.jQuery.1.6.2\Microsoft.ScriptManager.jQuery.1.6.2.nupkg" />
+    <Content Include="packages\Microsoft.ScriptManager.jQuery.UI.Combined.1.8.11\Microsoft.ScriptManager.jQuery.UI.Combined.1.8.11.nupkg" />
+    <Content Include="packages\Modernizr.2.0.6\Modernizr.2.0.6.nupkg" />
+    <Content Include="packages\repositories.config" />
+    <Content Include="ServerStuff\Logout.ashx" />
+    <Content Include="ServerStuff\ServerStuff.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppStore.aspx.cs">
+      <DependentUpon>AppStore.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AppStore.aspx.designer.cs">
+      <DependentUpon>AppStore.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Droptiles.master.cs">
+      <DependentUpon>Droptiles.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Droptiles.master.designer.cs">
+      <DependentUpon>Droptiles.master</DependentUpon>
+    </Compile>
+    <Compile Include="Old_App_Code\UserProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerStuff\Breakout.aspx.cs">
+      <DependentUpon>Breakout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerStuff\Breakout.aspx.designer.cs">
+      <DependentUpon>Breakout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerStuff\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerStuff\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerStuff\SaveTiles.aspx.cs">
+      <DependentUpon>SaveTiles.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerStuff\SaveTiles.aspx.designer.cs">
+      <DependentUpon>SaveTiles.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerStuff\ServerStuff.master.cs">
+      <DependentUpon>ServerStuff.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerStuff\ServerStuff.master.designer.cs">
+      <DependentUpon>ServerStuff.master</DependentUpon>
+    </Compile>
+    <Compile Include="ServerStuff\Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerStuff\Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ServerStuff\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ServerStuff\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tiles\DynamicTile\DynamicTile.aspx.cs">
+      <DependentUpon>DynamicTile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tiles\DynamicTile\DynamicTile.aspx.designer.cs">
+      <DependentUpon>DynamicTile.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Droptiles.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\optimize.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="js\CombineJS.bat" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:43595/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

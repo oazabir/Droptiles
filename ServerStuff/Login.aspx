@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Login.aspx.cs" Inherits="Login" MasterPageFile="ServerStuff.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Inherits="Login" MasterPageFile="ServerStuff.master" Codebehind="Login.aspx.cs" %>
 <asp:Content ContentPlaceHolderID="body" runat="server">
 <!-- Copyright: Omar AL Zabir, 2012 -->
     <div id="body">

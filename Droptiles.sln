@@ -1,33 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Droptiles", ".", "{0256E984-6B4D-4FF9-B084-4B3660F5E309}"
-	ProjectSection(WebsiteProperties) = preProject
-		Debug.AspNetCompiler.Debug = "True"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.PhysicalPath = "..\Droptiles\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\Droptiles\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.VirtualPath = "/Droptiles"
-		Release.AspNetCompiler.Debug = "False"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.PhysicalPath = "..\Droptiles\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\Droptiles\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.VirtualPath = "/Droptiles"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		VWDPort = "60381"
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DroptilesWebApp", "DroptilesWebApp.csproj", "{211D779B-18DA-4CBD-9938-63B0ECE7D25B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0256E984-6B4D-4FF9-B084-4B3660F5E309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0256E984-6B4D-4FF9-B084-4B3660F5E309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211D779B-18DA-4CBD-9938-63B0ECE7D25B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211D779B-18DA-4CBD-9938-63B0ECE7D25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211D779B-18DA-4CBD-9938-63B0ECE7D25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211D779B-18DA-4CBD-9938-63B0ECE7D25B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6E3EA66-5944-48FA-A2F8-56F1611EE449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6E3EA66-5944-48FA-A2F8-56F1611EE449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6E3EA66-5944-48FA-A2F8-56F1611EE449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6E3EA66-5944-48FA-A2F8-56F1611EE449}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
