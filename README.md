@@ -14,7 +14,7 @@
 * Server side platform neutral implementation. Can be ported to PHP, JSP easily.
 * Live tiles. Tiles are mini-apps, loading data from variety of sources.
 
-It even has its own App Store!
+It even has its own **App Store!**
 
 ![App Store](https://github.com/oazabir/Droptiles/raw/master/doc/AppStore.png)
 
