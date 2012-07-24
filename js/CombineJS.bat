@@ -10,6 +10,7 @@ type Bootstrap-tooltip.js >> Combined.js
 type Bootstrap.dropdown.js >> Combined.js
 type Underscore.js >> Combined.js
 type jQuery.hashchange.js >> Combined.js
+type User.js >> Combined.js
 
 del CombinedDashboard.js
 type TheCore.js > CombinedDashboard.js

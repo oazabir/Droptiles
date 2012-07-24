@@ -27,21 +27,20 @@
     <script type="text/javascript" src="js/Bootstrap.dropdown.js"></script>
     <script type="text/javascript" src="js/Underscore.js"></script>
     <script type="text/javascript" src="js/jQuery.hashchange.js"></script>
+    <script type="text/javascript" src="js/User.js"></script>
     -->
     <!-- 
         If you change any of the above javascript files, make sure you run the Combine.bat
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="js/Combined.js"></script>
+    <script type="text/javascript" src="js/Combined.js?v=1"></script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     
-    <script type="text/javascript" src="js/User.js"></script>
-
     <% if (Profile.IsAnonymous) { %>
     <script type="text/javascript">
         window.currentUser = new User({

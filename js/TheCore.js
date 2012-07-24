@@ -314,15 +314,16 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     this.resize = function () {
         //self.resetTiles();
         //self.reflow();
-    }
+    }    
 
     this.init = function () {
-        self.attachTiles();
-        //self.reflow();
-        self.makeSortable();
-        self.animateTiles();
-        self.subscribeToChange();
-        _.delay(self.showMetroSections, 500);
+        self.showMetroSections(function () {
+            self.attachTiles();
+            //self.reflow();
+            self.makeSortable();
+            self.animateTiles();
+            self.subscribeToChange();            
+        });
     }
 
     this.subscribeToChange = function () {
@@ -397,7 +398,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         $(ui.metro_sections_selector).hide();
     }
 
-    this.showMetroSections = function () {
+    this.showMetroSections = function (callback) {
 
         $(ui.metro_sections_selector)
             .css({
@@ -409,7 +410,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
             .animate({
                 'margin-left': 0,
                 'opacity': 1
-            }, 500, 'swing');
+            }, 500, 'swing', callback);
     }
 
     this.launchApp = function (id, title, url, loaded) {
@@ -449,7 +450,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         this.appRunning = false;
         this.currentApp = "";
 
-        self.showMetroSections();
+        self.showMetroSections(function () { });
 
         location.hash = "";
     }
@@ -492,7 +493,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
     }
 
     this.fullscreenAppClosed = function () {
-        self.showMetroSections();
+        self.showMetroSections(function () { });
     }
 
     this.animateTiles = function () {
