@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/Droptiles.master" %>
 <%@ OutputCache NoStore="true" Location="None"  %>
 
-<asp:Content ContentPlaceHolderID="head" runat="server">
+<asp:Content ContentPlaceHolderID="scripts" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     
