@@ -1,7 +1,6 @@
 ﻿// Copyright 2012 Omar AL Zabir
 // Part of Droptiles project.
-// This file holds the definition of tiles and which tiles appear by default 
-// to new visitors. 
+// This file holds the definition of tiles and the tiles to show on the App Store.
 
 
 // The default tile setup offered to new users.
