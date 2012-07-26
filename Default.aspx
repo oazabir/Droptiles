@@ -41,8 +41,8 @@
                             </li>
                         </ul>
                         <ul class="nav pull-right">
-                            <li><a href="javascript:fullscreen()"><i class="icon-facetime-video"></i>Go Fullscreen</a></li>
-                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-refresh"></i>Start over</a></li>
+                            <%--<li><a href="javascript:fullscreen()"><i class="icon-facetime-video"></i>Go Fullscreen</a></li>--%>
+                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-refresh"></i>Reset</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tint"></i>Theme<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
                                     <li><a href="#" data-bind="click: switchTheme.bind($data, 'theme-tiles')">Tiles</a></li>
                                 </ul>
                             </li>
-                            <li><a data-bind="click: settings" href="#settings"><i class="icon-cog"></i>Settings</a></li>
+                            <%--<li><a data-bind="click: settings" href="#settings"><i class="icon-cog"></i>Settings</a></li>--%>
                             <li data-bind="if: user().isAnonymous"><a data-bind="click: login" href="#login"><i class="icon-user"></i>Login</a></li>
                             <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-user"></i>Logout</a></li>
                         </ul>
