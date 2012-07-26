@@ -143,7 +143,7 @@
             </div>
         </div>
         <div id="copyright">
-            Copyright 2012 Omar AL Zabir. This is Open Source. 
+            Copyright 2012 <a href="http://omaralzabir.com/">Omar AL Zabir</a>. This is Open Source. 
             For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>
     </div>

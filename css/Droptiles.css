@@ -506,7 +506,8 @@ body {
     opacity: 0.5;
 }
     #copyright a {
-        color: white;
+        color: yellow;
+        border-bottom: 1px dotted;
     }
 
 #browser_incompatible {
