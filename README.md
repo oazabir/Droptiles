@@ -32,6 +32,8 @@ Follow me on [my blog](http://omaralzabir.com) for future updates.
 ### License
 *Droptiles* is **Open Source**. It is free for personal use as long as you keep the copyright notices intact. In order to buy license, go to the [Droptiles production site](http://www.droptiles.com/) and there's a tile on the right side to place the order through Paypal.
 
+Email me for any query: omaralzabir at gmail dot com.
+
 ### Technologies
 * [jQuery](http://jquery.com/) for all client side effects.
 * [KnockoutJS](http://knockoutjs.com/) for client side Object Model and data binding.
