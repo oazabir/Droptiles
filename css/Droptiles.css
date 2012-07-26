@@ -513,8 +513,11 @@ body {
     position: fixed;
     left: 200px;
     top: 60px;
-    color: red;
-    display:none;
+    color: red;    
+}
+
+.alert {
+    display: none;
 }
 
 

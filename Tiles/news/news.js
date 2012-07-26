@@ -34,7 +34,7 @@ function load_news(tile, div) {
                             }
                         }
 
-                        html += '<div><a class="news_detail" target="_blank" href="' + entry.link + '">' + entry.contentSnippet || entry.content + '</a></div>';
+                        html += '<p>' + _.string.escapeHTML(entry.contentSnippet || entry.content) + '</p>';
                         html += '</div>';
 
                         tile.slides.push(html);

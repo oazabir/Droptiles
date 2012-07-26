@@ -159,9 +159,9 @@ window.TileBuilders = {
             label: "Flickr",
             size: "tile-double tile-double-vertical",
             color: "bg-color-darken",
-            appUrl: "http://www.flickr.com/",
+            appUrl: "Tiles/Flickr/App/FlickrApp.html",
             cssSrc: ["tiles/flickr/flickr.css"],
-            scriptSrc: ["tiles/flickr/flickr.js"],
+            scriptSrc: ["tiles/flickr/flickr.js?v=1"],
             //scriptSrc: ["tiles/flickr/flickr_interesting.js"],
             //cssSrc: ["tiles/flickr/flickr_interesting.css"],            
             initFunc: "flickr_load"
@@ -222,8 +222,8 @@ window.TileBuilders = {
             color: "bg-color-pink",
             size: "tile-double",
             appUrl: "http://www.bbc.co.uk/news/world/",
-            scriptSrc: ["tiles/news/news.js"],
-            cssSrc: ["tiles/news/news.css"],
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
             initFunc: "load_news"            
         };
     },

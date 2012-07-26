@@ -1,0 +1,45 @@
+﻿body {
+    background: dimgray /*url(../../../img/background.jpg)*/;
+    
+}
+
+#body {
+    height: 100% !important; 
+    float: left;
+    position: relative;
+    width: auto;
+}
+#images {
+    float: left;
+    position: relative;
+}
+
+.flickr_item {
+    /*float: left;
+    margin: 10px;
+    height: 70%;*/
+    padding: 10px;
+}
+
+.flickr_item img{
+    /*height: 100%;
+    width: auto;
+    max-width: inherit;*/
+    
+    height: auto;
+    width: auto;
+    max-width: inherit;
+}
+
+.flickr_title {
+    width: 100%;
+    background: black;
+    color: white;
+    opacity: 0.7;
+    margin-top: -30px;
+    height: 40px;
+    margin-right: 10px;
+    font-size: 12pt;
+    line-height: 40px;
+    text-indent: 10px;
+}

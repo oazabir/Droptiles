@@ -5,18 +5,36 @@
     <!-- Copyright 2012 Omar AL Zabir -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     
-    <!--
-    <script type="text/javascript" src="js/TheCore.js?v=1"></script>
-    <script type="text/javascript" src="Tiles/Tiles.js?v=1"></script>
-    <script type="text/javascript" src="js/Dashboard.js?v=1"></script>
-    -->
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=5"></script>
     <!-- 
-        If you change any of the above javascript files, make sure you run the Combine.bat
+        If you change any of the below javascript files, make sure you run the Combine.bat
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="js/CombinedDashboard.js?v=3"></script>
+    <!--
+    <script type="text/javascript" src="js/TheCore.js?v=1"></script>
+    <script type="text/javascript" src="tiles/tiles.js?v=1"></script>
+    <script type="text/javascript" src="js/Dashboard.js?v=1"></script>
+    -->
     
+
+    <script type="text/ecmascript">
+        
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-33406100-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+
+    <script type="text/javascript">
+        <%= GetAlerts() %>
+    </script>
     
 </asp:Content>
 
@@ -78,6 +96,11 @@
                 <strong>Warning!</strong>
                 Your browser is incompatible with Droptiles. Please use Internet Explorer 9+, Chrome, Firefox or Safari.
             </div>
+            <div id="CombinedScriptAlert" class="alert">
+                <button class="close" data-dismiss="alert">×</button>
+                <strong>Warning!</strong>
+                Combined javascript files are outdated. Please retun the js\Combine.bat file.
+            </div>
             <div id="metro-sections-container" class="metro">
                 <div id="trash" class="trashcan">
                     <img src="img/Trashcan.png" width="64" height="64" />
@@ -124,19 +147,5 @@
             For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>
     </div>
-
-    <script type="text/ecmascript">
-        
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-33406100-1']);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-
-    </script>
 
 </asp:Content>

@@ -13,6 +13,11 @@
     clear: both;
 }
 
+.news_item p {
+    font-size: 90%;
+}
+
+
 a.news_link{
     color: #ffd800;
     clear: both;

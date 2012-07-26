@@ -467,7 +467,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
                 _.delay(function () {
                     $('#navbar').tooltip('hide');
                 }, 10000);
-            }).bind("mouseenter", function () {
+            }).bind("mouseenter click", function () {
                 navbar
                     .stop(true, true)
                     .animate({

@@ -1,4 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Signup.aspx.cs" Inherits="Signup" MasterPageFile="ServerStuff.master" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="Header" runat="server">
+    Signup
+</asp:Content>
 <asp:Content ContentPlaceHolderID="body" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
     <div id="body">

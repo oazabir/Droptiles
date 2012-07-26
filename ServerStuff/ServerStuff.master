@@ -15,7 +15,11 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <%--<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">--%>
     <link rel="stylesheet" type="text/css" href="../css/Droptiles.css">
-    
+    <style type="text/css">
+        .container {
+            margin-left: 100px;
+        }
+    </style>
     <!--
     <script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="../js/jquery-ui-1.8.21.custom.min.js"></script>
@@ -85,13 +89,14 @@
                 </a>
             </li>
             <li>
-                <h1 class="start">Login</h1>
+                <h1 class="start">
+                    <asp:ContentPlaceHolder ID="Header" runat="server"></asp:ContentPlaceHolder>
+                </h1>
             </li>
             </ul>
     </div>
 
     <div class="appnavbar_space"></div>
-
         
     <asp:ContentPlaceHolder ID="body" runat="server">
 

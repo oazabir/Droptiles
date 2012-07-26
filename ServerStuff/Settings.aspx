@@ -1,4 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Settings.aspx.cs" Inherits="Settings" MasterPageFile="ServerStuff.master" %>
+<asp:Content ContentPlaceHolderID="Header" runat="server">
+    Settings
+</asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
 <!-- Copyright 2012 Omar AL Zabir -->
