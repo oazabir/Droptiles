@@ -3,20 +3,21 @@
 
 <asp:Content ContentPlaceHolderID="scripts" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
     
-    <script type="text/javascript" src="js/CombinedDashboard.js?v=5"></script>
+<% if (Request.IsLocal) { %>    
     <!-- 
         If you change any of the below javascript files, make sure you run the Combine.bat
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <!--
     <script type="text/javascript" src="js/TheCore.js?v=1"></script>
     <script type="text/javascript" src="tiles/tiles.js?v=1"></script>
     <script type="text/javascript" src="js/Dashboard.js?v=1"></script>
-    -->
     
+<% } else { %>    
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=6"></script>
+<% } %>
 
     <script type="text/ecmascript">
         
@@ -99,7 +100,9 @@
             <div id="CombinedScriptAlert" class="alert">
                 <button class="close" data-dismiss="alert">×</button>
                 <strong>Warning!</strong>
-                Combined javascript files are outdated. Please retun the js\Combine.bat file.
+                Combined javascript files are outdated. 
+                Please retun the js\Combine.bat file. 
+                Otherwise it won't work when you will deploy on a server.
             </div>
             <div id="metro-sections-container" class="metro">
                 <div id="trash" class="trashcan">
@@ -142,7 +145,7 @@
                 </div>
             </div>
         </div>
-        <div id="copyright">
+        <div id="copyright">            
             Copyright 2012 <a href="http://omaralzabir.com/">Omar AL Zabir</a>. This is Open Source. 
             For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>

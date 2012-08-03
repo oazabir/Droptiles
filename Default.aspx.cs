@@ -17,13 +17,19 @@ public partial class _Default : System.Web.UI.Page
             });
     }
 
-    protected string GetAlerts()
+    private bool IsCombinedJSOlder(string path)
     {
-        var jsPath = Server.MapPath("~/js");
+        var jsPath = Context.Server.MapPath(path);
         string[] files = Directory.GetFiles(jsPath);
+
         var combinedFileLastWrite = File.GetLastWriteTime(Server.MapPath("~/js/Combined.js"));
 
-        if (Array.Exists(files, file => (File.GetLastWriteTime(file) - combinedFileLastWrite).TotalSeconds > 5))
+        return Array.Exists(files, file => (File.GetLastWriteTime(file) - combinedFileLastWrite).TotalSeconds > 1);
+    }
+
+    protected string GetAlerts()
+    {
+        if (IsCombinedJSOlder("~/js/") || IsCombinedJSOlder("~/Tiles/"))
         {
             return "$('#CombinedScriptAlert').show();";
         }
@@ -31,5 +37,6 @@ public partial class _Default : System.Web.UI.Page
         {
             return string.Empty;
         }
+        
     }
 }

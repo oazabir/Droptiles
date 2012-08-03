@@ -32,15 +32,13 @@
     </asp:ContentPlaceHolder>
 </body>
 
-
-<script type="text/javascript" src="js/Combined.js?v=4"></script>
-<!-- 
+<% if (Request.IsLocal) { %>    
+    <!-- 
     If you change any of the below javascript files, make sure you run the Combine.bat
     file in the /js folder to generate the CombinedDashboard.js file again. And then don't
     forget to update the ?v=#. Otherwise user's will have cached copies in their browser
     and won't get the newly deployed file. -->
 
-<!--
 <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
 <script type="text/javascript" src="js/jQueryEnhancement.js"></script>
@@ -53,8 +51,11 @@
 <script type="text/javascript" src="js/Underscore.js"></script>
 <script type="text/javascript" src="js/jQuery.hashchange.js"></script>
 <script type="text/javascript" src="js/User.js"></script>
--->
-    
+
+<% } else { %>
+<script type="text/javascript" src="js/Combined.js?v=4"></script>
+<% } %>    
+
 <script type="text/javascript">
     // Bootstrap initialization
     $(document).ready(function () {

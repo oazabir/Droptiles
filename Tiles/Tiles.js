@@ -13,7 +13,8 @@ window.DefaultTiles = [
            { id: "amazon1", name:"amazon" },
            { id: "news1", name: "news" },
            { id: "weather1", name: "weather" },
-           { id: "calendar1", name: "calendar" },
+           //{ id: "calendar1", name: "calendar" },
+           { id: "video1", name: "video" },
            { id: "feature1", name: "feature" },
            { id: "facebook1", name: "facebook" }
         ]
@@ -105,6 +106,17 @@ window.TileBuilders = {
         };
     },
 
+    video: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "ie",
+            size: "tile-double",
+            color: "bg-color-darken",
+            iconSrc: "img/Youtube.png",
+            slides: ['<iframe width="310" height="174" src="http://www.youtube.com/embed/IO45ZiGql8E" frameborder="0" allowfullscreen=""></iframe>']
+        };
+    },
+
     facebook: function (uniqueId) {
         return {
             uniqueId: uniqueId,
@@ -186,7 +198,7 @@ window.TileBuilders = {
             name: "email",
             iconSrc: "img/Youtube.png",
             label: "Youtube",
-            color: "bg-color-yellow",
+            color: "bg-color-darken",
             appUrl: "http://www.youtube.com/",
             appInNewWindow: true
         };
