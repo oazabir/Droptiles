@@ -65,15 +65,14 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tint"></i>Theme<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#" data-bind="click: switchTheme.bind($data, 'theme-green')">Green</a></li>
-                                    <li><a href="#" data-bind="click: switchTheme.bind($data, 'theme-cyan')">Cyan</a></li>
-                                    <li><a href="#" data-bind="click: switchTheme.bind($data, 'theme-darkblue')">Darkblue</a></li>
-                                    <li><a href="#" data-bind="click: switchTheme.bind($data, 'theme-red')">Red</a></li>
-                                    <li><a href="#" data-bind="click: switchTheme.bind($data, 'theme-tiles')">Tiles</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-green')">Green</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-cyan')">Cyan</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-darkblue')">Darkblue</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-red')">Red</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-tiles')">Tiles</a></li>
                                 </ul>
-                            </li>
-                            <%--<li><a data-bind="click: settings" href="#settings"><i class="icon-cog"></i>Settings</a></li>--%>
-                            <li data-bind="if: user().isAnonymous"><a data-bind="click: login" href="#login"><i class="icon-user"></i>Login</a></li>
+                            </li>                            
+                            <li data-bind="if: user().isAnonymous"><a onclick="ui.login()" href="#login"><i class="icon-user"></i>Login</a></li>
                             <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-user"></i>Logout</a></li>
                         </ul>
                     </div>
@@ -83,7 +82,7 @@
 
         <div id="content" style="visibility: hidden">
             <div id="start" data-bind="text: title"></div>
-            <div id="user" data-bind="with: user, click: settings">
+            <div id="user" data-bind="with: user" onclick="ui.settings()">
                 <div id="name">
                     <div id="firstname" data-bind="text: firstName">Omar</div>
                     <div id="lastname" data-bind="text: lastName">AL Zabir</div>

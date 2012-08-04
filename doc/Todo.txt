@@ -51,6 +51,15 @@ Todolist
 	* Find more JSONP services and make tiles out of them.
 [done] 7. Build the GitHub pages.
 [done] 8. Setup GitHub codebase and downloadable zip.
-9. Write article on Codeproject, InfoQ
+[done] 9. Write article on Codeproject, InfoQ
 10. Publish Youtube video tutorial
-11. Advertise on Dropthings page.
+[done] 11. Advertise on Dropthings page.
+
+Refactoring and new features
+==================
+
+1. Remove all UI jobs from the model classes.
+	* Dashboard.js subscribes to change notification of all section and tile.
+	* Dashboard.js hooks into each tile for .click behavior. 
+	* When tiles change, check if the tile has UI behavior hooked. If not hook.
+	* AppStore.js similarly hooks into changes in object model and puts .click behavior on them.

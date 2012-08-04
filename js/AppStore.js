@@ -71,45 +71,44 @@ $(document).ready(function () {
     // UI to viewModel.
     ko.applyBindings(viewModel);
 
-    viewModel.switchTheme('theme-white');
     viewModel.loadSectionsFromString(window.AppStoreTiles);
 
     createCookie("add", "");
 
-    viewModel.onTileClick = function (tile) {
-        var div = $('#' + tile.uniqueId);
-        if (div.toggleClass("selected").hasClass("selected")) {
-            div.tooltip({
-                title: 'The app is added. Go back to Dashboard',
-                trigger: 'manual',
-                location: 'top'
+    ko.utils.arrayForEach(viewModel.sections(), function(section) {
+        ko.utils.arrayForEach(section.tiles(), function(tile) {
+            var div = $('#' + tile.uniqueId);
+            div.click(function () {
+                if (div.toggleClass("selected").hasClass("selected")) {
+                    div.tooltip({
+                        title: 'The app is added. Go back to Dashboard',
+                        trigger: 'manual',
+                        location: 'top'
+                    });
+
+                    _.defer(function () {
+                        div.tooltip('show');
+                        _.delay(function () {
+                            div.tooltip("hide");
+                        }, 5000);
+                    });
+                }
+                else {
+                }
+
+                var cookie = readCookie("add") + "";
+
+                var tiles = cookie.split(",");
+                if (_.contains(tiles, tile.name))
+                    tiles = _.filter(tiles, function (t) { return t != tile.name; })
+                else
+                    tiles.push(tile.name);
+
+                createCookie("add", tiles.join(","));
+
+                return false;
             });
-
-            _.defer(function () {
-                div.tooltip('show');
-                _.delay(function () {
-                    div.tooltip("hide");
-                }, 5000);
-            });
-        }
-        else {
-        }
-
-        var cookie = readCookie("add") + "";
-
-        var tiles = cookie.split(",");
-        if (_.contains(tiles, tile.name))
-            tiles = _.filter(tiles, function (t) { return t != tile.name; })
-        else
-            tiles.push(tile.name);
-
-        createCookie("add", tiles.join(","));
-
-        return false;
-    }
-
-    $(window).resize(function () {
-        viewModel.resize();
+        });
     });
 
     // Mouse wheel behavior for side scrolling.

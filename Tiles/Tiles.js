@@ -32,9 +32,10 @@ window.DefaultTiles = [
     },
     {
         name: "Section3", tiles: [
-           { id: "youtube1", name: "youtube" },
-           { id: "ie1", name: "ie" },
-
+            { id: "myblog1", name: "myblog" },
+           //{ id: "youtube1", name: "youtube" },
+           //{ id: "ie1", name: "ie" }
+           { id: "howto1", name: "howto" }
         ]
     }
 ];
@@ -230,13 +231,28 @@ window.TileBuilders = {
         return {
             uniqueId: uniqueId,
             name: "news",
-            label: "News",
             color: "bg-color-pink",
             size: "tile-double",
             appUrl: "http://www.bbc.co.uk/news/world/",
             scriptSrc: ["tiles/news/news.js?v=1"],
             cssSrc: ["tiles/news/news.css?v=1"],
-            initFunc: "load_news"            
+            initFunc: "load_news",
+            initParams: { url: "http://feeds.bbci.co.uk/news/world/rss.xml" }
+        };
+    },
+
+    myblog: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "news",
+            label: "My Blog",
+            color: "bg-color-green",
+            size: "tile-double tile-double-vertical",
+            appUrl: "http://omaralzabir.com/",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://omaralzabir.com/feed" }
         };
     },
 
@@ -244,13 +260,24 @@ window.TileBuilders = {
         return {
             uniqueId: uniqueId,
             name: "feature",
-            color: "bg-color-darkBlue",
+            color: "bg-color-green",
             size: "tile-double",
             appUrl: "http://oazabir.github.com/Droptiles/",
             slidesFrom: ["tiles/features/feature1.html",
                 "tiles/features/feature2.html",
                 "tiles/features/feature3.html"],
             cssSrc: ["tiles/features/features.css"]
+        };
+    },
+
+    howto: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "feature",
+            color: "bg-color-blue",
+            size: "tile-triple tile-double-vertical",
+            appUrl: "http://oazabir.github.com/Droptiles/",
+            slidesFrom: ["tiles/features/howto.html"]
         };
     },
 

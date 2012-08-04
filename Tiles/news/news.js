@@ -5,10 +5,10 @@
 // Copyright 2012 Omar AL Zabir
 // Part of Droptiles project.
 
-function load_news(tile, div) {
+function load_news(tile, div, params) {
     google.load("feeds", "1", {
         "callback": function () {
-            var feed = new google.feeds.Feed("http://feeds.bbci.co.uk/news/world/rss.xml");
+            var feed = new google.feeds.Feed(params.url);
             feed.setResultFormat(google.feeds.Feed.MIXED_FORMAT);
             feed.setNumEntries(10);
 
@@ -41,7 +41,8 @@ function load_news(tile, div) {
 
                     }
 
-                    tile.label(result.feed.title);
+                    if (tile.label() == "")
+                        tile.label(result.feed.title);
                 }
             });
         }});

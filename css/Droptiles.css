@@ -87,7 +87,7 @@ html[xmlns] .clearfix{display:block;}
 .metro .metro-sections .metro-section .tile.tile-double-vertical .tile-content-main{height:310px;position:relative;overflow:hidden;}
 .metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-cover,.metro .metro-sections .metro-section .tile.tile-double-vertical .tile-icon-large{height:310px;}
 .metro .metro-sections .metro-section .tile.tile-triple-vertical{height:470px;}.metro .metro-sections .metro-section .tile.tile-triple-vertical .tile-icon-large{padding-top:187px;}
-.metro .metro-sections .metro-section .tile.tile-triple-vertical .tile-content-main{height:310px;position:relative;overflow:hidden;}
+.metro .metro-sections .metro-section .tile.tile-triple-vertical .tile-content-main{height:470px;position:relative;overflow:hidden;}
 .metro .metro-sections .metro-section .tile.tile-quadro-vertical{height:630px;}.metro .metro-sections .metro-section .tile.tile-quadro-vertical .tile-icon-large{padding-top:267px;}
 .metro .metro-sections .metro-section .tile.tile-quadro-vertical .tile-content-main{height:630px;position:relative;overflow:hidden;}
 

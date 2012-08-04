@@ -29,9 +29,16 @@ public partial class _Default : System.Web.UI.Page
 
     protected string GetAlerts()
     {
-        if (IsCombinedJSOlder("~/js/") || IsCombinedJSOlder("~/Tiles/"))
+        if (!Request.IsLocal)
         {
-            return "$('#CombinedScriptAlert').show();";
+            if (IsCombinedJSOlder("~/js/") || IsCombinedJSOlder("~/Tiles/"))
+            {
+                return "$('#CombinedScriptAlert').show();";
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
         else
         {
