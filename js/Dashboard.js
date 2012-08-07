@@ -665,7 +665,7 @@ $(document).ready(function () {
     });
 
     // Supports only IE 9+, Chrome, Firefox, Safari
-    if ($.browser.msie && parseInt($.browser.version) < 9)
+    if ($.browser.msie && parseInt($.browser.version) < 8)
         $("#browser_incompatible").show();
 
 });

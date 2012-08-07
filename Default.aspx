@@ -13,10 +13,10 @@
         and won't get the newly deployed file. -->
     <script type="text/javascript" src="js/TheCore.js?v=2"></script>
     <script type="text/javascript" src="tiles/tiles.js?v=1"></script>
-    <script type="text/javascript" src="js/Dashboard.js?v=2"></script>
+    <script type="text/javascript" src="js/Dashboard.js?v=3"></script>
     
 <% } else { %>    
-    <script type="text/javascript" src="js/CombinedDashboard.js?v=7"></script>
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=8"></script>
 <% } %>
 
     <script type="text/ecmascript">
