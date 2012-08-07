@@ -8,21 +8,30 @@
 ### [See it live!](http://droptiles.com), go to [Droptiles.com](http://droptiles.com), for Technical Documentation, read the [Codeproject article](http://www.codeproject.com/Articles/421601/Droptiles-Metro-style-Live-Tiles-powered-Web-Dashb).
 
 ### Features
-* Metro style user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
-* Drag & Drop tiles to personalize the experience. 
+* **Metro style** user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
+* **Drag & Drop** tiles to personalize the experience. 
+* **Live tiles**: Tiles are mini-apps, loading data from variety of sources.
+* Quick and easy **App framework**. Try the Flickr and News Reader app.
 * Client side object model and data binding for easy MVVM implementation.
 * Server side platform neutral implementation. Can be ported to PHP, JSP easily.
-* Live tiles. Tiles are mini-apps, loading data from variety of sources.
 
 It even has its own **App Store!**
 
 ![App Store](https://github.com/oazabir/Droptiles/raw/master/doc/AppStore.png)
 
 ### How can you use Droptiles
-* **Enterprise Dashboard** aggregating data from various systems and offering a launch pad for intranet/internet applications.
+* **Enterprise Dashboard** 
+	* Operational Dashboard
+	* Intranet Content Aggregator
+	* Employee Portal
+
+![Operational Dashboard](https://raw.github.com/oazabir/Droptiles/master/doc/OperationalDashboard600.png)
+
 * **Web 2.0 Portal** offering portlets in the form of tiles. Aggregating data from various services and as a launch pad for different services.
 * **Touch enabled Kiosk** front-end.
 * **Content aggregator** for News and Research purpose.
+
+![News Aggregator](https://raw.github.com/oazabir/Droptiles/master/doc/RssReader600.png)
 
 ### Who am I?
 I am Omar AL Zabir, the Chief Architect of SaaS Platform, BT (aka British Telecom). Microsoft MVP on ASP.NET/IIS. Ex Co-Founder and CTO of the first Web 2.0 Social Start Page - Pageflakes, owner of popular open source projects - [Dropthings](http://dropthings.omaralzabir.com), [Codeuml.com](http://codeuml.com). 
