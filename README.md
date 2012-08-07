@@ -1,4 +1,4 @@
-![Droptiles screenshot](https://github.com/oazabir/Droptiles/raw/master/doc/Screenshot600.png)
+![Droptiles screenshot](https://raw.github.com/oazabir/Droptiles/master/doc/Screenshot600.png)
 
 ### Introduction
 *Droptiles* is an `Open Source` **Windows 8 Start** like **Metro style** Web 2.0 Dashboard. It builds the experience using **Tiles**. Tiles are **mini apps** that can fetch data from external sources. Clicking on a tile launches the full app. Apps can be from any existing website to customized website specifically built to fit the Dashboard experience. 
@@ -20,7 +20,7 @@ It even has its own **App Store!**
 ![App Store](https://github.com/oazabir/Droptiles/raw/master/doc/AppStore.png)
 
 ### How can you use Droptiles
-* **Enterprise Dashboard** 
+* As an **Enterprise Dashboard** 
 	* Operational Dashboard
 	* Intranet Content Aggregator
 	* Employee Portal
@@ -70,6 +70,10 @@ Tiles can be dynamic pages delivered from the server. Here is a tile that captur
 ![Apps](https://github.com/oazabir/Droptiles/raw/master/doc/Apps.png)
 
 External applications can run inside Droptiles offering a seamless integration experience. 
+
+![Flickr](https://raw.github.com/oazabir/Droptiles/master/doc/FlickrApp.png)
+
+HTML Apps using Droptiles css and js framework.
 
 ### Why shouldn't I just code it myself?
 * *Droptiles* has 100+ hours of my effort and 200+ hours of community effort to get it where it is now. If you try to build it from scratch, by the time you get to production quality, you would probably have spent more money than just buying commercial license for the code.
