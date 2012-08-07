@@ -2,16 +2,11 @@
 /// <reference path="jQueryEnhancement.js" />
 /// <reference path="Knockout-2.1.0.js" />
 /// <reference path="Underscore.js" />
-
 /* 
     Copyright 2012 Omar AL Zabir
-    This is the core framework for the Droptiles experience. It has:
-        * The object models that are bound to the UI.eg. Section, Tile
-        * The main ViewModel that initiaites and orchestrates the Dashboard experience.
 
-    You can use thie Core framework on any page to deliver a dashboard
-    experience. All you need is the html markup to bind to the UI (just
-    copy from Default.aspx) and bind the DashboardModel using Knockout.
+    * The object models that are bound to the UI.eg. Section, Tile
+    * The main ViewModel that initiaites and orchestrates the Dashboard experience.    
 */
 
 /*
@@ -22,7 +17,7 @@
     config comes from the Dashboard.js, passed to it by the Default.aspx.
     Param comes from the Tiles.js which returns the tile parameters. 
 */
-var Tile = function (param, ui, viewModel) {
+var Tile = function (param, ui) {
     var self = this;
 
     this.uniqueId = param.uniqueId; // unique ID of a tile, Weather1, Weather2. Each instance must have unique ID.
@@ -54,8 +49,6 @@ var Tile = function (param, ui, viewModel) {
     this.subContentColor = param.subContentColor || ui.tile_subContent_color; // Color for content
 
     this.slides = ko.observableArray(param.slides || []); // Tile content that rotates. Collection of html strings.
-
-    this.onTileClick = function (tile) { }
 
     this.tileClasses = ko.computed(function () {
         return [ui.tile,
@@ -90,53 +83,11 @@ var Tile = function (param, ui, viewModel) {
         return [ui.tile_content_sub, this.subContentColor].join(" ");
     }, this);
 
-    /*
-        This attaches dynamic behavior to each tile.         
-    */
-    this.attach = function (div) {
-        var el = $(div);
-        el.unbind("mouseenter mouseleave");
-
-        el.mouseenter(function () {
-            el = $(this);
-            if (el.hasClass(ui.tile_multi_content_selector)) {
-                var c_sub = $(ui.tile_content_sub, el);
-                c_sub.animate({ "height": ui.subcontent_height, "opacity": 1 }, 200);
-            }
-        }).mouseleave(function () {
-            el = $(this);
-            if (el.hasClass(ui.tile_multi_content_selector)) {
-                var c_sub = $(ui.tile_content_sub_selector, el);
-                c_sub.animate({ "height": 0, "opacity": 0 }, 200);
-            }
-        });
-
-        // On click, launch the app either inside dashboard or in a new browser tab
-        el.click(function (event) {
-            // Drag & drop just happened. Prevent incorrect click event.
-            if ($(this).data("noclick") == true)
-                return;
-
-            if (self.onTileClick(self) == false)
-                return;
-
-            // If the item clicked on the tile is a link or inside a link, don't
-            // lauch app. Let browser do the hyperlink click behavior.
-            if ($(event.target).parents("a").length > 0)
-                return;
-
-            // Open app in new browser window. Not all websites like IFRAMEing.
-            if (!_.isEmpty(self.appUrl)) {
-                if (self.appInNewWindow) {
-                    var open_link = window.open('', '_blank');
-                    open_link.location = self.appUrl;
-                }
-                else {
-                    self.launch();
-                }
-            }
-        });
-        
+    this.init = function (div) {
+        if ($(div).data("tile_initialized") !== true)
+            $(div).data("tile_initialized", true);
+        else
+            return;
 
         // If tile has css to load, then load all CSS.
         if (_.isArray(self.cssSrc)) {
@@ -184,58 +135,14 @@ var Tile = function (param, ui, viewModel) {
                 }
             })
         }
-    }
-
-    /*
-        Launch the full screen app
-    */
-    this.launch = function () {
-        var tileDiv = $('#' + self.uniqueId);
-
-        // Make the tileDIv explode into full screen
-        var clone = $("<div/>")
-            .addClass(self.tileClasses())
-            .css({
-                'position': 'absolute',
-                'left': tileDiv.offset().left,
-                'top': tileDiv.offset().top,
-                'width': tileDiv.width() + "px",
-                'height': tileDiv.height() + "px",
-                'z-index': ui.splash_screen_zindex
-            })
-            .appendTo(document.body)
-            .animate({
-                left: $(window).scrollLeft(),
-                top: $(window).scrollTop(),
-                width: "100%",
-                height: "100%"
-            }, 500, function () {
-                // Launch the full screen app inside an IFRAME. ViewModel has
-                // this feature.
-                viewModel.launchApp(self.name, self.appTitle, self.appUrl, function () {
-                    clone.fadeOut();
-                });
-            })
-            .append(
-                $('<img />')
-                    .attr('src', self.appIcon)
-                    .addClass(self.iconClasses())
-                    .css({
-                        'position': 'absolute',
-                        'left': ($(window).width() - 512) / 2,
-                        'top': ($(window).height() - 512) / 2
-                    })
-            );
-
-
-    }
+    }    
 };
 
 /*
     Section holds a collection of tiles. Each group of tiles you see
     huddled together on screen, are sections.
 */
-var Section = function (section, viewModel) {
+var Section = function (section) {
     var self = this;
 
     this.name = ko.observable(section.name); // Name of a section. Can be used to show some title over section.
@@ -287,17 +194,16 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
 
     this.timerId = 0;
 
-    this.onTileOrderChange = function () { }
-    this.onTileClick = function (tile) { }
-
     this.removeTile = function (id) {
-        var tile = self.getTile(id);
         ko.utils.arrayForEach(self.sections(), function (section) {
-            //ko.utils.arrayRemoveItem(section.tiles(), tile);
-            section.tiles.remove(tile);
-        });
-        $('#' + tile.uniqueId).remove();
-        return tile;
+            var tile = ko.utils.arrayFirst(section.tiles(), function (tile) {
+                return tile.uniqueId == id;
+            });
+            if (tile) {
+                section.tiles.remove(tile);
+                return;
+            }
+        });        
     }
 
     this.getTile = function (id) {
@@ -311,28 +217,19 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         return foundTile;
     }
 
-    this.resize = function () {
-        //self.resetTiles();
-        //self.reflow();
-    }    
-
-    this.init = function () {
-        self.showMetroSections(function () {
-            self.attachTiles();
-            //self.reflow();
-            self.makeSortable();
-            self.animateTiles();
-            self.subscribeToChange();            
-        });
-    }
-
-    this.subscribeToChange = function () {
-        ko.utils.arrayForEach(self.sections(), function (section) {
-            section.tiles.subscribe(function () {
-                self.onTileOrderChange();
+    this.subscribeToChange = function (callback) {
+        self.sections.subscribe(function (sections) {
+            ko.utils.arrayForEach(sections(), function (section) {
+                section.tiles.subscribe(function (tiles) {
+                    callback(section, tiles);
+                });
             });
         });
-
+        ko.utils.arrayForEach(self.sections(), function (section) {
+            section.tiles.subscribe(function (tiles) {
+                callback(section, tiles);
+            });
+        });
     }
 
     this.loadSectionsFromString = function (tileSerialized) {
@@ -361,7 +258,7 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
                         }
                         else {
                             var tileParams = builder(tileId);
-                            var newTile = new Tile(tileParams, ui, self);
+                            var newTile = new Tile(tileParams, ui);
                             newTile.index = index++;
                             sectionTiles.push(newTile);
                         }
@@ -378,9 +275,34 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         });
 
 
-        self.hideMetroSections();
+        self.sections(sectionArray);        
+    }
+
+    this.loadSections = function (sections) {
+        var sectionArray = [];
+
+        _.each(sections, function (section) {
+            var sectionTiles = [];
+
+            var index = 0;
+            _.each(section.tiles, function (tile) {
+                var builder = window.TileBuilders[tile.name];
+                var tileParams = builder(tile.id, tile.name, tile.data);
+                var newTile = new Tile(tileParams, ui);
+                newTile.index = index++;
+                sectionTiles.push(newTile);                                    
+            });
+
+            var newSection = new Section({
+                name: section.title,
+                tiles: sectionTiles
+            }, self);
+            sectionArray.push(newSection);
+
+        });
+
+
         self.sections(sectionArray);
-        self.init();
     }
 
     this.toSectionString = function () {
@@ -394,350 +316,13 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
         }).join("|");
     }
 
-    this.hideMetroSections = function () {
-        $(ui.metro_sections_selector).hide();
-    }
-
-    this.showMetroSections = function (callback) {
-
-        $(ui.metro_sections_selector)
-            .css({
-                'margin-left': 50,
-                'margin-top': 20,
-                'opacity': 0
-            })
-            .show()
-            .animate({
-                'margin-left': 0,
-                'opacity': 1
-            }, 500, 'swing', callback);
-    }
-
-    this.launchApp = function (id, title, url, loaded) {
-
-        self.hideMetroSections();
-
-        self.appRunning = true;
-        self.currentApp = url;
-
-        var iframe = $('<iframe id="' + ui.app_iframe_id + '" frameborder="no" />')
-           .css({
-               'position': 'absolute',
-               'left': "0",
-               'top': "0px",
-               'width': '100%',
-               'height': '100%',
-               'z-index': ui.app_iframe_zindex,
-               'visibility': 'hidden',
-               'background-color': 'white'
-           })
-           .appendTo(document.body)
-           .attr({ 'src': url })
-           .load(function () {
-               self.hideNavBar();
-               loaded();
-               $(this).css('visibility', 'visible');
-           });
-
-
-        location.hash = id;
-    }
-
-    this.closeApp = function () {
-        $('#' + ui.app_iframe_id).remove();
-        self.showNavBar();
-
-        this.appRunning = false;
-        this.currentApp = "";
-
-        self.showMetroSections(function () { });
-
-        location.hash = "";
-    }
-
-    this.hideNavBar = function () {
-        var navbar = $(ui.navbar);
-        navbar
-            .css("z-index", ui.navbar_zindex)
-            .delay(3000)
-            .animate({
-                top: -(navbar.height() - 5) + "px"
-            }, function () {
-                $('#navbar').tooltip('show');
-                _.delay(function () {
-                    $('#navbar').tooltip('hide');
-                }, 10000);
-            }).bind("mouseenter click", function () {
-                navbar
-                    .stop(true, true)
-                    .animate({
-                        top: "0px"
-                    });
-            }).bind("mouseleave", function () {
-                navbar
-                    .stop(true, true)
-                    .delay(3000)
-                    .animate({
-                        top: -(navbar.height() - 5) + "px"
-                    });
-            });
-    }
-
-    this.showNavBar = function () {
-        var navbar = $(ui.navbar);
-        navbar
-            .unbind("mouseenter mouseleave")
-            .animate({
-                top: "0px"
-            });
-    }
-
-    this.fullscreenAppClosed = function () {
-        self.showMetroSections(function () { });
-    }
-
-    this.animateTiles = function () {
-        window.clearInterval(self.timerId);
-        self.timerId = window.setInterval(function () {
-            $(ui.tile_selector).each(function () {
-                var el = $(this);
-                var slides = $(ui.tile_content_main_selector, el);
-                if (slides.length > 0) {
-                    var slideIndex = el.data("slideIndex") || 1;
-                    if (slideIndex == slides.length) {
-                        slideIndex = 0;
-                    }
-                    var firstPage = slides.first();
-                    firstPage.animate({ marginTop: -(slideIndex * firstPage.height()) }, 500);
-                    el.data("slideIndex", ++slideIndex);
-                }
-            });
-        }, ui.tile_content_slide_delay);
-    }
-
-    this.attachTiles = function (tiles) {
-        ko.utils.arrayForEach(self.sections(), function (section) {
-            ko.utils.arrayForEach(section.tiles(), function (tile) {
-                tile.attach($('#' + tile.uniqueId));
-                tile.onTileClick = function (t) {
-                    return self.onTileClick(t);
-                }
-            });
-        });
-    }
-
-    this.makeSortable = function () {
-        $(ui.trash).droppable({
-            tolerance: 'touch',
-            hoverClass: 'highlight',
-            over: function (event, o) {
-                //$(this).animate({ "zoom": "1.5" });
-            },
-            out: function (event, o) {
-                //$(this).animate({ "zoom": "1.0" });
-            },
-            drop: function (event, o) {
-                //$(this).animate({ "zoom": "1.0" });
-                var tileId = o.draggable[0].id;
-                self.removeTile(tileId);
-            }
-        });
-
-        $(ui.metro_section_selector).sortable({
-            connectWith: ui.metro_section_selector,
-            revert: true,
-            distance: 10,
-            tolerance: "pointer",
-            "opacity": 0.6,
-            start: function (event, o) {
-                o.item.data("noclick", true);
-                $(ui.trash).fadeIn();
-            },
-            stop: function (event, o) {
-                //console.log(o);
-                $(ui.trash).fadeOut();
-
-                self.recalcIndex();
-                self.onTileOrderChange();
-
-                //self.reflow();
-                o.item.data("noclick", false);
-            }
-        });
-    }
-
+    
     this.getSection = function (uniqueId) {
         return ko.utils.arrayFirst(self.sections(), function (section) {
             return section.uniqueId == uniqueId;
         });
     }
 
-    this.recalcIndex = function () {
-        $(ui.metro_section_selector).each(function (sectionIndex, sectionDiv) {
-            var section = self.getSection(sectionDiv.id);
-            $(ui.tile_selector, sectionDiv).each(function (index, tileDiv) {
-                var tileId = tileDiv.id;
-                var tileObject = section.getTile(tileId);
-                if (tileObject != null) {
-                    tileObject.index = index;
-                }
-                else {
-                    var tileFromSomewhere;
-                    var containingSection = ko.utils.arrayFirst(self.sections(), function (s) {
-                        tileFromSomewhere = ko.utils.arrayFirst(s.tiles(), function (t) {
-                            return t.uniqueId == tileId;
-                        });
-                        return tileFromSomewhere != null;
-                    });
-                    if (containingSection != null) {
-                        containingSection.tiles.remove(tileFromSomewhere);
-                    }
-                    if (tileFromSomewhere != null) {
-                        section.tiles.splice(index, 0, tileFromSomewhere);
-                        tileFromSomewhere.index = index;
-                        $(tileDiv).remove();
-                    }
-                }
-
-            });
-        });
-    }
-
-    //this.resetTiles = function () {
-    //    var dynamicSection = $(ui.metro_section_selector + '+.' + ui.metro_section_overflow).each(function () {
-    //        var section = $(this);
-    //        var prevSection = section.prev();
-    //        $(ui.tile_selector, section).appendTo(prevSection);
-    //        section.remove();
-    //    });
-    //}
-
-
-    //this.reflow = function (fromIndex) {
-    //    var metroSectionHeight = $(window).height(); 
-
-    //    $(ui.tile_selector).slice(fromIndex | 0).each(function (index, item) {
-    //        var tile = $(item);
-    //        var pos = tile.offset();
-
-    //        if (tile.index() > 0 && (pos.top + tile.height()) > metroSectionHeight) {
-    //            var mySection = tile.parents(ui.metro_section_selector);
-    //            var nextSection = mySection.next();
-
-    //            // If the next section isn't a dynamically created section especially
-    //            // made to hold overflowing tiles, then move the tiles to that section.
-    //            // otherwise make a new dynamic section.
-    //            if (nextSection.length > 0 && nextSection.hasClass(ui.metro_section_overflow)) {
-    //                nextSection.prepend(tile);
-    //                return _.delay(function () {
-    //                    reflow(index + 1)
-    //                }, 100);
-    //            }
-    //            else {
-    //                nextSection = $('<div />').addClass(ui.metro_section).addClass(ui.metro_section_overflow);
-    //                nextSection.insertAfter(mySection);
-    //                //nextSection.appendTo(mySection.parent());
-    //                nextSection.prepend(tile);
-
-    //                return _.delay(function () {
-    //                    reflow(index + 1)
-    //                }, 100);
-    //            }
-    //        }
-    //    });
-
-    //    self.makeSortable();
-    //}
-
-    this.splashScreen = function (colorClass, icon, complete) {
-
-        return $("<div/>")
-            .addClass(colorClass)
-            .css({
-                'position': 'absolute',
-                'left': -($(window).width() / 4) + 'px',
-                'top': $(window).height() / 4,
-                'width': $(window).width() / 4 + 'px',
-                'height': $(window).height() / 4 + 'px',
-                'z-index': ui.splash_screen_zindex,
-                'opacity': 0.3
-            })
-            .appendTo(document.body)
-            .animate({
-                left: '50px',
-                top: '50px',
-                'width': $(window).width() - 100 + 'px',
-                'height': $(window).height() - 100 + 'px',
-                'opacity': 1.0
-            }, 500, function () {
-                $(this).animate({
-                    left: '0px',
-                    top: '0px',
-                    width: '100%',
-                    height: '100%'
-                }, 500, function () { complete($(this)) });
-            })
-            .append(
-                $('<img />')
-                    .attr('src', icon)
-                    .addClass(ui.splash_screen_icon_class)
-                    .css({
-                        'position': 'absolute',
-                        'left': ($(window).width() - 512) / 2,
-                        'top': ($(window).height() - 512) / 2
-                    })
-            );
-    }
-
-    this.login = function () {
-        self.splashScreen(ui.signin_splash_color, ui.signin_splash_icon, function (div) {
-            self.launchApp("Login", "Login", ui.login_page, function () {
-                div.fadeOut();
-            });
-        });
-    }
-
-    this.logout = function () {
-        self.splashScreen(ui.signin_splash_color, ui.signin_splash_icon, function (div) {
-            self.launchApp("Logout", "Logout", ui.logout_page, function () {
-                div.fadeOut();
-            });
-        });
-    }
-
-    this.settings = function () {
-        if (self.user().isAnonymous)
-            self.login();
-        else {
-            self.splashScreen(ui.settings_splash_color, ui.settings_splash_icon, function (div) {
-                self.launchApp("Settings", "Settings", ui.settings_page, function () {
-                    div.fadeOut();
-                });
-            });
-        }
-    }
-
-    this.apps = function () {
-        self.splashScreen(ui.appStore_splash_color, ui.appStore_splash_icon, function (div) {
-            self.launchApp("AppStore", "App Store", "AppStore.html", function () {
-                div.fadeOut();
-            });
-        });
-    }
-
-    this.switchTheme = function (themename) {
-        var classes = $("body").prop("class").split(" ");
-        _.each(classes, function (c) {
-            if (_.string.startsWith(c, 'theme-'))
-                $("body").removeClass(c);
-        });
-
-        $("body").addClass(themename);
-    }
-
-    this.reload = function () {
-        document.location.href = _.string.strLeft(document.location.href, '#');
-    }
 };﻿// Copyright 2012 Omar AL Zabir
 // Part of Droptiles project.
 // This file holds the definition of tiles and which tiles appear by default 
@@ -756,7 +341,8 @@ window.DefaultTiles = [
            //{ id: "calendar1", name: "calendar" },
            { id: "video1", name: "video" },
            { id: "feature1", name: "feature" },
-           { id: "facebook1", name: "facebook" }
+           //{ id: "facebook1", name: "facebook" }
+           { id: "reader1", name: "reader" }
         ]
     },
     {
@@ -772,9 +358,11 @@ window.DefaultTiles = [
     },
     {
         name: "Section3", tiles: [
-           { id: "youtube1", name: "youtube" },
-           { id: "ie1", name: "ie" },
-
+            
+           //{ id: "youtube1", name: "youtube" },
+           //{ id: "ie1", name: "ie" }
+           { id: "howto1", name: "howto" },
+           { id: "myblog1", name: "myblog" }
         ]
     }
 ];
@@ -970,13 +558,28 @@ window.TileBuilders = {
         return {
             uniqueId: uniqueId,
             name: "news",
-            label: "News",
             color: "bg-color-pink",
             size: "tile-double",
             appUrl: "http://www.bbc.co.uk/news/world/",
             scriptSrc: ["tiles/news/news.js?v=1"],
             cssSrc: ["tiles/news/news.css?v=1"],
-            initFunc: "load_news"            
+            initFunc: "load_news",
+            initParams: { url: "http://feeds.bbci.co.uk/news/world/rss.xml" }
+        };
+    },
+
+    myblog: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "news",
+            label: "My Blog",
+            color: "bg-color-green",
+            size: "tile-double",
+            appUrl: "http://omaralzabir.com/",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://omaralzabir.com/feed" }
         };
     },
 
@@ -984,13 +587,24 @@ window.TileBuilders = {
         return {
             uniqueId: uniqueId,
             name: "feature",
-            color: "bg-color-darkBlue",
+            color: "bg-color-green",
             size: "tile-double",
             appUrl: "http://oazabir.github.com/Droptiles/",
             slidesFrom: ["tiles/features/feature1.html",
                 "tiles/features/feature2.html",
                 "tiles/features/feature3.html"],
             cssSrc: ["tiles/features/features.css"]
+        };
+    },
+
+    howto: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "feature",
+            color: "bg-color-blue",
+            size: "tile-triple tile-triple-vertical",
+            appUrl: "http://oazabir.github.com/Droptiles/",
+            slidesFrom: ["tiles/features/howto.html?2"]
         };
     },
 
@@ -1019,32 +633,44 @@ window.TileBuilders = {
     },
 
     buy : function (uniqueId) {
-    return {
-        uniqueId: uniqueId,
-        name: "buy",
-        color: "bg-color-blueDark",
-        size: 'tile-double tile-double-vertical',
-        slidesFrom: ["tiles/buy/buy.html"],
-        cssSrc: ["tiles/buy/buy.css"]
-    };
-
-}
+        return {
+            uniqueId: uniqueId,
+            name: "buy",
+            color: "bg-color-blueDark",
+            size: 'tile-double tile-double-vertical',
+            slidesFrom: ["tiles/buy/buy.html"],
+            cssSrc: ["tiles/buy/buy.css"]
+        };       
+    },
     
+    reader: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "reader",
+            color: "bg-color-red",
+            label: "News Reader",
+            iconSrc: 'img/Google Reader.png',
+            appUrl: 'RssReader.aspx'
+        };
+    }
+        
 };﻿/// <reference path="jquery-1.7.2.min.js" />
 /// <reference path="TheCore.js" />
 /// <reference path="Underscore.js" />
-
-/*
+/* ======================================
     Droptiles - Dashboard javascript
     Copyright 2012, Omar AL Zabir
 
-    Builds the dashboard experience by using the Droptiles Core.
-*/
+    Builds the Dashboad experience. It offers the Drag & Drop feature,
+    clicking on a tile to launch a full screen app, showing Settings, Login etc
+    modules, sliding through tile slides etc. 
+
+======================================*/
 
 
-// Configuration of UI elements on the Dashboard. This is used by the Core
-// to find the UI elements on the screen and offer various dynamic behaviors.
-// If you are building your own dashboard, make sure you put your own config.
+// Configuration of UI elements for the Dashboard and all the UI behaviors including
+// drag & drop, clicking on tile, launch app, in tile behavior etc. Basically all jQuery
+// stuff.
 var ui = {
     subcontent_height: 50,
     metro_sections_selector: '.metro-sections',
@@ -1065,7 +691,7 @@ var ui = {
     tile_subContent_color: 'bg-color-blueDark',
     tile_multi_content_selector: '.tile-multi-content',
     tile_multi_content: 'tile-multi-content',
-    tile_content_slide_delay: 10000,
+    tile_content_slide_delay: 5000,
     tile_content_sub_selector: '.tile-content-sub',
     tile_content_sub: 'tile-content-sub',
     trash: '#trash',
@@ -1084,7 +710,500 @@ var ui = {
 
     login_page: "ServerStuff/Login.aspx",
     logout_page: "ServerStuff/Logout.ashx",
-    settings_page: "ServerStuff/Settings.aspx"
+    settings_page: "ServerStuff/Settings.aspx",
+
+    appRunning: false,
+    currentApp: "",
+
+    /*
+        Go through all the sections and tiles and hook the dynamic
+        behavior to the tiles.
+    */
+    attachTiles: function () {
+        ko.utils.arrayForEach(viewModel.sections(), function (section) {
+            ko.utils.arrayForEach(section.tiles(), function (tile) {
+                tile.init($('#' + tile.uniqueId));
+                ui.attach(tile);
+            });
+        });
+    },
+
+    /*
+        Attach the Tile DIV to a single Tile object and provide all the UI behaviors
+        like click, mouse over etc.
+    */
+    attach: function (tile) {
+        var el = $('#' + tile.uniqueId);
+        el.unbind("mouseenter mouseleave click");
+
+        el.mouseenter(function () {
+            el = $(this);
+            if (el.hasClass(ui.tile_multi_content_selector)) {
+                var c_sub = $(ui.tile_content_sub, el);
+                c_sub.animate({ "height": ui.subcontent_height, "opacity": 1 }, 200);
+            }
+        }).mouseleave(function () {
+            el = $(this);
+            if (el.hasClass(ui.tile_multi_content_selector)) {
+                var c_sub = $(ui.tile_content_sub_selector, el);
+                c_sub.animate({ "height": 0, "opacity": 0 }, 200);
+            }
+        });
+
+        // On click, launch the app either inside dashboard or in a new browser tab
+        el.click(function (event) {
+            // Drag & drop just happened. Prevent incorrect click event.
+            if ($(this).data("noclick") == true)
+                return;
+
+            
+            // If the item clicked on the tile is a link or inside a link, don't
+            // lauch app. Let browser do the hyperlink click behavior.
+            if ($(event.target).parents("a").length > 0)
+                return;
+
+            // Open app in new browser window. Not all websites like IFRAMEing.
+            if (!_.isEmpty(tile.appUrl)) {
+                if (tile.appInNewWindow) {
+                    var open_link = window.open('', '_blank');
+                    open_link.location = tile.appUrl;
+                }
+                else {
+                    // Make the tile div explode into full screen
+
+                    ui.hideAllIframes();
+
+                    var clone = $("<div/>")
+                        .addClass(tile.tileClasses())
+                        .css({
+                            'position': 'absolute',
+                            'left': el.offset().left,
+                            'top': el.offset().top,
+                            'width': el.width() + "px",
+                            'height': el.height() + "px",
+                            'z-index': ui.splash_screen_zindex
+                        })
+                        .appendTo(document.body)
+                        .animate({
+                            left: $(window).scrollLeft(),
+                            top: $(window).scrollTop(),
+                            width: "100%",
+                            height: "100%"
+                        }, 500, function () {
+                            // Launch the full screen app inside an IFRAME. ViewModel has
+                            // this feature.
+                            ui.launchApp(tile.name, tile.appTitle, tile.appUrl, function () {
+                                clone.fadeOut();
+                                ui.restoreAllIframes();
+                            });
+                        })
+                        .append(
+                            $('<img />')
+                                .attr('src', tile.appIcon)
+                                .addClass(tile.iconClasses())
+                                .css({
+                                    'position': 'absolute',
+                                    'left': ($(window).width() - 512) / 2,
+                                    'top': ($(window).height() - 512) / 2
+                                })
+                        );
+                    
+                }
+            }
+        });
+    },
+
+    /*
+        Hide all sections and tiles.
+    */
+    hideMetroSections: function () {
+        $(ui.metro_sections_selector).hide();
+    },
+    
+    /*
+        Transition sections and tiles into view
+    */
+    showMetroSections: function (callback) {
+
+        $(ui.metro_sections_selector)
+            .css({
+                'margin-left': 50,
+                'margin-top': 20,
+                'opacity': 0
+            })
+            .show()
+            .animate({
+                'margin-left': 0,
+                'opacity': 1
+            }, 500, 'swing', callback);
+    },
+
+    /*
+        Hide all iframe on the screen so that fullscreen DIVs can appear
+        without having IFRAMEs peeking through them.
+    */
+    hideAllIframes: function(){
+        $("iframe:visible")
+                .hide()
+                .data("hidden_during_launch", true);                
+                    
+    },
+
+    /*
+        Restore visibility of the iframes that were hidden by calling hideAllIFrame
+    */
+    restoreAllIframes: function () {
+        $("iframe:hidden").each(function (index, iframe) {
+            if ($(iframe).data("hidden_during_launch") == true) {
+                $(iframe)
+                    .show()
+                    .data("hidden_during_launch", false);
+
+            }
+        });
+    },
+
+    /*
+        Launch a full screen app. It creates a full screen IFRAME to host the appUrl.
+    */
+    launchApp: function (id, title, url, loaded) {
+
+        ui.hideMetroSections();
+        
+        ui.appRunning = true;
+        ui.currentApp = url;
+
+        var iframe = $('<iframe id="' + ui.app_iframe_id + '" frameborder="no" />')
+           .css({
+               'position': 'absolute',
+               'left': "0",
+               'top': "0px",
+               'width': '100%',
+               'height': '100%',
+               'z-index': ui.app_iframe_zindex,
+               'visibility': 'hidden',
+               'background-color': 'white'
+           })
+           .appendTo(document.body)
+           .attr({ 'src': url })
+           .load(function () {
+               ui.hideNavBar();
+               loaded();
+               $(this).css('visibility', 'visible');
+           });
+
+
+        location.hash = id;
+    },
+
+    /*
+        Closes the fullscreen app.
+    */
+    closeApp: function () {
+        $('#' + ui.app_iframe_id).remove();
+        ui.showNavBar();
+
+        this.appRunning = false;
+        this.currentApp = "";
+
+        ui.showMetroSections(function () { });
+
+        location.hash = "";
+    },
+
+    /*
+        Hide the top nav bar and keep a small part visible so that when user hovers
+        or clicks on that part, the whole nav bar appears.
+    */
+    hideNavBar: function () {
+        var navbar = $(ui.navbar);
+        navbar
+            .css("z-index", ui.navbar_zindex)
+            .delay(3000)
+            .animate({
+                top: -(navbar.height() - 5) + "px"
+            }, function () {
+                $('#navbar').tooltip('show');
+                _.delay(function () {
+                    $('#navbar').tooltip('hide');
+                }, 10000);
+            }).bind("mouseenter click", function () {
+                navbar
+                    .stop(true, true)
+                    .animate({
+                        top: "0px"
+                    });
+            }).bind("mouseleave", function () {
+                navbar
+                    .stop(true, true)
+                    .delay(3000)
+                    .animate({
+                        top: -(navbar.height() - 5) + "px"
+                    });
+            });
+    },
+
+    showNavBar: function () {
+        var navbar = $(ui.navbar);
+        navbar
+            .unbind("mouseenter mouseleave")
+            .animate({
+                top: "0px"
+            });
+    },
+
+    fullscreenAppClosed: function () {
+        ui.showMetroSections(function () { });
+    },
+
+    /*
+        Tiles can have multiple slides in them. This will run a timer to slide
+        through the slides.
+    */
+    animateTiles: function () {
+        window.clearInterval(ui.timerId);
+        ui.timerId = window.setInterval(function () {
+            $(ui.tile_selector).each(function () {
+                var el = $(this);
+                var slides = $(ui.tile_content_main_selector, el);
+                if (slides.length > 0) {
+                    var slideIndex = el.data("slideIndex") || 1;
+                    if (slideIndex == slides.length) {
+                        slideIndex = 0;
+                    }
+                    var firstPage = slides.first();
+                    firstPage.animate({ marginTop: -(slideIndex * firstPage.height()) }, 500);
+                    el.data("slideIndex", ++slideIndex);
+                }
+            });
+        }, ui.tile_content_slide_delay);
+    },
+
+    /*
+        Enable the drag & drop behavior of tiles and dropping of tiles on the trash can.
+    */
+    makeSortable: function () {
+        $(ui.trash).droppable({
+            tolerance: 'touch',
+            hoverClass: 'highlight',
+            over: function (event, o) {
+                //$(this).animate({ "zoom": "1.5" });
+            },
+            out: function (event, o) {
+                //$(this).animate({ "zoom": "1.0" });
+            },
+            drop: function (event, o) {
+                //$(this).animate({ "zoom": "1.0" });
+                var tileId = o.draggable[0].id;
+                $(ui.trash).fadeOut();
+                _.defer(function () {
+                    viewModel.removeTile(tileId);
+                });
+                
+            }
+        });
+
+        $(ui.metro_section_selector).sortable({
+            connectWith: ui.metro_section_selector,
+            revert: true,
+            distance: 10,
+            tolerance: "pointer",
+            "opacity": 0.6,
+            start: function (event, o) {
+                o.item.data("noclick", true);
+                $(ui.trash).fadeIn();
+            },
+            stop: function (event, o) {
+                o.item.data("noclick", false);                
+                $(ui.trash).fadeOut();
+
+                _.defer(function () {
+                    ui.recalcIndex();
+                });
+            }
+        });
+    },
+
+    /*
+        When a tile is dragged & dropped, take the tile DIV position and use that
+        to calculate the index of tile objects in the viewModel. A special case is when
+        a tile is moved from a section to another. In that case, remove the tile from
+        the originating section and add it on the dropped section.
+    */
+    recalcIndex: function () {
+        $(ui.metro_section_selector).each(function (sectionIndex, sectionDiv) {
+            var section = viewModel.getSection(sectionDiv.id);
+            $(ui.tile_selector, sectionDiv).each(function (index, tileDiv) {
+                var tileId = tileDiv.id;
+                var tileObject = section.getTile(tileId);
+                if (tileObject != null) {
+                    tileObject.index = index;
+                }
+                else {
+                    var tileFromSomewhere;
+                    var containingSection = ko.utils.arrayFirst(viewModel.sections(), function (s) {
+                        tileFromSomewhere = ko.utils.arrayFirst(s.tiles(), function (t) {
+                            return t.uniqueId == tileId;
+                        });
+                        return tileFromSomewhere != null;
+                    });
+                    if (containingSection != null) {
+                        containingSection.tiles.remove(tileFromSomewhere);
+                    }
+                    if (tileFromSomewhere != null) {
+                        tileFromSomewhere.index = index;
+                        section.tiles.splice(index, 0, tileFromSomewhere);
+                        _.defer(function () {
+                            $(tileDiv).remove();
+                        });
+                    }
+                }
+
+            });
+        });
+    },
+
+    //resetTiles: function () {
+    //    var dynamicSection = $(ui.metro_section_selector + '+.' + ui.metro_section_overflow).each(function () {
+    //        var section = $(this);
+    //        var prevSection = section.prev();
+    //        $(ui.tile_selector, section).appendTo(prevSection);
+    //        section.remove();
+    //    });
+    //},
+
+    //reflow: function (fromIndex) {
+    //    var metroSectionHeight = $(window).height(); 
+
+    //    $(ui.tile_selector).slice(fromIndex | 0).each(function (index, item) {
+    //        var tile = $(item);
+    //        var pos = tile.offset();
+
+    //        if (tile.index() > 0 && (pos.top + tile.height()) > metroSectionHeight) {
+    //            var mySection = tile.parents(ui.metro_section_selector);
+    //            var nextSection = mySection.next();
+
+    //            // If the next section isn't a dynamically created section especially
+    //            // made to hold overflowing tiles, then move the tiles to that section.
+    //            // otherwise make a new dynamic section.
+    //            if (nextSection.length > 0 && nextSection.hasClass(ui.metro_section_overflow)) {
+    //                nextSection.prepend(tile);
+    //                return _.delay(function () {
+    //                    reflow(index + 1)
+    //                }, 100);
+    //            }
+    //            else {
+    //                nextSection = $('<div />').addClass(ui.metro_section).addClass(ui.metro_section_overflow);
+    //                nextSection.insertAfter(mySection);
+    //                //nextSection.appendTo(mySection.parent());
+    //                nextSection.prepend(tile);
+
+    //                return _.delay(function () {
+    //                    reflow(index + 1)
+    //                }, 100);
+    //            }
+    //        }
+    //    });
+
+    //    ui.makeSortable();
+    //},
+    
+    /*
+        Animate a full screen splash
+    */
+    splashScreen: function (colorClass, icon, complete) {
+        ui.hideAllIframes();
+
+        return $("<div/>")
+            .addClass(colorClass)
+            .css({
+                'position': 'absolute',
+                'left': -($(window).width() / 4) + 'px',
+                'top': $(window).height() / 4,
+                'width': $(window).width() / 4 + 'px',
+                'height': $(window).height() / 4 + 'px',
+                'z-index': ui.splash_screen_zindex,
+                'opacity': 0.3
+            })
+            .appendTo(document.body)
+            .animate({
+                left: '50px',
+                top: '50px',
+                'width': $(window).width() - 100 + 'px',
+                'height': $(window).height() - 100 + 'px',
+                'opacity': 1.0
+            }, 500, function () {
+                $(this).animate({
+                    left: '0px',
+                    top: '0px',
+                    width: '100%',
+                    height: '100%'
+                }, 500, function () {
+                    complete($(this));
+                    ui.restoreAllIframes();
+                });
+            })
+            .append(
+                $('<img />')
+                    .attr('src', icon)
+                    .addClass(ui.splash_screen_icon_class)
+                    .css({
+                        'position': 'absolute',
+                        'left': ($(window).width() - 512) / 2,
+                        'top': ($(window).height() - 512) / 2
+                    })
+            );
+    },
+
+    login: function () {
+        ui.splashScreen(ui.signin_splash_color, ui.signin_splash_icon, function (div) {
+            ui.launchApp("Login", "Login", ui.login_page, function () {
+                div.fadeOut();
+            });
+        });
+    },
+
+    logout: function () {
+        ui.splashScreen(ui.signin_splash_color, ui.signin_splash_icon, function (div) {
+            ui.launchApp("Logout", "Logout", ui.logout_page, function () {
+                div.fadeOut();
+            });
+        });
+    },
+
+    settings: function () {
+        if (viewModel.user().isAnonymous)
+            ui.login();
+        else {
+            ui.splashScreen(ui.settings_splash_color, ui.settings_splash_icon, function (div) {
+                ui.launchApp("Settings", "Settings", ui.settings_page, function () {
+                    div.fadeOut();
+                });
+            });
+        }
+    },
+
+    apps: function () {
+        ui.splashScreen(ui.appStore_splash_color, ui.appStore_splash_icon, function (div) {
+            ui.launchApp("AppStore", "App Store", "AppStore.html", function () {
+                div.fadeOut();
+            });
+        });
+    },
+
+    switchTheme: function (themename) {
+        var classes = $("body").prop("class").split(" ");
+        _.each(classes, function (c) {
+            if (_.string.startsWith(c, 'theme-'))
+                $("body").removeClass(c);
+        });
+
+        $("body").addClass(themename);
+    },
+
+    reload: function () {
+        document.location.href = _.string.strLeft(document.location.href, '#');
+    }
 };
 
 
@@ -1102,6 +1221,8 @@ $(document).ready(function () {
     // UI to viewModel.
     ko.applyBindings(viewModel);
 
+    ui.hideMetroSections();
+
     // See if user has a previous session where page setup was stored
     var cookie = readCookie("p");
     if (cookie != null && cookie.length > 0) {
@@ -1116,6 +1237,13 @@ $(document).ready(function () {
         // No cookie, load default tiles. Defined in Tiles.js
         viewModel.loadSectionsFromString(DefaultTiles);
     }
+
+    ui.showMetroSections(function () {
+        ui.attachTiles();
+        //ui.reflow();
+        ui.makeSortable();
+        ui.animateTiles();        
+    });
 
     // If we have the "add" cookie, then it means user went to app store
     // and then added some apps. The name of the apps are passed as a 
@@ -1146,9 +1274,11 @@ $(document).ready(function () {
         }
     }, 1000);
 
-    // Whenever tile changes due to drag & drop or removing a tile,
-    // save the position of the tiles in the cookie.
-    viewModel.onTileOrderChange = function () {
+    // Subscribe again to detect changes made after the sections and tiles are 
+    // created on the screen so that we can save the changes in section/tile
+    viewModel.subscribeToChange(function (section, tiles) {
+        ui.attachTiles();
+
         var newOrder = viewModel.toSectionString();
         if (newOrder !== DefaultTiles) {
             createCookie("p", newOrder, 2);
@@ -1157,10 +1287,6 @@ $(document).ready(function () {
                 $.get("ServerStuff/SaveTiles.aspx");
             }
         }
-    }
-
-    $(window).resize(function () {
-        viewModel.resize();
     });
 
     // Mouse wheel behavior for side scrolling.
@@ -1183,8 +1309,8 @@ $(document).ready(function () {
         var hash = location.hash;
 
         if (hash == "" || hash == "#") {
-            if (viewModel.appRunning)
-                viewModel.closeApp();
+            if (ui.appRunning)
+                ui.closeApp();
         }
     })
 

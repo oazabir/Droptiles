@@ -8,9 +8,9 @@
     <!-- Copyright 2012 Omar AL Zabir -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
     
-    <script type="text/javascript" src="js/TheCore.js?v=1"></script>
+    <script type="text/javascript" src="js/TheCore.js?v=3"></script>
     <script type="text/javascript" src="RssTiles.ashx"></script>
-    <script type="text/javascript" src="js/RssReader.js?v=1"></script>
+    <script type="text/javascript" src="js/RssReader.js?v=2"></script>
 
     <script type="text/ecmascript">
         
