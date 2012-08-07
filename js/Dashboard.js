@@ -1,13 +1,15 @@
 ﻿/// <reference path="jquery-1.7.2.min.js" />
 /// <reference path="TheCore.js" />
 /// <reference path="Underscore.js" />
-
-/*
+/* ======================================
     Droptiles - Dashboard javascript
     Copyright 2012, Omar AL Zabir
 
-    Builds the dashboard experience by using the Droptiles Core.
-*/
+    Builds the Dashboad experience. It offers the Drag & Drop feature,
+    clicking on a tile to launch a full screen app, showing Settings, Login etc
+    modules, sliding through tile slides etc. 
+
+======================================*/
 
 
 // Configuration of UI elements for the Dashboard and all the UI behaviors including
@@ -33,7 +35,7 @@ var ui = {
     tile_subContent_color: 'bg-color-blueDark',
     tile_multi_content_selector: '.tile-multi-content',
     tile_multi_content: 'tile-multi-content',
-    tile_content_slide_delay: 10000,
+    tile_content_slide_delay: 5000,
     tile_content_sub_selector: '.tile-content-sub',
     tile_content_sub: 'tile-content-sub',
     trash: '#trash',
@@ -57,6 +59,10 @@ var ui = {
     appRunning: false,
     currentApp: "",
 
+    /*
+        Go through all the sections and tiles and hook the dynamic
+        behavior to the tiles.
+    */
     attachTiles: function () {
         ko.utils.arrayForEach(viewModel.sections(), function (section) {
             ko.utils.arrayForEach(section.tiles(), function (tile) {
@@ -66,6 +72,10 @@ var ui = {
         });
     },
 
+    /*
+        Attach the Tile DIV to a single Tile object and provide all the UI behaviors
+        like click, mouse over etc.
+    */
     attach: function (tile) {
         var el = $('#' + tile.uniqueId);
         el.unbind("mouseenter mouseleave click");
@@ -147,10 +157,16 @@ var ui = {
         });
     },
 
+    /*
+        Hide all sections and tiles.
+    */
     hideMetroSections: function () {
         $(ui.metro_sections_selector).hide();
     },
     
+    /*
+        Transition sections and tiles into view
+    */
     showMetroSections: function (callback) {
 
         $(ui.metro_sections_selector)
@@ -166,6 +182,10 @@ var ui = {
             }, 500, 'swing', callback);
     },
 
+    /*
+        Hide all iframe on the screen so that fullscreen DIVs can appear
+        without having IFRAMEs peeking through them.
+    */
     hideAllIframes: function(){
         $("iframe:visible")
                 .hide()
@@ -173,6 +193,9 @@ var ui = {
                     
     },
 
+    /*
+        Restore visibility of the iframes that were hidden by calling hideAllIFrame
+    */
     restoreAllIframes: function () {
         $("iframe:hidden").each(function (index, iframe) {
             if ($(iframe).data("hidden_during_launch") == true) {
@@ -184,6 +207,9 @@ var ui = {
         });
     },
 
+    /*
+        Launch a full screen app. It creates a full screen IFRAME to host the appUrl.
+    */
     launchApp: function (id, title, url, loaded) {
 
         ui.hideMetroSections();
@@ -214,6 +240,9 @@ var ui = {
         location.hash = id;
     },
 
+    /*
+        Closes the fullscreen app.
+    */
     closeApp: function () {
         $('#' + ui.app_iframe_id).remove();
         ui.showNavBar();
@@ -226,6 +255,10 @@ var ui = {
         location.hash = "";
     },
 
+    /*
+        Hide the top nav bar and keep a small part visible so that when user hovers
+        or clicks on that part, the whole nav bar appears.
+    */
     hideNavBar: function () {
         var navbar = $(ui.navbar);
         navbar
@@ -267,6 +300,10 @@ var ui = {
         ui.showMetroSections(function () { });
     },
 
+    /*
+        Tiles can have multiple slides in them. This will run a timer to slide
+        through the slides.
+    */
     animateTiles: function () {
         window.clearInterval(ui.timerId);
         ui.timerId = window.setInterval(function () {
@@ -286,6 +323,9 @@ var ui = {
         }, ui.tile_content_slide_delay);
     },
 
+    /*
+        Enable the drag & drop behavior of tiles and dropping of tiles on the trash can.
+    */
     makeSortable: function () {
         $(ui.trash).droppable({
             tolerance: 'touch',
@@ -328,6 +368,12 @@ var ui = {
         });
     },
 
+    /*
+        When a tile is dragged & dropped, take the tile DIV position and use that
+        to calculate the index of tile objects in the viewModel. A special case is when
+        a tile is moved from a section to another. In that case, remove the tile from
+        the originating section and add it on the dropped section.
+    */
     recalcIndex: function () {
         $(ui.metro_section_selector).each(function (sectionIndex, sectionDiv) {
             var section = viewModel.getSection(sectionDiv.id);
@@ -405,7 +451,10 @@ var ui = {
 
     //    ui.makeSortable();
     //},
-
+    
+    /*
+        Animate a full screen splash
+    */
     splashScreen: function (colorClass, icon, complete) {
         ui.hideAllIframes();
 
@@ -498,8 +547,7 @@ var ui = {
 
     reload: function () {
         document.location.href = _.string.strLeft(document.location.href, '#');
-    },
-
+    }
 };
 
 

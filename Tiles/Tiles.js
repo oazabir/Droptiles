@@ -16,7 +16,8 @@ window.DefaultTiles = [
            //{ id: "calendar1", name: "calendar" },
            { id: "video1", name: "video" },
            { id: "feature1", name: "feature" },
-           { id: "facebook1", name: "facebook" }
+           //{ id: "facebook1", name: "facebook" }
+           { id: "reader1", name: "reader" }
         ]
     },
     {
@@ -32,10 +33,11 @@ window.DefaultTiles = [
     },
     {
         name: "Section3", tiles: [
-            { id: "myblog1", name: "myblog" },
+            
            //{ id: "youtube1", name: "youtube" },
            //{ id: "ie1", name: "ie" }
-           { id: "howto1", name: "howto" }
+           { id: "howto1", name: "howto" },
+           { id: "myblog1", name: "myblog" }
         ]
     }
 ];
@@ -247,7 +249,7 @@ window.TileBuilders = {
             name: "news",
             label: "My Blog",
             color: "bg-color-green",
-            size: "tile-double tile-double-vertical",
+            size: "tile-double",
             appUrl: "http://omaralzabir.com/",
             scriptSrc: ["tiles/news/news.js?v=1"],
             cssSrc: ["tiles/news/news.css?v=1"],
@@ -275,9 +277,9 @@ window.TileBuilders = {
             uniqueId: uniqueId,
             name: "feature",
             color: "bg-color-blue",
-            size: "tile-triple tile-double-vertical",
+            size: "tile-triple tile-triple-vertical",
             appUrl: "http://oazabir.github.com/Droptiles/",
-            slidesFrom: ["tiles/features/howto.html"]
+            slidesFrom: ["tiles/features/howto.html?2"]
         };
     },
 
@@ -306,15 +308,25 @@ window.TileBuilders = {
     },
 
     buy : function (uniqueId) {
-    return {
-        uniqueId: uniqueId,
-        name: "buy",
-        color: "bg-color-blueDark",
-        size: 'tile-double tile-double-vertical',
-        slidesFrom: ["tiles/buy/buy.html"],
-        cssSrc: ["tiles/buy/buy.css"]
-    };
-
-}
+        return {
+            uniqueId: uniqueId,
+            name: "buy",
+            color: "bg-color-blueDark",
+            size: 'tile-double tile-double-vertical',
+            slidesFrom: ["tiles/buy/buy.html"],
+            cssSrc: ["tiles/buy/buy.css"]
+        };       
+    },
     
+    reader: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "reader",
+            color: "bg-color-red",
+            label: "News Reader",
+            iconSrc: 'img/Google Reader.png',
+            appUrl: 'RssReader.aspx'
+        };
+    }
+        
 };

@@ -4,9 +4,9 @@
 /// <reference path="Underscore.js" />
 /* 
     Copyright 2012 Omar AL Zabir
-    This is the core framework for the Droptiles experience. It has:
-        * The object models that are bound to the UI.eg. Section, Tile
-        * The main ViewModel that initiaites and orchestrates the Dashboard experience.    
+
+    * The object models that are bound to the UI.eg. Section, Tile
+    * The main ViewModel that initiaites and orchestrates the Dashboard experience.    
 */
 
 /*
@@ -276,6 +276,33 @@ var DashboardModel = function (title, sections, user, ui, tileBuilder) {
 
 
         self.sections(sectionArray);        
+    }
+
+    this.loadSections = function (sections) {
+        var sectionArray = [];
+
+        _.each(sections, function (section) {
+            var sectionTiles = [];
+
+            var index = 0;
+            _.each(section.tiles, function (tile) {
+                var builder = window.TileBuilders[tile.name];
+                var tileParams = builder(tile.id, tile.name, tile.data);
+                var newTile = new Tile(tileParams, ui);
+                newTile.index = index++;
+                sectionTiles.push(newTile);                                    
+            });
+
+            var newSection = new Section({
+                name: section.title,
+                tiles: sectionTiles
+            }, self);
+            sectionArray.push(newSection);
+
+        });
+
+
+        self.sections(sectionArray);
     }
 
     this.toSectionString = function () {

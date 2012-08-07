@@ -1,0 +1,44 @@
+﻿body {
+    background: white none;
+}
+
+#metro-sections-container {
+    top: 80px;
+}
+
+.metro-section {
+    width: 700px !important;
+}
+
+.metro .metro-sections .metro-section .tile {
+    color: black;
+    margin: 15px;
+}
+
+.tile h2{
+    color: black;
+    border-top: 1px solid lightgrey;   
+    width: 100%;
+}
+
+    .tile a {
+        color: black;
+        font-size: 16pt;
+        overflow: hidden;
+        text-overflow: ellipsis;        
+        white-space: nowrap;
+        width: 100%;
+    }
+
+    .tile p {
+        color: black;
+        font-size: 10pt;
+        overflow: hidden;
+        text-overflow: ellipsis;        
+    }
+
+    .tile img {
+        float: left;
+        margin: 0 10px 0px 0;
+        width: 100px; 
+    }

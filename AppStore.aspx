@@ -4,9 +4,9 @@
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="scripts">
     <!-- Copyright 2012 Omar AL Zabir -->
-    <script type="text/javascript" src="js/TheCore.js?v=1"></script>
-    <script type="text/javascript" src="Tiles/AppStoreTiles.js?v=1"></script>
-    <script type="text/javascript" src="js/AppStore.js?v=1"></script>       
+    <script type="text/javascript" src="js/TheCore.js?v=2"></script>
+    <script type="text/javascript" src="Tiles/AppStoreTiles.js?v=2"></script>
+    <script type="text/javascript" src="js/AppStore.js?v=2"></script>       
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="body">
@@ -38,8 +38,7 @@
                 <div id="trash" class="trashcan">
                     <img src="img/Trashcan.png" width="64" height="64" />
                 </div>
-                <div class="metro-sections" data-bind="foreach: sections">
-                    
+                <div class="metro-sections" data-bind="foreach: sections">                   
                     <div class="metro-section" data-bind="attr: {id : uniqueId}">
                         <div class="metro-section-title" data-bind="{text: name}"></div>
                         <!-- ko foreach: sortedTiles -->
