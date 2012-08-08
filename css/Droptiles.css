@@ -390,10 +390,6 @@ body {
         background-image: url(../img/MetroBackgroundRed.png);
         background-repeat: repeat;    
 }
-.theme-tiles {
-        background-image: url(../img/MetroBackgroundTiles.png);
-        background-repeat: repeat;
-}
         
 .metro-section {
     width: 910px !important;
