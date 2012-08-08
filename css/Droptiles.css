@@ -307,7 +307,7 @@ html, body {
     
     position: fixed;
     left: 40px;
-    top: 80px;
+    top: 65px;
     
     font-smooth: always;
     
@@ -320,7 +320,7 @@ html, body {
 
 #user {
     position: fixed;
-    top: 80px;
+    top: 65px;
     right: 40px;
     color: white;
     width: 200px;       
@@ -438,7 +438,7 @@ body {
 #metro-sections-container {
     position: absolute;
     bottom: 40px;
-    top: 130px;
+    top: 115px;
 }
 
 #trash {

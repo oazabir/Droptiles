@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AppStore.aspx.cs" Inherits="Tiles_AppStore" MasterPageFile="Droptiles.master" %>
 <asp:Content runat="server" ContentPlaceHolderID="head">
-    <link rel="stylesheet" type="text/css" href="css/AppStore.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/AppStore.css?v=1" /> 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="scripts">
     <!-- Copyright 2012 Omar AL Zabir -->

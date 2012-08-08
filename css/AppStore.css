@@ -1,5 +1,13 @@
-﻿#metro-sections-container {
+﻿body {
+    background: white none;
+}
+
+#metro-sections-container {
     top: 110px;
+}
+
+.metro-section {
+    width: 850px !important;
 }
 
 .appstore .tile {
