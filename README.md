@@ -8,7 +8,7 @@
 ### [See it live!](http://droptiles.com), go to [Droptiles.com](http://droptiles.com), for Technical Documentation, read the [Codeproject article](http://www.codeproject.com/Articles/421601/Droptiles-Metro-style-Live-Tiles-powered-Web-Dashb).
 
 ### Features
-* **Metro style** user interface. CSS framework to build metro style websites, inspired by metroui.org.ua.
+* **Metro style** user interface. CSS framework to build metro style websites, inspired by [metroui.org.ua](http://metroui.org.ua). Icons from [dAKirby309](http://dakirby309.deviantart.com/art/Metro-UI-Dock-Icon-Set-RELEASED-678-Icons-280724102).
 * **Drag & Drop** tiles to personalize the experience. 
 * **Live tiles**: Tiles are mini-apps, loading data from variety of sources.
 * Quick and easy **App framework**. Try the Flickr and News Reader app.
