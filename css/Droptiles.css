@@ -358,7 +358,7 @@ html, body {
 
     
 body {
-    background: transparent url(../img/windows8_metro_green_1920_1080.jpg);
+    background: transparent url(../img/wallpapers/windows8_metro_green_1920_1080.jpg);
     position: relative;
     /*padding-top: 90px;*/
     background-color: #fff;
@@ -369,28 +369,6 @@ body {
     background-color: #fff;        
 }
 
-.theme-white {
-        background-image: none;
-        background-color: #fff;
-        background-repeat: repeat;    
-}
-.theme-cyan {
-        background-image: url(../img/MetroBackgroundCyan.png);
-        background-repeat: repeat;    
-}
-.theme-green {
-        background-image: url(../img/windows8_metro_green_1920_1080.jpg);
-        background-repeat: repeat;    
-}
-.theme-darkblue {
-        background-image: url(../img/MetroBackgroundDarkBlue.png);
-        background-repeat: repeat;    
-}
-.theme-red {
-        background-image: url(../img/MetroBackgroundRed.png);
-        background-repeat: repeat;    
-}
-        
 .metro-section {
     width: 910px !important;
     height: 99% !important;
@@ -575,3 +553,19 @@ border: 1px solid #AAAAAA;
     -ms-user-select: none;
     user-select: none;
 }
+
+
+.theme-white {
+        background-image: none;
+        background-color: #fff;
+        background-repeat: repeat;    
+}
+    .theme-white #start,  .theme-white #name {
+        color: black;
+    }
+
+.theme-Bloom {
+        background-image: url("../img/wallpapers/In Bloom.jpg");
+        background-repeat: repeat;    
+}
+        

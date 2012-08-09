@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <%--<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">--%>
-    <link rel="stylesheet" type="text/css" href="../css/Droptiles.css?v=6">
+    <link rel="stylesheet" type="text/css" href="../css/Droptiles.css?v=7">
     <style type="text/css">
         .container {
             margin-left: 100px;

@@ -66,9 +66,8 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tint"></i>Theme<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#" onclick="ui.switchTheme('theme-green')">Green</a></li>
-                                    <li><a href="#" onclick="ui.switchTheme('theme-cyan')">Cyan</a></li>
-                                    <li><a href="#" onclick="ui.switchTheme('theme-darkblue')">Darkblue</a></li>
-                                    <li><a href="#" onclick="ui.switchTheme('theme-red')">Red</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-white')">White</a></li>
+                                    <li><a href="#" onclick="ui.switchTheme('theme-Bloom')">Bloom</a></li>                                    
                                 </ul>
                             </li>                            
                             <li data-bind="if: user().isAnonymous"><a onclick="ui.login()" href="#login"><i class="icon-user"></i>Login</a></li>
