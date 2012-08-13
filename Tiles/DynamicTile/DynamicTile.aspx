@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DynamicTile.aspx.cs" Inherits="Tiles_DynamicTile_DynamicTile" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DynamicTile.aspx.cs" Inherits="Tiles_DynamicTile_DynamicTile" %>
 <%@ OutputCache NoStore="true" Location="None" %>
 <!-- Copyright 2012, Omar AL Zabir -->
 <style>

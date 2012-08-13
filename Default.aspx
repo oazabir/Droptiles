@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/Droptiles.master" %>
+<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/Droptiles.master" %>
 <%@ OutputCache NoStore="true" Location="None"  %>
 
 <asp:Content ContentPlaceHolderID="scripts" runat="server">
@@ -11,12 +11,12 @@
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="js/TheCore.js?v=2"></script>
-    <script type="text/javascript" src="tiles/tiles.js?v=1"></script>
-    <script type="text/javascript" src="js/Dashboard.js?v=3"></script>
+    <script type="text/javascript" src="js/TheCore.js?v=10"></script>
+    <script type="text/javascript" src="tiles/tiles.js?v=10"></script>
+    <script type="text/javascript" src="js/Dashboard.js?v=10"></script>
     
 <% } else { %>    
-    <script type="text/javascript" src="js/CombinedDashboard.js?v=8"></script>
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=10"></script>
 <% } %>
 
     <script type="text/ecmascript">

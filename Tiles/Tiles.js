@@ -10,24 +10,28 @@ window.DefaultTiles = [
         name :"Section1",
         tiles: [
            { id: "flickr1", name:"flickr" },
-           { id: "amazon1", name:"amazon" },
+           //{ id: "amazon1", name:"amazon" },
            { id: "news1", name: "news" },
+           { id: "reader1", name: "reader" },        
            { id: "weather1", name: "weather" },
+           { id: "cuttherope1", name: "cutTheRope" },
            //{ id: "calendar1", name: "calendar" },
            { id: "video1", name: "video" },
            { id: "feature1", name: "feature" },
+           { id: "angrybirds1", name: "angrybirds" }
            //{ id: "facebook1", name: "facebook" }
-           { id: "reader1", name: "reader" }
+           
         ]
     },
     {
         name: "Section2",
         tiles: [
+           { id: "myblog1", name: "myblog" },
            { id: "wikipedia1", name: "wikipedia" },           
-           { id: "email1", name: "email" },
-           { id: "maps1", name: "maps" },
-           { id: "angrybirds1", name: "angrybirds" },
-           { id: "cuttherope1", name: "cutTheRope" },
+           //{ id: "email1", name: "email" },
+           //{ id: "maps1", name: "maps" },
+           { id: "facebook1", name: "facebook" },
+           { id: "ie1", name: "ie" },
            { id: "dynamicTile1", name: "dynamicTile" },
            { id: "buy1", name: "buy" }]
     },
@@ -36,8 +40,7 @@ window.DefaultTiles = [
             
            //{ id: "youtube1", name: "youtube" },
            //{ id: "ie1", name: "ie" }
-           { id: "howto1", name: "howto" },
-           { id: "myblog1", name: "myblog" }
+           { id: "howto1", name: "howto" }           
         ]
     }
 ];

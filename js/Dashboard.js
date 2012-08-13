@@ -35,7 +35,7 @@ var ui = {
     tile_subContent_color: 'bg-color-blueDark',
     tile_multi_content_selector: '.tile-multi-content',
     tile_multi_content: 'tile-multi-content',
-    tile_content_slide_delay: 5000,
+    tile_content_slide_delay: 2000,
     tile_content_sub_selector: '.tile-content-sub',
     tile_content_sub: 'tile-content-sub',
     trash: '#trash',
@@ -306,9 +306,15 @@ var ui = {
     */
     animateTiles: function () {
         window.clearInterval(ui.timerId);
+        window.lastTileIndex = 0;
         ui.timerId = window.setInterval(function () {
-            $(ui.tile_selector).each(function () {
-                var el = $(this);
+            var tilesWithSlides =$(ui.tile_selector).has(ui.tile_content_main_selector);
+            if (window.lastTileIndex == tilesWithSlides.length)
+                window.lastTileIndex = 0;
+
+            if (tilesWithSlides.length > window.lastTileIndex) {
+                var el = $(tilesWithSlides[window.lastTileIndex]);
+                window.lastTileIndex++;
                 var slides = $(ui.tile_content_main_selector, el);
                 if (slides.length > 0) {
                     var slideIndex = el.data("slideIndex") || 1;
@@ -319,7 +325,7 @@ var ui = {
                     firstPage.animate({ marginTop: -(slideIndex * firstPage.height()) }, 500);
                     el.data("slideIndex", ++slideIndex);
                 }
-            });
+            }
         }, ui.tile_content_slide_delay);
     },
 
@@ -554,7 +560,7 @@ var ui = {
 // This is the viewModel for the entire Dashboard. The starting point.
 // It takes the currentUser (defined in the Droptiles.master), the UI config (as above)
 // and the TileBuilders that comes from Tiles.js.
-var viewModel = new DashboardModel("Start", [], window.currentUser, ui, TileBuilders);
+var viewModel = new DashboardModel("Start", [], window.currentUser, ui);
 
 $(document).ready(function () {
 
@@ -571,15 +577,15 @@ $(document).ready(function () {
     var cookie = readCookie("p");
     if (cookie != null && cookie.length > 0) {
         try {
-            viewModel.loadSectionsFromString(cookie);
+            viewModel.loadSectionsFromString(cookie, window.TileBuilders);
         } catch (e) {
             // Failed to load saved tiles. Load the default tiles.
-            viewModel.loadSectionsFromString(DefaultTiles);
+            viewModel.loadSectionsFromString(DefaultTiles, window.TileBuilders);
         }
     }
     else {
         // No cookie, load default tiles. Defined in Tiles.js
-        viewModel.loadSectionsFromString(DefaultTiles);
+        viewModel.loadSectionsFromString(DefaultTiles, window.TileBuilders);
     }
 
     ui.showMetroSections(function () {
@@ -609,7 +615,9 @@ $(document).ready(function () {
                 
                     newTile.index = sectionTiles.length;
                 
-                    lastSection.addTile(newTile);                    
+                    lastSection.addTile(newTile);
+                    ui.attach(newTile);
+
                 }
             });
 

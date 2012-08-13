@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ServerStuff.master.cs" Inherits="ServerStuff" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ServerStuff.master.cs" Inherits="ServerStuff" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <%--<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">--%>
-    <link rel="stylesheet" type="text/css" href="../css/Droptiles.css?v=7">
+    <link rel="stylesheet" type="text/css" href="../css/Droptiles.css?v=10">
     <style type="text/css">
         .container {
             margin-left: 100px;
@@ -39,7 +39,7 @@
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="../js/Combined.js?v=4"></script>
+    <script type="text/javascript" src="../js/Combined.js?v=10"></script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>

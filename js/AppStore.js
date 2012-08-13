@@ -57,10 +57,8 @@ var ui = {
 };
 
 
-// This is the viewModel for the entire Dashboard. The starting point.
-// It takes the currentUser (defined in the Droptiles.master), the UI config (as above)
-// and the TileBuilders that comes from Tiles.js.
-var viewModel = new DashboardModel("App Store", [], window.currentUser, ui, TileBuilders);
+// This is the viewModel for the App Store. 
+var viewModel = new DashboardModel("App Store", [], window.currentUser, ui);
 
 $(document).ready(function () {
 
@@ -71,7 +69,7 @@ $(document).ready(function () {
     // UI to viewModel.
     ko.applyBindings(viewModel);
 
-    viewModel.loadSectionsFromString(window.AppStoreTiles);
+    viewModel.loadSectionsFromString(window.AppStoreTiles, window.TileBuilders);
 
     createCookie("add", "");
 
@@ -115,16 +113,5 @@ $(document).ready(function () {
     $("body").on("mousewheel", function (event, delta, deltaX, deltaY) {
         window.scrollBy(-delta * 50, 0);
     });
-
-    $("#navbar").tooltip({
-        title: "I am still here. Come here to go back to Dashboard",
-        animate: true,
-        placement: 'bottom',
-        trigger: 'manual'
-    });
-
-    // Supports only IE 9+, Chrome, Firefox, Safari
-    if ($.browser.msie && parseInt($.browser.version) < 9)
-        $("#browser_incompatible").show();
 
 });

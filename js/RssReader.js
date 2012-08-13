@@ -48,7 +48,7 @@ var ui = {
 // This is the viewModel for the entire Dashboard. The starting point.
 // It takes the currentUser (defined in the Droptiles.master), the UI config (as above)
 // and the TileBuilders that comes from Tiles.js.
-var viewModel = new DashboardModel("News", [], window.currentUser, ui, window.TileBuilders);
+var viewModel = new DashboardModel("News", [], window.currentUser, ui);
 
 $(document).ready(function () {
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
     // UI to viewModel.
     ko.applyBindings(viewModel);
 
-    viewModel.loadSections(window.RssTiles);
+    viewModel.loadSections(window.RssTiles, window.TileBuilders);
 
     ui.attachTiles();
     

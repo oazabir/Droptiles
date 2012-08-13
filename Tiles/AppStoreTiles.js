@@ -70,7 +70,7 @@ window.TileBuilders = {
     maps: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "maps",
+            name: "maps"
         };
     },
 
@@ -86,14 +86,14 @@ window.TileBuilders = {
     facebook: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "facebook",
+            name: "facebook"
         };
     },
 
     calendar: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "calendar",
+            name: "calendar"
         };
     },
 
@@ -110,7 +110,7 @@ window.TileBuilders = {
     skydrive: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "skydrive",
+            name: "skydrive"
         };
     },
 
@@ -133,7 +133,7 @@ window.TileBuilders = {
     youtube: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "email",
+            name: "youtube",
             tileImage: 'img/AppStore/YouTube.png'
         };
     },
@@ -168,15 +168,14 @@ window.TileBuilders = {
     feature: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "feature",            
+            name: "feature"   
         };
     },
 
     dynamicTile: function (uniqueId) {
         return {
             niqueId: uniqueId,
-            name: "dynamicTile",
-            
+            name: "dynamicTile"            
         }
     },
 
@@ -193,7 +192,7 @@ window.TileBuilders = {
     buy: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "buy",            
+            name: "buy"           
         };
 
     }

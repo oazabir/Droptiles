@@ -1,16 +1,16 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="RssReader.aspx.cs" Inherits="RssReader" MasterPageFile="~/Droptiles.master" %>
+<%@ Page Language="C#" AutoEventWireup="true"  CodeFile="RssReader.aspx.cs" Inherits="RssReader" MasterPageFile="~/Droptiles.master" %>
 <%@ OutputCache NoStore="true" Location="None"  %>
 <asp:Content ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" type="text/css" href="css/rssreader.css?v=1" />
+    <link rel="stylesheet" type="text/css" href="css/rssreader.css?v=10" />
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="scripts" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
     
-    <script type="text/javascript" src="js/TheCore.js?v=2"></script>
+    <script type="text/javascript" src="js/TheCore.js?v=10"></script>
     <script type="text/javascript" src="RssTiles.ashx"></script>
-    <script type="text/javascript" src="js/RssReader.js?v=2"></script>
+    <script type="text/javascript" src="js/RssReader.js?v=10"></script>
 
     <script type="text/ecmascript">
         
