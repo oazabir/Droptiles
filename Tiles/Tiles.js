@@ -16,7 +16,7 @@ window.DefaultTiles = [
            { id: "weather1", name: "weather" },
            { id: "cuttherope1", name: "cutTheRope" },
            //{ id: "calendar1", name: "calendar" },
-           { id: "video1", name: "video" },
+           { id: "myblog1", name: "myblog" },		   
            { id: "feature1", name: "feature" },
            { id: "angrybirds1", name: "angrybirds" }
            //{ id: "facebook1", name: "facebook" }
@@ -26,7 +26,7 @@ window.DefaultTiles = [
     {
         name: "Section2",
         tiles: [
-           { id: "myblog1", name: "myblog" },
+           { id: "video1", name: "video" },
            { id: "wikipedia1", name: "wikipedia" },           
            //{ id: "email1", name: "email" },
            //{ id: "maps1", name: "maps" },
@@ -251,7 +251,7 @@ window.TileBuilders = {
             uniqueId: uniqueId,
             name: "news",
             label: "My Blog",
-            color: "bg-color-green",
+            color: "bg-color-blueDark",
             size: "tile-double",
             appUrl: "http://omaralzabir.com/",
             scriptSrc: ["tiles/news/news.js?v=1"],
