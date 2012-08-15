@@ -14,7 +14,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/droptiles.css?v=10">
+    <link rel="stylesheet" type="text/css" href="css/droptiles.css?v=11">
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -53,7 +53,7 @@
 <script type="text/javascript" src="js/User.js"></script>
 
 <% } else { %>
-<script type="text/javascript" src="js/Combined.js?v=10"></script>
+<script type="text/javascript" src="js/Combined.js?v=11"></script>
 <% } %>    
 
 <script type="text/javascript">
