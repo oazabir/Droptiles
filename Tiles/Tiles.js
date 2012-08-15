@@ -316,7 +316,7 @@ window.TileBuilders = {
             name: "buy",
             color: "bg-color-blueDark",
             size: 'tile-double tile-double-vertical',
-            slidesFrom: ["tiles/buy/buy.html"],
+            slidesFrom: ["tiles/buy/buy.html?v=1"],
             cssSrc: ["tiles/buy/buy.css"]
         };       
     },

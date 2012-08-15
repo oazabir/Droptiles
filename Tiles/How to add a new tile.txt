@@ -1,0 +1,6 @@
+﻿1. Create a new folder inside the Tiles folder for your tile.
+2. Build the html, js, css as you like.
+3. Open the Tiles\Tiles.js file and create a definition for the tile. Just copy paste one of the tiles and change the name, color, script url etc. 
+4. Then at the top of the tiles.js, find the window.DefaultTiles = { ... } and place the new tile where you want it to appear.
+
+That's it!
