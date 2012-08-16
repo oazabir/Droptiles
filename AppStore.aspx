@@ -1,12 +1,12 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="AppStore.aspx.cs" Inherits="Tiles_AppStore" MasterPageFile="Droptiles.master" %>
 <asp:Content runat="server" ContentPlaceHolderID="head">
-    <link rel="stylesheet" type="text/css" href="css/AppStore.css?v=12" /> 
+    <link rel="stylesheet" type="text/css" href="css/AppStore.css?v=" /> 
 </asp:Content>
 <asp:Content runat="server" ContentPlaceHolderID="scripts">
     <!-- Copyright 2012 Omar AL Zabir -->
-    <script type="text/javascript" src="js/TheCore.js?v=12"></script>
-    <script type="text/javascript" src="Tiles/AppStoreTiles.js?v=12"></script>
-    <script type="text/javascript" src="js/AppStore.js?v=12"></script>       
+    <script type="text/javascript" src="js/TheCore.js?v="></script>
+    <script type="text/javascript" src="Tiles/AppStoreTiles.js?v="></script>
+    <script type="text/javascript" src="js/AppStore.js?v="></script>       
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="body">

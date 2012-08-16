@@ -358,12 +358,16 @@ var ui = {
             revert: true,
             distance: 10,
             tolerance: "pointer",
+            delay: 500,
             "opacity": 0.6,
             start: function (event, o) {
+                window.dragging = true;
                 o.item.data("noclick", true);
                 $(ui.trash).fadeIn();
+                //$('#body').kinetic("stop");
             },
             stop: function (event, o) {
+                window.dragging = false;
                 o.item.data("noclick", false);                
                 $(ui.trash).fadeOut();
 
@@ -676,4 +680,15 @@ $(document).ready(function () {
     if ($.browser.msie && parseInt($.browser.version) < 8)
         $("#browser_incompatible").show();
 
+    // Implement drag & scroll the window behavior
+    if ($.browser.msie == null) {
+        $('#body').kinetic({
+            moved: function (settings) {
+                if (!window.dragging) {
+                    $(window).scrollLeft($(window).scrollLeft() + settings.scrollLeft);
+                    $(window).scrollTop($(window).scrollTop() + settings.scrollTop);
+                }
+            }
+        });
+    }    
 });

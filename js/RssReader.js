@@ -69,5 +69,15 @@ $(document).ready(function () {
             window.scrollBy(-delta * 50, 0);
     });
 
-    
+    // Implement drag & scroll the window behavior
+    if ($.browser.msie == null) {
+        $('#body').kinetic({
+            moved: function (settings) {
+                if (!window.dragging) {
+                    $(window).scrollLeft($(window).scrollLeft() + settings.scrollLeft);
+                    $(window).scrollTop($(window).scrollTop() + settings.scrollTop);
+                }
+            }
+        });
+    }
 });

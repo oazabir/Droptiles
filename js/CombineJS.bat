@@ -3,6 +3,7 @@ type jquery-1.7.2.min.js > Combined.js
 type jquery-ui-1.8.21.custom.min.js >> Combined.js
 type jQueryEnhancement.js >> Combined.js
 type jQuery.MouseWheel.js >> Combined.js
+type jquery.kinetic.js >> Combined.js
 type Knockout-2.1.0.js >> Combined.js
 type cookie.js >> Combined.js
 type bootstrap.min.js >> Combined.js
