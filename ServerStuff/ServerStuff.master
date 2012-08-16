@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
     <%--<link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.min.css">--%>
-    <link rel="stylesheet" type="text/css" href="../css/Droptiles.css?v=">
+    <link rel="stylesheet" type="text/css" href="../css/Droptiles.css?v=14">
     <style type="text/css">
         .container {
             margin-left: 100px;
@@ -37,9 +37,9 @@
     <!-- 
         If you change any of the above javascript files, make sure you run the Combine.bat
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
-        forget to update the ?v=#. Otherwise user's will have cached copies in their browser
+        forget to update the ?v=14#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="../js/Combined.js?v="></script>
+    <script type="text/javascript" src="../js/Combined.js?v=14"></script>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
