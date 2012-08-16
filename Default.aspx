@@ -28,7 +28,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-    <div id="body">
+    <div id="body" class="unselectable">
         <div id="navbar" class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">

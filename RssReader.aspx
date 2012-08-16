@@ -29,7 +29,7 @@
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-    <div id="body">        
+    <div id="body" class="unselectable">        
         <div id="content" style="visibility: hidden">
             <div id="metro-sections-container" class="metro">
                 <div id="trash" class="trashcan">

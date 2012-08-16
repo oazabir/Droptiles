@@ -10,7 +10,7 @@
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="body">
-    <div id="body" class="appstore">
+    <div id="body" class="appstore unselectable ">
         <div id="navbar" class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
