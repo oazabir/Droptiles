@@ -335,7 +335,7 @@ var ui = {
     makeSortable: function () {
         $(ui.trash).droppable({
             tolerance: 'touch',
-            hoverClass: 'highlight',
+            hoverClass: 'trashcash_highlight',
             over: function (event, o) {
                 //$(this).animate({ "zoom": "1.5" });
             },

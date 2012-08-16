@@ -11,12 +11,12 @@
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
-    <script type="text/javascript" src="js/TheCore.js?v=11"></script>
-    <script type="text/javascript" src="tiles/tiles.js?v=11"></script>
-    <script type="text/javascript" src="js/Dashboard.js?v=11"></script>
+    <script type="text/javascript" src="js/TheCore.js?v=12"></script>
+    <script type="text/javascript" src="tiles/tiles.js?v=12"></script>
+    <script type="text/javascript" src="js/Dashboard.js?v=12"></script>
     
 <% } else { %>    
-    <script type="text/javascript" src="js/CombinedDashboard.js?v=11"></script>
+    <script type="text/javascript" src="js/CombinedDashboard.js?v=12"></script>
 <% } %>
 
     <script type="text/ecmascript">

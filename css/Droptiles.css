@@ -417,13 +417,11 @@ body {
 
 #trash {
     position: fixed;
-    top: 50px;
-    left: 50%;
+    bottom: 10px;
+    left: 10px;
     width: 64px;
     height: 64px;
     display: none;
-    color: white;
-    fill: white;
     z-index: 10000
 }
 
