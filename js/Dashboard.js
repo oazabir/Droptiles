@@ -35,7 +35,7 @@ var ui = {
     tile_subContent_color: 'bg-color-blueDark',
     tile_multi_content_selector: '.tile-multi-content',
     tile_multi_content: 'tile-multi-content',
-    tile_content_slide_delay: 2000,
+    tile_content_slide_delay: 5000,
     tile_content_sub_selector: '.tile-content-sub',
     tile_content_sub: 'tile-content-sub',
     trash: '#trash',
@@ -305,10 +305,15 @@ var ui = {
         through the slides.
     */
     animateTiles: function () {
+        //ui.animateTilesOneAfterAnother();
+        ui.animateTilesAllAtOnce();
+    },
+
+    animateTilesOneAfterAnother: function () {
         window.clearInterval(ui.timerId);
         window.lastTileIndex = 0;
         ui.timerId = window.setInterval(function () {
-            var tilesWithSlides =$(ui.tile_selector).has(ui.tile_content_main_selector);
+            var tilesWithSlides = $(ui.tile_selector).has(ui.tile_content_main_selector);
             if (window.lastTileIndex == tilesWithSlides.length)
                 window.lastTileIndex = 0;
 
@@ -326,6 +331,26 @@ var ui = {
                     el.data("slideIndex", ++slideIndex);
                 }
             }
+        }, ui.tile_content_slide_delay);
+    },
+
+    animateTilesAllAtOnce: function () {
+        window.clearInterval(ui.timerId);
+        window.lastTileIndex = 0;
+        ui.timerId = window.setInterval(function () {
+            $(ui.tile_selector).each(function (index, tile) {
+                var el = $(tile);
+                var slides = $(ui.tile_content_main_selector, el);
+                if (slides.length > 0) {
+                    var slideIndex = el.data("slideIndex") || 1;
+                    if (slideIndex == slides.length) {
+                        slideIndex = 0;
+                    }
+                    var firstPage = slides.first();
+                    firstPage.animate({ marginTop: -(slideIndex * firstPage.height()) }, 500);
+                    el.data("slideIndex", ++slideIndex);
+                }
+            });
         }, ui.tile_content_slide_delay);
     },
 
