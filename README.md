@@ -7,6 +7,8 @@
 
 ### [See it live!](http://droptiles.com), go to [Droptiles.com](http://droptiles.com), for Technical Documentation, read the [Codeproject article](http://www.codeproject.com/Articles/421601/Droptiles-Metro-style-Live-Tiles-powered-Web-Dashb).
 
+Watch [my presentation at London AJAX User Group](http://skillsmatter.com/podcast/home/droptiles-windows-8-modern-ui-on-the-web-using-plain-html-css-and-javascript) introducing Droptiles and building new Tiles. 
+
 ### Features
 * **Metro style** user interface. CSS framework to build metro style websites, inspired by [metroui.org.ua](http://metroui.org.ua). Icons from [dAKirby309](http://dakirby309.deviantart.com/art/Metro-UI-Dock-Icon-Set-RELEASED-678-Icons-280724102).
 * **Drag & Drop** tiles to personalize the experience. 
@@ -48,6 +50,7 @@ Email me for any query: omaralzabir at gmail dot com.
 * [KnockoutJS](http://knockoutjs.com/) for client side Object Model and data binding.
 * [UnderscoreJS](http://underscorejs.org/).
 * [Bootstrap](http://twitter.github.com/bootstrap/) for cross-browser CSS framework and jQuery plugins.
+
 
 ### Screenshots
 #### App Store
