@@ -35,31 +35,16 @@
                     <a class="pull-left" style="margin-top: 7px; margin-right: 5px;" href="">
                         <img src="img/avatar474_2.gif" style="max-height: 16px;" />
                     </a>
-                    <h1><a class="brand" href="?">Droptiles</a></h1>
+                    <h1><a class="brand" href="?">Windows 8 experience</a></h1>
                     <div class="nav-collapse">
                         <ul class="nav">
+                            <li><img src="img/tiles/icon-vg.png" /></li>
                             <li><a class="active" href="?"><i class="icon-th-large"></i>Dashboard</a></li>
-                            <li><a href="AppStore.aspx"><i class="icon-shopping-cart"></i>Apps</a></li>
-                            <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-gift"></i>I want this!</a></li>
-                            <li>
-                                <form id="googleForm" class="navbar-search pull-left" action="http://www.google.com/search" target="_blank">
-                                    <input id="googleSearchText" type="text" class="search-query span2" name="q" placeholder="Google">
-                                </form>
-                            </li>
+                            <li><a href="AppStore.aspx"><i class="icon-shopping-cart"></i>Apps</a></li>                            
                         </ul>
                         <ul class="nav pull-right">
                             <%--<li><a href="javascript:fullscreen()"><i class="icon-facetime-video"></i>Go Fullscreen</a></li>--%>
-                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-refresh"></i>Reset</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tint"></i>Theme<b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" onclick="ui.switchTheme('theme-green')">Green</a></li>
-                                    <li><a href="#" onclick="ui.switchTheme('theme-white')">White</a></li>
-                                    <li><a href="#" onclick="ui.switchTheme('theme-Bloom')">Bloom</a></li>                                    
-                                </ul>
-                            </li>                            
-                            <li data-bind="if: user().isAnonymous"><a onclick="ui.login()" href="#login"><i class="icon-user"></i>Login</a></li>
-                            <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-user"></i>Logout</a></li>
+                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-refresh"></i>Reset</a></li>                            
                         </ul>
                     </div>
                 </div>

@@ -9,38 +9,28 @@ window.DefaultTiles = [
     {
         name :"Section1",
         tiles: [
-           { id: "flickr1", name:"flickr" },
-           //{ id: "amazon1", name:"amazon" },
-           { id: "news1", name: "news" },
-           { id: "reader1", name: "reader" },        
+           { id: "mailArticle1", name: "mainArticle" },
+           { id: "newsE241", name: "newsE24" },
+           { id: "skyDrive1", name: "skyDrive" },
+           { id: "windows8Introduction1", name: "windows8Introduction" },
+           { id: "newsVGSmall1", name: "newsVGSmall" },
+           { id: "newsVGDouble1", name: "newsVGDouble" },
            { id: "weather1", name: "weather" },
-           { id: "cuttherope1", name: "cutTheRope" },
-           //{ id: "calendar1", name: "calendar" },
-           { id: "myblog1", name: "myblog" },		   
-           { id: "feature1", name: "feature" },
-           { id: "angrybirds1", name: "angrybirds" }
-           //{ id: "facebook1", name: "facebook" }
-           
+           { id: "angryBirds1", name: "angryBirds" }
         ]
     },
     {
         name: "Section2",
         tiles: [
-           { id: "video1", name: "video" },
-           { id: "wikipedia1", name: "wikipedia" },           
-           //{ id: "email1", name: "email" },
-           //{ id: "maps1", name: "maps" },
+           { id: "vgTV1", name: "vgTV" },
+           { id: "wikipedia1", name: "wikipedia" },
+           { id: "mainArticleDouble1", name: "mainArticleDouble" },
            { id: "facebook1", name: "facebook" },
+           { id: "buyWindows1", name: "buyWindows" },
+           { id: "mainArticleDouble2", name: "mainArticleDouble" },
+           { id: "newsVGDouble2", name: "newsVGDouble" },
            { id: "ie1", name: "ie" },
-           { id: "dynamicTile1", name: "dynamicTile" },
-           { id: "buy1", name: "buy" }]
-    },
-    {
-        name: "Section3", tiles: [
-            
-           //{ id: "youtube1", name: "youtube" },
-           //{ id: "ie1", name: "ie" }
-           { id: "howto1", name: "howto" }           
+           { id: "newsVGDouble3", name: "newsVGDouble" }
         ]
     }
 ];
@@ -53,7 +43,175 @@ window.DefaultTiles = _.map(window.DefaultTiles, function (section) {
     })).join(".");
 }).join("|");
         
+window.TileBuilders = {
+    mainArticle: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "mainArticle",
+            color: "bg-color-darkBlue",
+            label: "Article",
+            size: "tile-double tile-double-vertical",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://www.vg.no/drfront/hovedlopet/front-86.xml" }
+        };
+    },
+    newsE24: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "newsE24",
+            color: "bg-color-red",
+            label: "E24",
+            size: "tile-double",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://www.vg.no/rss/nyfront.php?frontId=1" }
+        };
+    },
+    skyDrive: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "skyDrive",
+            iconSrc: "img/tiles/icon-skydrive.png",
+            label: "Skydrive",
+            appUrl: "http://www.skydrive.com/"
+        };
+    },
+    windows8Introduction: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "windows8Introduction",
+            size: "tile-double",
+            color: "bg-color-blueDark",
+            appUrl: "http://windows.microsoft.com/en-US/windows-8/release-preview",
+            slidesFrom: ["tiles/features/feature1.html",
+                "tiles/features/feature2.html",
+                "tiles/features/feature3.html"],
+            cssSrc: ["tiles/features/features.css"]
+        };
+        
+    },
+    newsVGSmall: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "newsVGSmall",
+            color: "bg-color-greenDark",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://www.vg.no/rss/nyfront.php?frontId=1" }
+        };
+    },
+    newsVGDouble: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "newsVGDouble",
+            color: "bg-color-green",
+            label: "VG News",
+            size: "tile-double",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://www.vg.no/rss/nyfront.php?frontId=1" }
+        };
+    },
+    weather: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "weather",
+            color: "bg-color-purple",
+            label: "Weather",
+            appTitle: "Weather App",
+            appUrl: "http://weather.yahoo.com/norway/oslo-fylke/oslo-862592/",
+            size: "tile-double",
+            scriptSrc: ["tiles/weather/jQuery.simpleWeather.js", "tiles/weather/weather.js"],
+            cssSrc: ["tiles/weather/weather.css"],
+            initFunc: "load_weather",
+            initParams: {
+                location: 'Oslo, Norway'
+            }
+        };
+    },
+    angryBirds: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "angryBirds",
+            tileImage: "img/Angrybirds.jpg",
+            appUrl: "http://chrome.angrybirds.com/"
+        };
+    },
+    vgTV: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "vbTV",
+            size: "tile-double",
+            iconSrc: "img/tiles/icon-vgtv.png",
+            appUrl: "http://www.vgtv.no/"
+        };
+    },
+    wikipedia: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "wikipedia",
+            iconSrc: "img/tiles/icon-wikipedia.png",
+            label: "Wikipedia",
+            color: "bg-color-green",
+            appIcon: "img/loadingscreens/icon-wikipedia.png",
+            appUrl: "http://www.wikipedia.org"
+        };
+    },
 
+    buyWindows: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "buyWindows",
+            iconSrc: "img/tiles/icon-cart.png",
+            label: "Buy Windows 8",
+            color: "bg-color-blueDark",
+            appIcon: "img/loadingscreens/icon-cart.png",
+            appUrl: "http://buywindows8.com/"
+        };
+    },
+    facebook: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "facebook",
+            iconSrc: "img/tiles/icon-facebook.png",
+            label: "Facebook",
+            size: "tile-double",
+            color: "bg-color-blueDark",
+            appUrl: "http://www.facebook.com/",
+            appInNewWindow: true
+        };
+    },
+    ie: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "ie",
+            iconSrc: "img/tiles/icon-ie.png",
+            label: "Internet Explorer 10",
+            appUrl: "http://ie.microsoft.com/testDrive/"
+        };
+    },
+    mainArticleDouble: function (uniqueId) {
+        return {
+            uniqueId: uniqueId,
+            name: "mainArticleDouble",
+            color: "bg-color-blue",
+            label: "Article",
+            size: "tile-double",
+            scriptSrc: ["tiles/news/news.js?v=1"],
+            cssSrc: ["tiles/news/news.css?v=1"],
+            initFunc: "load_news",
+            initParams: { url: "http://www.vg.no/drfront/hovedlopet/front-86.xml" }
+        };
+    }
+};
+
+
+/*
 // Definition of the tiles, their default values.
 window.TileBuilders = {
 
@@ -333,3 +491,4 @@ window.TileBuilders = {
     }
         
 };
+*/

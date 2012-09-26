@@ -67,8 +67,8 @@
 <% if (Profile.IsAnonymous) { %>
 <script type="text/javascript">
     window.currentUser = new User({
-        firstName: "None",
-        lastName: "Anonymous",
+        firstName: "John",
+        lastName: "Windows",
         photo: "img/User No-Frame.png",
         isAnonymous: true
     });
