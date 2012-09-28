@@ -43,6 +43,8 @@ Follow me on [my blog](http://omaralzabir.com) for future updates.
 ### License
 *Droptiles* is **Open Source**. It is free for personal use as long as you keep the copyright notices intact. In order to buy license, go to the [Droptiles production site](http://www.droptiles.com/) and there's a tile on the right side to place the order through Paypal.
 
+Once you buy the commercial license, you can remove the copyright notice on the footer. You can make any changes you like on the source code. But you will have to merge the Droptiles main codebase with your customized codebase yourself. If you want to outsource some customization work to offshore developers, let me know. 
+
 Email me for any query: omaralzabir at gmail dot com.
 
 ### Technologies
