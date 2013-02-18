@@ -96,36 +96,38 @@
                 <div class="metro-sections" data-bind="foreach: sections">
                     <div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">
                         <div data-bind="attr: { id: uniqueId, 'class': tileClasses }">
-                            <!-- ko if: tileImage -->
-                            <div class="tile-image">
-                                <img data-bind="attr: { src: tileImage }" src="img/Internet%20Explorer.png" />
-                            </div>
-                            <!-- /ko -->
-                            <!-- ko if: iconSrc -->
-                            <!-- ko if: slides().length == 0 -->
-                            <div data-bind="attr: { 'class': iconClasses }">
-                                <img data-bind="attr: { src: iconSrc }" src="img/Internet%20Explorer.png" />
-                            </div>
-                            <!-- /ko -->
-                            <!-- /ko -->
-                            <div data-bind="foreach: slides">
-                                <div class="tile-content-main">
-                                    <div data-bind="html: $data">
+                            <a class="metro-tile-link">                        
+                                <!-- ko if: tileImage -->
+                                <div class="tile-image">
+                                    <img data-bind="attr: { src: tileImage }" src="img/Internet%20Explorer.png" />
+                                </div>
+                                <!-- /ko -->
+                                <!-- ko if: iconSrc -->
+                                <!-- ko if: slides().length == 0 -->
+                                <div data-bind="attr: { 'class': iconClasses }">
+                                    <img data-bind="attr: { src: iconSrc }" src="img/Internet%20Explorer.png" />
+                                </div>
+                                <!-- /ko -->
+                                <!-- /ko -->
+                                <div data-bind="foreach: slides">
+                                    <div class="tile-content-main">
+                                        <div data-bind="html: $data">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- ko if: label -->
-                            <span class="tile-label" data-bind="html: label">Label</span>
-                            <!-- /ko -->
-                            <!-- ko if: counter -->
-                            <span class="tile-counter" data-bind="html: counter">10</span>
-                            <!-- /ko -->
-                            <!-- ko if: subContent -->
-                            <div data-bind="attr: { 'class': subContentClasses }, html: subContent">
-                                subContent
-                            </div>
-                            <!-- /ko -->
-                        </div>
+                                <!-- ko if: label -->
+                                <span class="tile-label" data-bind="html: label">Label</span>
+                                <!-- /ko -->
+                                <!-- ko if: counter -->
+                                <span class="tile-counter" data-bind="html: counter">10</span>
+                                <!-- /ko -->
+                                <!-- ko if: subContent -->
+                                <div data-bind="attr: { 'class': subContentClasses }, html: subContent">
+                                    subContent
+                                </div>
+                                <!-- /ko -->
+                            </a>
+                        </div>                        
                     </div>
                 </div>
             </div>

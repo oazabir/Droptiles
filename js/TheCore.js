@@ -287,7 +287,11 @@ var Tile = function (param, ui) {
                 }
             })
         }
-    }    
+    }
+
+    this.click = function () {
+        
+    }
 };
 
 /*

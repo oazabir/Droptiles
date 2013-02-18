@@ -280,6 +280,10 @@ html[xmlns] .clearfix{display:block;}
 .metro hr{color:#fff;background-color:#fff;}
 .metro .metro-replies .metro-reply{background:#1c1c1c;}.metro .metro-replies .metro-reply *{color:#ffffff;}
 
+.metro-tile-link {
+    width: 100%;
+    height: 100%;
+}
 
 .tile input, .tile select {
     color: black;

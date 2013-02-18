@@ -93,14 +93,16 @@ var ui = {
                 c_sub.animate({ "height": 0, "opacity": 0 }, 200);
             }
         });
-
+        
+        el.find("a.metro-tile-link").click(function (event) {
+            $(this).parent().click();
+        });
         // On click, launch the app either inside dashboard or in a new browser tab
-        el.click(function (event) {
+        el.click(function(event) {
             // Drag & drop just happened. Prevent incorrect click event.
             if ($(this).data("noclick") == true)
                 return;
 
-            
             // If the item clicked on the tile is a link or inside a link, don't
             // lauch app. Let browser do the hyperlink click behavior.
             if ($(event.target).parents("a").length > 0)
@@ -151,10 +153,10 @@ var ui = {
                                     'top': ($(window).height() - 512) / 2
                                 })
                         );
-                    
+
                 }
             }
-        });
+        });        
     },
 
     /*
