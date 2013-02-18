@@ -94,22 +94,25 @@ var ui = {
             }
         });
         
-        el.find("a.metro-tile-link").click(function (event) {
-            $(this).parent().click();
-        });
+        //el.find("a.metro-tile-link").click(function (event) {
+        //    $(this).parent().click();
+        //});
         // On click, launch the app either inside dashboard or in a new browser tab
-        el.click(function(event) {
+        el.find("a.metro-tile-link").click(function (event) {
+        //el.click(function(event) {
             // Drag & drop just happened. Prevent incorrect click event.
-            if ($(this).data("noclick") == true)
+            if ($(this).parent().data("noclick") == true)
                 return;
 
             // If the item clicked on the tile is a link or inside a link, don't
             // lauch app. Let browser do the hyperlink click behavior.
-            if ($(event.target).parents("a").length > 0)
+            if (event.target.tagName == "A" ||
+                !$(event.target).closest("a").hasClass("metro-tile-link"))
                 return;
 
-            // Open app in new browser window. Not all websites like IFRAMEing.
             if (!_.isEmpty(tile.appUrl)) {
+
+                // Open app in new browser window. Not all websites like IFRAMEing.
                 if (tile.appInNewWindow) {
                     var open_link = window.open('', '_blank');
                     open_link.location = tile.appUrl;
