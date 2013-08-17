@@ -1,9 +1,8 @@
 ﻿TODO
-	* ADD: jquery mobile to make it work in mobile.
 	* Make tiles draggable in tablet using  http://gridster.net/ http://mcpants.github.com/jquery.shapeshift/
-	* PHP version.
 
 1.1
+	* ADD: jquery mobile to make it work in mobile.
 	* FIX: Moving tile from one section to another doesn't remove the tile from the original section.
 	* FIX: App Store CSS.
 	* FIX: Add the trashcan back. Trashcan hover effect. Show trashcan when drag & drop starts.
@@ -12,3 +11,4 @@
 	* FIX: Tile sort bugs fixed by using the knockout.sortable plugin. My custom implementation of sortable was buggy.
 	* ADD: Removed database and file based user profile storage. One step closer to ASP.NET free implementation.
 	* ADD: Updated jQuery and Bootstrap. So many breaking changes!
+	* ADD: PHP version.
