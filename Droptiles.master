@@ -51,8 +51,8 @@
 <script type="text/javascript" src="js/Underscore.js"></script>
 <script type="text/javascript" src="js/jQuery.hashchange.js"></script>
 <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
-
 <script type="text/javascript" src="js/User.js"></script>
+
 <% } else { %>
 <script type="text/javascript" src="js/Combined.js?v=14"></script>
 <% } %>    
