@@ -1,11 +1,11 @@
 ﻿TODO
-	* FIX: Moving tile from one section to another doesn't remove the tile from the original section.
-	* FIX: App Store CSS.
 	* ADD: jquery mobile to make it work in mobile.
 	* Make tiles draggable in tablet using  http://gridster.net/ http://mcpants.github.com/jquery.shapeshift/
 	* PHP version.
 
 1.1
+	* FIX: Moving tile from one section to another doesn't remove the tile from the original section.
+	* FIX: App Store CSS.
 	* FIX: Add the trashcan back. Trashcan hover effect. Show trashcan when drag & drop starts.
 	* FIX: After drag & drop, news tile would get duplicated after page reload. 
 	* CHANGE: Remove tile over underline text.
