@@ -1,6 +1,7 @@
 ﻿TODO
 	* FIX: Moving tile from one section to another doesn't remove the tile from the original section.
-	* Fix App Store CSS.
+	* FIX: App Store CSS.
+	* ADD: jquery mobile to make it work in mobile.
 	* Make tiles draggable in tablet using  http://gridster.net/ http://mcpants.github.com/jquery.shapeshift/
 	* PHP version.
 

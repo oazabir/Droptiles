@@ -115,7 +115,7 @@ window.TileBuilders = {
     video: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "ie",
+            name: "video",
             size: "tile-double",
             color: "bg-color-darken",
             iconSrc: "img/Youtube.png",
@@ -201,7 +201,7 @@ window.TileBuilders = {
     youtube: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "email",
+            name: "youtube",
             iconSrc: "img/Youtube.png",
             label: "Youtube",
             color: "bg-color-darken",
@@ -278,7 +278,7 @@ window.TileBuilders = {
     howto: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "feature",
+            name: "howto",
             color: "bg-color-blue",
             size: "tile-triple tile-triple-vertical",
             appUrl: "http://oazabir.github.com/Droptiles/",
