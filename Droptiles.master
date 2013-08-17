@@ -32,7 +32,7 @@
     </asp:ContentPlaceHolder>
 </body>
 
-<% if (Request.IsLocal) { %>    
+<% if (!Request.IsLocal) { %>    
     <!-- 
     If you change any of the below javascript files, make sure you run the Combine.bat
     file in the /js folder to generate the CombinedDashboard.js file again. And then don't
@@ -50,7 +50,6 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Underscore.js"></script>
 <script type="text/javascript" src="js/jQuery.hashchange.js"></script>
-<script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="js/User.js"></script>
 
 <% } else { %>
