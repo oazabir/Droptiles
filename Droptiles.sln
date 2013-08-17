@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Droptiles", ".", "{0256E984-6B4D-4FF9-B084-4B3660F5E309}"
 	ProjectSection(WebsiteProperties) = preProject
 		Debug.AspNetCompiler.Debug = "True"
@@ -18,7 +18,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Droptiles", ".", "{0256E984
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.VirtualPath = "/Droptiles"
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv3.5"
-		VWDPort = "60381"
+		VWDPort = "8080"
 	EndProjectSection
 EndProject
 Global

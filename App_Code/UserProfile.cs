@@ -1,42 +1,44 @@
-﻿// Copyright 2012 Omar AL Zabir
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Profile;
-using System.Web.Security;
-
 
 /// <summary>
 /// Summary description for UserProfile
 /// </summary>
-public class UserProfile : ProfileBase
+public class UserProfile
 {
-    static public UserProfile CurrentUser
+	public UserProfile()
+	{
+		//
+		// TODO: Add constructor logic here
+		//
+	}
+
+    public string Firstname { get; set; }
+    public string Lastname { get; set; }
+    public string ProfileData { get; set; }
+    public string Password { get; set; }
+    public string Username { get; set; }
+
+    public override string ToString()
     {
-        get
-        {
-            return (UserProfile)
-                    (ProfileBase.Create(Membership.GetUser().UserName));
-        }
+        return Username + Environment.NewLine[0]
+            + Password + Environment.NewLine[0]
+            + Firstname + Environment.NewLine[0]
+            + Lastname + Environment.NewLine[0]
+            + ProfileData;
     }
 
-    public string Firstname
+    public UserProfile FromString(string data)
     {
-        get { return ((string)(base["Firstname"])); }
-        set { base["Firstname"] = value; Save(); }
-    }
+        string[] lines = data.Split(Environment.NewLine[0]);
+        this.Username = lines[0];
+        this.Password = lines[1];
+        this.Firstname = lines[2];
+        this.Lastname = lines[3];
+        this.ProfileData = lines[4];
 
-    public string Lastname    
-    {
-        get { return ((string)(base["Lastname"])); }
-        set { base["Lastname"] = value; Save(); }
+        return this;
     }
-
-    public string Tiles
-    {
-        get { return ((string)(base["Tiles"])); }
-        set { base["Tiles"] = value; Save(); }
-    }
-     
 }

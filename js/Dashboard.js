@@ -362,51 +362,53 @@ var ui = {
     /*
         Enable the drag & drop behavior of tiles and dropping of tiles on the trash can.
     */
-    makeSortable: function () {
-        $(ui.trash).droppable({
-            tolerance: 'touch',
-            hoverClass: 'trashcash_highlight',
-            over: function (event, o) {
-                //$(this).animate({ "zoom": "1.5" });
-            },
-            out: function (event, o) {
-                //$(this).animate({ "zoom": "1.0" });
-            },
-            drop: function (event, o) {
-                //$(this).animate({ "zoom": "1.0" });
-                var tileId = o.draggable[0].id;
-                $(ui.trash).fadeOut();
-                _.defer(function () {
-                    viewModel.removeTile(tileId);
-                });
+    //makeSortable: function () {
+    //    $(ui.trash).droppable({
+    //        tolerance: 'touch',
+    //        hoverClass: 'trashcash_highlight',
+    //        over: function (event, o) {
+    //            //$(this).animate({ "zoom": "1.5" });
+    //        },
+    //        out: function (event, o) {
+    //            //$(this).animate({ "zoom": "1.0" });
+    //        },
+    //        drop: function (event, o) {
+    //            //$(this).animate({ "zoom": "1.0" });
+    //            var tileId = o.draggable[0].id;
+    //            $(ui.trash).fadeOut();
+    //            _.defer(function () {
+    //                viewModel.removeTile(tileId);
+    //            });
                 
-            }
-        });
+    //        }
+    //    });
 
-        $(ui.metro_section_selector).sortable({
-            connectWith: ui.metro_section_selector,
-            revert: true,
-            distance: 10,
-            tolerance: "pointer",
-            delay: 500,
-            "opacity": 0.6,
-            start: function (event, o) {
-                window.dragging = true;
-                o.item.data("noclick", true);
-                $(ui.trash).fadeIn();
-                //$('#body').kinetic("stop");
-            },
-            stop: function (event, o) {
-                window.dragging = false;
-                o.item.data("noclick", false);                
-                $(ui.trash).fadeOut();
+    //    $(ui.metro_section_selector).sortable({
+    //        connectWith: ui.metro_section_selector,
+    //        revert: true,
+    //        distance: 10,
+    //        tolerance: "pointer",
+    //        delay: 500,
+    //        "opacity": 0.6,
+    //        start: function (event, o) {
+    //            console.log(o);
+    //            window.dragging = true;
+    //            o.item.data("noclick", true);
+    //            $(ui.trash).fadeIn();
+    //            //$('#body').kinetic("stop");
+    //        },
+    //        stop: function (event, o) {
+    //            console.log(o);
+    //            window.dragging = false;
+    //            o.item.data("noclick", false);                
+    //            $(ui.trash).fadeOut();
 
-                _.defer(function () {
-                    ui.recalcIndex();
-                });
-            }
-        });
-    },
+    //            //_.delay(function () {
+    //            //    ui.recalcIndex();
+    //            //}, 1000);
+    //        }
+    //    });
+    //},
 
     /*
         When a tile is dragged & dropped, take the tile DIV position and use that
@@ -414,38 +416,44 @@ var ui = {
         a tile is moved from a section to another. In that case, remove the tile from
         the originating section and add it on the dropped section.
     */
-    recalcIndex: function () {
-        $(ui.metro_section_selector).each(function (sectionIndex, sectionDiv) {
-            var section = viewModel.getSection(sectionDiv.id);
-            $(ui.tile_selector, sectionDiv).each(function (index, tileDiv) {
-                var tileId = tileDiv.id;
-                var tileObject = section.getTile(tileId);
-                if (tileObject != null) {
-                    tileObject.index = index;
-                }
-                else {
-                    var tileFromSomewhere;
-                    var containingSection = ko.utils.arrayFirst(viewModel.sections(), function (s) {
-                        tileFromSomewhere = ko.utils.arrayFirst(s.tiles(), function (t) {
-                            return t.uniqueId == tileId;
-                        });
-                        return tileFromSomewhere != null;
-                    });
-                    if (containingSection != null) {
-                        containingSection.tiles.remove(tileFromSomewhere);
-                    }
-                    if (tileFromSomewhere != null) {
-                        tileFromSomewhere.index = index;
-                        section.tiles.splice(index, 0, tileFromSomewhere);
-                        _.defer(function () {
-                            $(tileDiv).remove();
-                        });
-                    }
-                }
+    //recalcIndex: function () {
+    //    $(ui.metro_section_selector).each(function (sectionIndex, sectionDiv) {
+    //        var section = viewModel.getSection(sectionDiv.id);
+    //        $(ui.tile_selector, sectionDiv).each(function (index, tileDiv) {
+    //            var tileId = tileDiv.id;
+    //            var tileObject = section.getTile(tileId);
+    //            if (tileObject != null) {
+    //                if (tileObject.index() != index) {
+    //                    console.log(tileId + ":" + tileObject.index() + "->" + index);
+    //                    tileObject.index(index);
+    //                }
+    //            }
+    //            else {
+    //                var tileFromSomewhere;
+    //                var containingSection = ko.utils.arrayFirst(viewModel.sections(), function (s) {
+    //                    tileFromSomewhere = ko.utils.arrayFirst(s.tiles(), function (t) {
+    //                        return t.uniqueId == tileId;
+    //                    });
+    //                    return tileFromSomewhere != null;
+    //                });
+    //                if (containingSection != null) {
+    //                    console.log(containingSection.uniqueId()+":remove:" + tileFromSomewhere.uniqueId);
+    //                    containingSection.tiles.remove(tileFromSomewhere);
+    //                    if (tileFromSomewhere != null) {
+    //                        console.log(tileFromSomewhere.uniqueId + ":" + tileFromSomewhere.index() + "->" + index);
+    //                        tileFromSomewhere.index(index);
+    //                        console.log(containingSection.uniqueId + "->" + section.uniqueId);
+    //                        section.tiles.splice(index, 0, tileFromSomewhere);
 
-            });
-        });
-    },
+    //                        //_.defer(function () {
+    //                        //    $(tileDiv).remove();
+    //                        //});
+    //                    }
+    //                }
+    //            }
+    //        });
+    //    });
+    //},
 
     //resetTiles: function () {
     //    var dynamicSection = $(ui.metro_section_selector + '+.' + ui.metro_section_overflow).each(function () {
@@ -597,18 +605,23 @@ var ui = {
 var viewModel = new DashboardModel("Start", [], window.currentUser, ui);
 
 $(document).ready(function () {
-
     // Hide the body area until it is fully loaded in order to prevent flickrs
     $('#content').css('visibility', 'visible');
 
-    // Initiate KnockoutJS binding which creates all the tiles and binds the whole
-    // UI to viewModel.
+    ko.bindingHandlers.sortable.options.start = function (arg) {
+        $(ui.trash).show();
+    }
+    ko.bindingHandlers.sortable.afterMove = function (arg) {
+        $(ui.trash).hide();
+        console.log(arg);
+    }
+    
     ko.applyBindings(viewModel);
 
     ui.hideMetroSections();
 
     // See if user has a previous session where page setup was stored
-    var cookie = readCookie("p");
+    var cookie = window.profileData || readCookie("p");
     if (cookie != null && cookie.length > 0) {
         try {
             viewModel.loadSectionsFromString(cookie, window.TileBuilders);
@@ -625,7 +638,7 @@ $(document).ready(function () {
     ui.showMetroSections(function () {
         ui.attachTiles();
         //ui.reflow();
-        ui.makeSortable();
+        //ui.makeSortable();
         ui.animateTiles();        
     });
 
@@ -647,7 +660,7 @@ $(document).ready(function () {
                     var newTileDef = builder(_.uniqueId(name));
                     var newTile = new Tile(newTileDef, ui, viewModel);
                 
-                    newTile.index = sectionTiles.length;
+                    newTile.index(sectionTiles.length);
                 
                     lastSection.addTile(newTile);
                     ui.attach(newTile);
@@ -663,10 +676,12 @@ $(document).ready(function () {
     // Subscribe again to detect changes made after the sections and tiles are 
     // created on the screen so that we can save the changes in section/tile
     viewModel.subscribeToChange(function (section, tiles) {
+        console.log("viewModel subscribe notification");
         ui.attachTiles();
 
         var newOrder = viewModel.toSectionString();
         if (newOrder !== DefaultTiles) {
+            console.log(newOrder);
             createCookie("p", newOrder, 2);
 
             if (!window.currentUser.isAnonymous) {
@@ -712,13 +727,13 @@ $(document).ready(function () {
 
     // Implement drag & scroll the window behavior
     if ($.browser.msie == null) {
-        $('#body').kinetic({
-            moved: function (settings) {
-                if (!window.dragging) {
-                    $(window).scrollLeft($(window).scrollLeft() + settings.scrollLeft);
-                    $(window).scrollTop($(window).scrollTop() + settings.scrollTop);
-                }
-            }
-        });
+        //$('#body').kinetic({
+        //    moved: function (settings) {
+        //        if (!window.dragging) {
+        //            $(window).scrollLeft($(window).scrollLeft() + settings.scrollLeft);
+        //            $(window).scrollTop($(window).scrollTop() + settings.scrollTop);
+        //        }
+        //    }
+        //});
     }    
 });

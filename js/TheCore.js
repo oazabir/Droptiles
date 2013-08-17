@@ -27,6 +27,7 @@ var DashboardModel = function (title, sections, user, ui) {
     this.user = ko.observable(user);
     this.title = ko.observable(title);
     this.sections = ko.observableArray(sections);
+    this.trash = ko.observableArray([]);
 
     // Get a section model.
     this.getSection = function (uniqueId) {
@@ -62,6 +63,7 @@ var DashboardModel = function (title, sections, user, ui) {
 
     // Subscribe to changes in each section's tile collection
     this.subscribeToChange = function (callback) {
+        // Subscribe to the changes made in the sections collection. eg add/remove section.
         self.sections.subscribe(function (sections) {
             ko.utils.arrayForEach(sections(), function (section) {
                 section.tiles.subscribe(function (tiles) {
@@ -69,6 +71,7 @@ var DashboardModel = function (title, sections, user, ui) {
                 });
             });
         });
+        // subscribe to changes made in the tiles collection of each section. eg add/remove tile.
         ko.utils.arrayForEach(self.sections(), function (section) {
             section.tiles.subscribe(function (tiles) {
                 callback(section, tiles);
@@ -104,7 +107,7 @@ var DashboardModel = function (title, sections, user, ui) {
                         else {
                             var tileParams = builder(tileId);
                             var newTile = new Tile(tileParams, ui);
-                            newTile.index = index++;
+                            //newTile.index(index++);
                             sectionTiles.push(newTile);
                         }
                     }
@@ -135,7 +138,7 @@ var DashboardModel = function (title, sections, user, ui) {
                 var builder = window.TileBuilders[tile.name];
                 var tileParams = builder(tile.id, tile.name, tile.data);
                 var newTile = new Tile(tileParams, ui);
-                newTile.index = index++;
+                //newTile.index(index++);
                 sectionTiles.push(newTile);
             });
 
@@ -154,10 +157,9 @@ var DashboardModel = function (title, sections, user, ui) {
     // Serialize sections and tiles in a string, handy to store in cookie.
     this.toSectionString = function () {
         // Format: Section1~weather1,weather.youtube1,youtube|Section2~ie1,ie.
-
         return ko.utils.arrayMap(self.sections(), function (section) {
             return section.name() + "~" +
-                ko.utils.arrayMap(section.getTilesSorted(), function (tile) {
+                ko.utils.arrayMap(section.tiles(), function (tile) {
                     return tile.uniqueId + "," + tile.name;
                 }).join(".");
         }).join("|");
@@ -174,7 +176,7 @@ var Tile = function (param, ui) {
 
     this.uniqueId = param.uniqueId; // unique ID of a tile, Weather1, Weather2. Each instance must have unique ID.
     this.name = param.name; // unique name of a tile, eg Weather. 
-    this.index = param.index || 0; // order of tile on the screen. Calculated at run time.
+    //this.index = ko.observable(param.index || 0); // order of tile on the screen. Calculated at run time.
     this.size = param.size || ""; // Size of the tile. eg tile-double, tile-double-vertical
     this.color = param.color || ui.tile_color;  // Color of tile. eg bg-color-blue
     this.additionalClass = param.additionalClass || ""; // Some additional class if you want to pass to further customize the tile
@@ -307,15 +309,15 @@ var Section = function (section) {
     this.tiles = ko.observableArray(section.tiles);
     
     // Returns tiles sorted by index
-    this.getTilesSorted = function () {
-        return self.tiles().sort(function (left, right) {
-            return left.index == right.index ? 0 :
-                (left.index < right.index ? -1 : 1)
-        });
-    }
+    //this.getTilesSorted = function () {
+    //    return self.tiles().sort(function (left, right) {
+    //        return left.index() == right.index() ? 0 :
+    //            (left.index() < right.index() ? -1 : 1)
+    //    });
+    //}
 
     // Computed function to data-bind
-    this.sortedTiles = ko.computed(this.getTilesSorted, this);
+    //this.sortedTiles = ko.computed(this.getTilesSorted, this);
 
     // Get a tile inside the section
     this.getTile = function(uniqueId) {

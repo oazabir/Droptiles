@@ -10,11 +10,21 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Profile.IsAnonymous)
-            Response.Cookies.Add(new HttpCookie("p", Profile.Tiles)
-            {
-                Expires = DateTime.Now.AddDays(30)                
-            });
+        
+    }
+
+    protected string GetProfileData()
+    {
+        if (!SecurityContextManager.IsAnonymous(Context))
+        {
+            var profile = SecurityContextManager.GetUserProfile(Context);
+
+            return "\"" + profile.ProfileData + "\"";
+        }
+        else
+        {
+            return "null";
+        }
     }
 
     private bool IsCombinedJSOlder(string path)

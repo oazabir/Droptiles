@@ -47,7 +47,7 @@
     <![endif]-->    
     
 
-    <% if (Profile.IsAnonymous) { %>
+    <% if (IsAnonymous) { %>
     <script type="text/javascript">
         window.currentUser = new User({
             firstName: "None",
@@ -59,8 +59,8 @@
     <% } else { %>
     <script type="text/javascript">
         window.currentUser = new User({
-            firstName: "<%= Profile.Firstname %>",
-            lastName: "<%= Profile.Lastname %>",
+            firstName: "<%= UserProfile.Firstname %>",
+            lastName: "<%= UserProfile.Lastname %>",
             photo: "img/User No-Frame.png",
             isAnonymous: false
         });

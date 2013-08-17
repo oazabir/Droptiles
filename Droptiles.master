@@ -39,12 +39,13 @@
     forget to update the ?v=14#. Otherwise user's will have cached copies in their browser
     and won't get the newly deployed file. -->
 
-<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.21.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.10.2.custom.min.js"></script>
 <script type="text/javascript" src="js/jQueryEnhancement.js"></script>
 <script type="text/javascript" src="js/jQuery.MouseWheel.js"></script>
 <script type="text/javascript" src="js/jquery.kinetic.js"></script>
 <script type="text/javascript" src="js/Knockout-2.1.0.js"></script>
+<script type="text/javascript" src="js/knockout.sortable.js"></script>
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Bootstrap-tooltip.js"></script> 
@@ -76,8 +77,8 @@
 <% } else { %>
 <script type="text/javascript">
     window.currentUser = new User({
-        firstName: "<%= Profile.Firstname %>",
-        lastName: "<%= Profile.Lastname %>",
+        firstName: "<%= UserProfile.Firstname %>",
+        lastName: "<%= UserProfile.Lastname %>",
         photo: "img/User No-Frame.png",
         isAnonymous: false
     });

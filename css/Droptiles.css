@@ -279,6 +279,9 @@ html[xmlns] .clearfix{display:block;}
 .metro{background:transparent;}.metro *{color:#ffffff;}
 .metro hr{color:#fff;background-color:#fff;}
 .metro .metro-replies .metro-reply{background:#1c1c1c;}.metro .metro-replies .metro-reply *{color:#ffffff;}
+.tile a {
+    text-decoration: none;
+}
 
 .metro-tile-link {
     width: 100%;
@@ -421,16 +424,17 @@ body {
 
 #trash {
     position: fixed;
-    bottom: 10px;
-    left: 10px;
+    top: 50px;
+    left: 50%;
     width: 64px;
     height: 64px;
+    z-index: 65000;
+    background: url(../img/Trashcan.png) no-repeat;
     display: none;
-    z-index: 10000
 }
 
 .trashcash_highlight {
-    zoom: 1.5;
+    border: 2px solid yellow;
 }
 
 
@@ -570,4 +574,3 @@ border: 1px solid #AAAAAA;
         background-image: url("../img/wallpapers/In Bloom.jpg");
         background-repeat: repeat;    
 }
-        

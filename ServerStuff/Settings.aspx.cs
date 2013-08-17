@@ -9,6 +9,14 @@ using System.Web.UI.WebControls;
 
 public partial class Settings : System.Web.UI.Page
 {
+    protected UserProfile UserProfile
+    {
+        get
+        {
+            return SecurityContextManager.GetUserProfile(Context);
+        }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -16,12 +24,15 @@ public partial class Settings : System.Web.UI.Page
 
     protected void Save_Button_Click(object sender, EventArgs e)
     {
+        var userStorePath = Server.MapPath("~/App_Data");
+
         var firstName = Request["firstname"];
         var lastname = Request["lastname"];
         var currentPassword = Request["current_password"];
         var newPassword = Request["new_password"];
         var confirmPassword = Request["confirm_password"];
-        
+
+        var userProfile = this.UserProfile;
         try
         {
             if (!string.IsNullOrEmpty(newPassword))
@@ -33,7 +44,7 @@ public partial class Settings : System.Web.UI.Page
                     return;
                 }
 
-                if (!Membership.GetUser(Profile.UserName).ChangePassword(currentPassword, newPassword))
+                if (!LoginProvider.Validate(userStorePath, userProfile.Username, currentPassword))
                 {
                     MessagePanel.Visible = true;
                     Message.Text = "Invalid old password or new passwords are in invalid format.";
@@ -41,9 +52,9 @@ public partial class Settings : System.Web.UI.Page
                 }
             }
 
-            Profile.Firstname = firstName;
-            Profile.Lastname = lastname;
-            Profile.Save();
+            userProfile.Firstname = firstName;
+            userProfile.Lastname = lastname;
+            LoginProvider.UpdateProfile(userStorePath, userProfile);
             Response.Redirect("Breakout.aspx");
         }
         catch (Exception x)

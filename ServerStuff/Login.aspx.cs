@@ -17,7 +17,7 @@ public partial class Login : System.Web.UI.Page
         var username = Request["username"];
         var password = Request["password"];
         var rememberMe = Convert.ToBoolean(Request["remember"] == "on");
-        if (Membership.ValidateUser(username, password))
+        if (LoginProvider.Validate(Server.MapPath("~/App_Data"), username, password))
         {
             Response.Cookies.Add(FormsAuthentication.GetAuthCookie(username, rememberMe));
             Response.Redirect("Breakout.aspx");

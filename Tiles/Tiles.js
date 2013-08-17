@@ -249,7 +249,7 @@ window.TileBuilders = {
     myblog: function (uniqueId) {
         return {
             uniqueId: uniqueId,
-            name: "news",
+            name: "myblog",
             label: "My Blog",
             color: "bg-color-blueDark",
             size: "tile-double",

@@ -20,6 +20,8 @@
 <% } %>
 
     <script type="text/javascript">
+        window.profileData = <%= GetProfileData() %>;
+
         $(document).ready(function(){
             <%= GetAlerts() %>
             });
@@ -29,18 +31,17 @@
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
     <div id="body" class="unselectable">
-        <div id="navbar" class="navbar navbar-fixed-top">
+        <div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
             <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="pull-left" style="margin-top: 7px; margin-right: 5px;" href="">
-                        <img src="img/avatar474_2.gif" style="max-height: 16px;" />
-                    </a>
-                    <h1><a class="brand" href="?">Droptiles</a></h1>
-                    <div class="nav-collapse">
+                <div class="container">                    
+                    <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><a class="active" href="?"><i class="icon-th-large"></i>Dashboard</a></li>
-                            <li><a href="AppStore.aspx"><i class="icon-shopping-cart"></i>Apps</a></li>
-                            <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-gift"></i>I want this!</a></li>
+                            <li class="active">                                
+                                <a class="brand" href="?"><img src="img/avatar474_2.gif" style="max-height: 20px; margin-top: -2px; margin-right:5px; vertical-align: middle" />Droptiles</a>
+                            </li>
+                            <li><a class="active" href="?"><i class="icon-white icon-th-large"></i>Dashboard</a></li>
+                            <li><a href="AppStore.aspx"><i class="icon-white icon-shopping-cart"></i>Apps</a></li>
+                            <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-white icon-gift"></i>I want this!</a></li>
                             <li>
                                 <form id="googleForm" class="navbar-search pull-left" action="http://www.google.com/search" target="_blank">
                                     <input id="googleSearchText" type="text" class="search-query span2" name="q" placeholder="Google">
@@ -49,17 +50,17 @@
                         </ul>
                         <ul class="nav pull-right">
                             <%--<li><a href="javascript:fullscreen()"><i class="icon-facetime-video"></i>Go Fullscreen</a></li>--%>
-                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-refresh"></i>Reset</a></li>
+                            <li><a href="ServerStuff/Logout.ashx"><i class="icon-white icon-refresh"></i>Reset</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-tint"></i>Theme<b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-white icon-tint"></i>Theme<b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="#" onclick="ui.switchTheme('theme-green')">Green</a></li>
                                     <li><a href="#" onclick="ui.switchTheme('theme-white')">White</a></li>
                                     <li><a href="#" onclick="ui.switchTheme('theme-Bloom')">Bloom</a></li>                                    
                                 </ul>
                             </li>                            
-                            <li data-bind="if: user().isAnonymous"><a onclick="ui.login()" href="#login"><i class="icon-user"></i>Login</a></li>
-                            <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-user"></i>Logout</a></li>
+                            <li data-bind="if: user().isAnonymous"><a onclick="ui.login()" href="#login"><i class="icon-white icon-user"></i>Login</a></li>
+                            <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-white icon-user"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -90,11 +91,12 @@
                 Otherwise it won't work when you will deploy on a server.
             </div>
             <div id="metro-sections-container" class="metro">
-                <div id="trash" class="trashcan">
-                    <img src="img/Trashcan.png" width="64" height="64" />
+                <div id="trash" class="trashcan" data-bind="sortable: { data: trash }">
+                    
                 </div>
                 <div class="metro-sections" data-bind="foreach: sections">
-                    <div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">
+                    <%--<div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">--%>
+                    <div class="metro-section" data-bind="sortable: { data: tiles }">
                         <div data-bind="attr: { id: uniqueId, 'class': tileClasses }">
                             <a class="metro-tile-link">                        
                                 <!-- ko if: tileImage -->
@@ -127,7 +129,8 @@
                                 </div>
                                 <!-- /ko -->
                             </a>
-                        </div>                        
+                        </div>   
+                        
                     </div>
                 </div>
             </div>
@@ -137,5 +140,6 @@
             For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>
     </div>
+
 
 </asp:Content>

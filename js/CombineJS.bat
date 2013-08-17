@@ -1,7 +1,7 @@
 ﻿
 del Combined.js
-type jquery-1.7.2.min.js > Combined.js
-type jquery-ui-1.8.21.custom.min.js >> Combined.js
+type jquery-1.9.1.min.js > Combined.js
+type jquery-ui-1.10.2.custom.min.js >> Combined.js
 type jQueryEnhancement.js >> Combined.js
 type jQuery.MouseWheel.js >> Combined.js
 type jquery.kinetic.js >> Combined.js

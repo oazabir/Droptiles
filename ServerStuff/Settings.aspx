@@ -12,7 +12,7 @@
                 <div class="metro-form-control" style="width: 300px">
                     <label>First name</label>
                     <div class="metro-text-box">
-                        <input name="firstname" type="text" value="<%= Request["firstname"] ?? Profile.Firstname %>" />
+                        <input name="firstname" type="text" value="<%= Request["firstname"] ?? UserProfile.Firstname %>" />
                         <span class="helper"></span>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="metro-form-control" style="width: 300px">
                     <label>Last name</label>
                     <div class="metro-text-box">
-                        <input name="lastname" type="text" value="<%= Request["lastname"] ?? Profile.Lastname %>" />
+                        <input name="lastname" type="text" value="<%= Request["lastname"] ?? UserProfile.Lastname %>" />
                         <span class="helper"></span>
                     </div>
                 </div>

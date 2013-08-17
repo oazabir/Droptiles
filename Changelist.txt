@@ -1,0 +1,13 @@
+﻿TODO
+	* FIX: Moving tile from one section to another doesn't remove the tile from the original section.
+	* Fix App Store CSS.
+	* Make tiles draggable in tablet using  http://gridster.net/ http://mcpants.github.com/jquery.shapeshift/
+	* PHP version.
+
+1.1
+	* FIX: Add the trashcan back. Trashcan hover effect. Show trashcan when drag & drop starts.
+	* FIX: After drag & drop, news tile would get duplicated after page reload. 
+	* CHANGE: Remove tile over underline text.
+	* FIX: Tile sort bugs fixed by using the knockout.sortable plugin. My custom implementation of sortable was buggy.
+	* ADD: Removed database and file based user profile storage. One step closer to ASP.NET free implementation.
+	* ADD: Updated jQuery and Bootstrap. So many breaking changes!

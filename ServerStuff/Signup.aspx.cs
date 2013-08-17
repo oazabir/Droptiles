@@ -32,12 +32,16 @@ public partial class Signup : System.Web.UI.Page
 
         try
         {
-            var user = Membership.CreateUser(email, password, email);
-            UserProfile profile = (UserProfile)ProfileBase.Create(user.UserName);
-
-            profile.Firstname = firstName;
-            profile.Lastname = lastname;
-            profile.Save();
+            var cookie = Request.Cookies["p"];
+            var userProfile = new UserProfile
+            {
+                Username = email,
+                Firstname = firstName,
+                Lastname = lastname,
+                Password = password,
+                ProfileData = cookie == null ? string.Empty : cookie.Value
+            };
+            LoginProvider.CreateProfile(Server.MapPath("~/App_Data"), userProfile);
 
             Response.Cookies.Add(FormsAuthentication.GetAuthCookie(email, rememberMe));
             Response.Redirect("Breakout.aspx");
