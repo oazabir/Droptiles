@@ -307,17 +307,6 @@ var Section = function (section) {
     this.uniqueId = _.uniqueId('section_'); // Unique ID generated at runtime and stored on the section Div.
 
     this.tiles = ko.observableArray(section.tiles);
-    
-    // Returns tiles sorted by index
-    //this.getTilesSorted = function () {
-    //    return self.tiles().sort(function (left, right) {
-    //        return left.index() == right.index() ? 0 :
-    //            (left.index() < right.index() ? -1 : 1)
-    //    });
-    //}
-
-    // Computed function to data-bind
-    //this.sortedTiles = ko.computed(this.getTilesSorted, this);
 
     // Get a tile inside the section
     this.getTile = function(uniqueId) {
@@ -332,12 +321,6 @@ var Section = function (section) {
         _.defer(function () {
             tile.attach($('#' + tile.uniqueId));
         });
-    }
-
-    this.show = function () {
-        var sectionDiv = $('#' + self.uniqueId);
-        //$(window).animate({'scrollLeft': sectionDiv.offset().left});
-        $(window).scrollLeft(sectionDiv.offset().left-100);
     }
 
 };

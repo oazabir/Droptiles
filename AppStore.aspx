@@ -10,19 +10,17 @@
 </asp:Content>
 
 <asp:Content runat="server" ContentPlaceHolderID="body">
-    <div id="body" class="appstore unselectable ">
-        <div id="navbar" class="navbar navbar-fixed-top">
+    <div id="body" class="unselectable">
+        <div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
             <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="pull-left" style="margin-top: 7px; margin-right: 5px;" href="Default.aspx">
-                        <img src="img/avatar474_2.gif" style="max-height: 16px;" />
-                    </a>
-                    <h1><a class="brand" href="Default.aspx">Droptiles</a></h1>
-                    <div class="nav-collapse">
+                <div class="container">                    
+                    <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><a class="active" href="Default.aspx"><i class="icon-th-large"></i>Dashboard</a></li>
-                            <li><a href="http://oazabir.github.com/Droptiles/"><i class="icon-gift"></i>I want this!</a></li>                            
-                        </ul>                        
+                            <li class="active">                                
+                                <a class="brand" href="?"><img src="img/avatar474_2.gif" style="max-height: 20px; margin-top: -2px; margin-right:5px; vertical-align: middle" />Droptiles</a>
+                            </li>
+                            <li><a class="active" href="?"><i class="icon-white icon-th-large"></i>Dashboard</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -32,16 +30,12 @@
             <a class="backbutton" href="Default.aspx">
                 <img src="img/Left.png" />
             </a>
-            <div id="start" data-bind="text: title"></div>
             
             <div id="metro-sections-container" class="metro">
-                <div id="trash" class="trashcan">
-                    <img src="img/Trashcan.png" width="64" height="64" />
-                </div>
                 <div class="metro-sections" data-bind="foreach: sections">                   
                     <div class="metro-section" data-bind="attr: {id : uniqueId}">
-                        <div class="metro-section-title" data-bind="{text: name}"></div>
-                        <!-- ko foreach: sortedTiles -->
+                        <div class="metro-section-title" data-bind="text: name"></div>
+                        <!-- ko foreach: tiles -->
                             <div data-bind="attr: { id: uniqueId, 'class': tileClasses }">
                                 <b class="check"></b>
                                 <!-- ko if: tileImage -->

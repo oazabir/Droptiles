@@ -207,7 +207,6 @@ var ui = {
                 $(iframe)
                     .show()
                     .data("hidden_during_launch", false);
-
             }
         });
     },
@@ -637,8 +636,6 @@ $(document).ready(function () {
 
     ui.showMetroSections(function () {
         ui.attachTiles();
-        //ui.reflow();
-        //ui.makeSortable();
         ui.animateTiles();        
     });
 
@@ -651,7 +648,8 @@ $(document).ready(function () {
             var sections = viewModel.sections();
             var lastSection = sections[sections.length - 1];
             var sectionTiles = lastSection.tiles();
-            lastSection.show();
+            //lastSection.show();
+            window.scrollTo($("." + ui.metro_section).last().offset().left - 100, 0);
 
             var tileNames = addedApps.split(",");
             _.each(tileNames, function (name) {
@@ -660,11 +658,10 @@ $(document).ready(function () {
                     var newTileDef = builder(_.uniqueId(name));
                     var newTile = new Tile(newTileDef, ui, viewModel);
                 
-                    newTile.index(sectionTiles.length);
+                    //newTile.index(sectionTiles.length);
                 
                     lastSection.addTile(newTile);
                     ui.attach(newTile);
-
                 }
             });
 
