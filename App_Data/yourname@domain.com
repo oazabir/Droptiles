@@ -1,1 +1,0 @@
-yourname@domain.com5fc127a8af156fc0ae394940d7efd0f4OmarAL ZabirSection1~weather1,weather.flickr1,flickr.angrybirds1,angrybirds.myblog1,myblog|Section2~video1,video.wikipedia1,wikipedia.facebook1,facebook.ie1,ie.buy1,buy|Section3~howto1,howto
