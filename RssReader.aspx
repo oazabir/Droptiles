@@ -37,8 +37,8 @@
                 </div>
                 <div class="metro-sections" data-bind="foreach: sections">
                     <div class="metro-section" data-bind="attr: {id : uniqueId}">
-                        <div class="metro-section-title" data-bind="{text: name}"></div>
-                        <!-- ko foreach: sortedTiles -->
+                        <div class="metro-section-title" data-bind="text: name"></div>
+                        <!-- ko foreach: tiles -->
                         <div data-bind="attr: { id: uniqueId, 'class': tileClasses }">
                             <b class="check"></b>
                             <!-- ko if: tileImage -->
