@@ -620,7 +620,7 @@ $(document).ready(function () {
     ui.hideMetroSections();
 
     // See if user has a previous session where page setup was stored
-    var cookie = window.profileData || readCookie("p");
+    var cookie = window.currentUser.profileData || readCookie("p");
     if (cookie != null && cookie.length > 0) {
         try {
             viewModel.loadSectionsFromString(cookie, window.TileBuilders);
@@ -673,18 +673,20 @@ $(document).ready(function () {
     // Subscribe again to detect changes made after the sections and tiles are 
     // created on the screen so that we can save the changes in section/tile
     viewModel.subscribeToChange(function (section, tiles) {
-        console.log("viewModel subscribe notification");
-        ui.attachTiles();
+        _.defer(function () {
+            console.log("viewModel subscribe notification");
+            ui.attachTiles();
 
-        var newOrder = viewModel.toSectionString();
-        if (newOrder !== DefaultTiles) {
-            console.log(newOrder);
-            createCookie("p", newOrder, 2);
+            var newOrder = viewModel.toSectionString();
+            if (newOrder !== DefaultTiles) {
+                console.log(newOrder);
+                createCookie("p", newOrder, 2);
 
-            if (!window.currentUser.isAnonymous) {
-                $.get("ServerStuff/SaveTiles.aspx");
+                if (!window.currentUser.isAnonymous) {
+                    $.get("ServerStuff/SaveTiles.aspx");
+                }
             }
-        }
+        });
     });
 
     // Mouse wheel behavior for side scrolling.

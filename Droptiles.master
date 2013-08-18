@@ -32,7 +32,7 @@
     </asp:ContentPlaceHolder>
 </body>
 
-<% if (!Request.IsLocal) { %>    
+<% if (Request.IsLocal) { %>    
     <!-- 
     If you change any of the below javascript files, make sure you run the Combine.bat
     file in the /js folder to generate the CombinedDashboard.js file again. And then don't
@@ -63,7 +63,7 @@
     });
 </script>
         
-<% if (Profile.IsAnonymous) { %>
+<% if (SecurityContextManager.IsAnonymous(Context)) { %>
 <script type="text/javascript">
     window.currentUser = new User({
         firstName: "None",
@@ -77,6 +77,7 @@
     window.currentUser = new User({
         firstName: "<%= UserProfile.Firstname %>",
         lastName: "<%= UserProfile.Lastname %>",
+        profileData: "<%= UserProfile.ProfileData %>",
         photo: "img/User No-Frame.png",
         isAnonymous: false
     });

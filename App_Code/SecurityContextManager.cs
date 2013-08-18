@@ -19,7 +19,7 @@ public static class SecurityContextManager
             {
                 profile = new UserProfile
                 {
-                    Username = Guid.NewGuid().ToString()
+                    Username = Guid.NewGuid().ToString()                   
                 };
                 context.Items["Profile"] = profile;
                 return profile;

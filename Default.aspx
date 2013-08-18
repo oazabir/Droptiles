@@ -20,8 +20,6 @@
 <% } %>
 
     <script type="text/javascript">
-        window.profileData = <%= GetProfileData() %>;
-
         $(document).ready(function(){
             <%= GetAlerts() %>
             });

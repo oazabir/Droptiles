@@ -1,7 +1,7 @@
 ﻿TODO
-	* Make tiles draggable in tablet using  http://gridster.net/ http://mcpants.github.com/jquery.shapeshift/
-
+	* Make tiles draggable in tablet using  http://gridster.net/ http://mcpants.github.com/jquery.shapeshift/	
 1.1
+	* FIX: After login, changes aren't permanently saved.
 	* ADD: jquery mobile to make it work in mobile.
 	* FIX: Moving tile from one section to another doesn't remove the tile from the original section.
 	* FIX: App Store CSS.

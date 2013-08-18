@@ -1283,7 +1283,7 @@ $(document).ready(function () {
     ui.hideMetroSections();
 
     // See if user has a previous session where page setup was stored
-    var cookie = window.profileData || readCookie("p");
+    var cookie = window.currentUser.profileData || readCookie("p");
     if (cookie != null && cookie.length > 0) {
         try {
             viewModel.loadSectionsFromString(cookie, window.TileBuilders);

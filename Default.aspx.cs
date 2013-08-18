@@ -13,19 +13,6 @@ public partial class _Default : System.Web.UI.Page
         
     }
 
-    protected string GetProfileData()
-    {
-        if (!SecurityContextManager.IsAnonymous(Context))
-        {
-            var profile = SecurityContextManager.GetUserProfile(Context);
-
-            return "\"" + profile.ProfileData + "\"";
-        }
-        else
-        {
-            return "null";
-        }
-    }
 
     private bool IsCombinedJSOlder(string path)
     {
