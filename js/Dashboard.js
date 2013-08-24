@@ -98,17 +98,17 @@ var ui = {
         //    $(this).parent().click();
         //});
         // On click, launch the app either inside dashboard or in a new browser tab
-        el.find("a.metro-tile-link").click(function (event) {
-        //el.click(function(event) {
+        //el.find("a.metro-tile-link").click(function (event) {
+        el.click(function(event) {
             // Drag & drop just happened. Prevent incorrect click event.
             if ($(this).parent().data("noclick") == true)
                 return;
 
             // If the item clicked on the tile is a link or inside a link, don't
             // lauch app. Let browser do the hyperlink click behavior.
-            if (event.target.tagName == "A" ||
+            /*if (event.target.tagName == "A" ||
                 !$(event.target).closest("a").hasClass("metro-tile-link"))
-                return;
+                return;*/
 
             if (!_.isEmpty(tile.appUrl)) {
 
