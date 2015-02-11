@@ -1224,7 +1224,7 @@ if (!jQuery.browser) {
         init: function (element, valueAccessor, allBindingsAccessor, data, context) {
             var value = unwrap(valueAccessor()) || {},
                 options = value.options || {},
-                draggableOptions = ko.utils.extend({}, ko.bindingHandlers.draggable.options),
+                draggableOptions = ko.utils.extend({ zIndex: 65001 }, ko.bindingHandlers.draggable.options),
                 templateOptions = prepareTemplateOptions(valueAccessor, "data"),
                 connectClass = value.connectClass || ko.bindingHandlers.draggable.connectClass,
                 isEnabled = value.isEnabled !== undefined ? value.isEnabled : ko.bindingHandlers.draggable.isEnabled;

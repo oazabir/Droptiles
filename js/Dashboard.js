@@ -608,12 +608,13 @@ $(document).ready(function () {
     $('#content').css('visibility', 'visible');
 
     ko.bindingHandlers.sortable.options.start = function (arg) {
-        $(ui.trash).show();
+        $(ui.trash).fadeIn();
     }
     ko.bindingHandlers.sortable.afterMove = function (arg) {
-        $(ui.trash).hide();
+        $(ui.trash).fadeOut();
         console.log(arg);
     }
+
     
     ko.applyBindings(viewModel);
 

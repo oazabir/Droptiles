@@ -89,9 +89,7 @@
                 Otherwise it won't work when you will deploy on a server.
             </div>
             <div id="metro-sections-container" class="metro">
-                <div id="trash" class="trashcan" data-bind="sortable: { data: trash }">
-                    
-                </div>
+                
                 <div class="metro-sections" data-bind="foreach: sections">
                     <%--<div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">--%>
                     <div class="metro-section" data-bind="sortable: { data: tiles }">
@@ -131,6 +129,8 @@
                         
                     </div>
                 </div>
+            
+                <div id="trash" class="trashcan" data-bind="sortable: { data: trash }"></div>
             </div>
         </div>
         <div id="copyright">            
