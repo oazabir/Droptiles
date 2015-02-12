@@ -49,6 +49,7 @@
 <script type="text/javascript" src="js/cookie.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/Underscore.js"></script>
+<script type="text/javascript" src="js/Underscore.string.js"></script>
 <script type="text/javascript" src="js/jQuery.hashchange.js"></script>
 <script type="text/javascript" src="js/User.js"></script>
 <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
