@@ -99,10 +99,13 @@ var ui = {
         //});
         // On click, launch the app either inside dashboard or in a new browser tab
         //el.find("a.metro-tile-link").click(function (event) {
-        el.click(function(event) {
+        el.click(function (event) {
             // Drag & drop just happened. Prevent incorrect click event.
-            if ($(this).parent().data("noclick") == true)
+            if ($(this).data("noclick") == true) {
+                console.log('noclick');
+                $(this).data("noclick", false); 
                 return;
+            }
 
             // If the item clicked on the tile is a link or inside a link, don't
             // lauch app. Let browser do the hyperlink click behavior.
@@ -607,13 +610,20 @@ $(document).ready(function () {
     // Hide the body area until it is fully loaded in order to prevent flickrs
     $('#content').css('visibility', 'visible');
 
-    ko.bindingHandlers.sortable.options.start = function (arg) {
-        $(ui.trash).show();
-    }
-    ko.bindingHandlers.sortable.afterMove = function (arg) {
-        $(ui.trash).hide();
-        console.log(arg);
-    }
+    ko.bindingHandlers.sortable.options = {
+        start: function (e, arg) {
+            $(ui.trash).fadeIn();
+        },
+        stop: function (e, arg) {
+            if (arg.position.left != arg.originalPosition.left ||
+                arg.position.top != arg.originalPosition.top)
+                arg.item.data("noclick", true);
+
+            setTimeout(function () {
+                $(ui.trash).fadeOut();
+            }, 0);
+        }
+    };
     
     ko.applyBindings(viewModel);
 
@@ -674,12 +684,10 @@ $(document).ready(function () {
     // created on the screen so that we can save the changes in section/tile
     viewModel.subscribeToChange(function (section, tiles) {
         _.defer(function () {
-            console.log("viewModel subscribe notification");
             ui.attachTiles();
 
             var newOrder = viewModel.toSectionString();
             if (newOrder !== DefaultTiles) {
-                console.log(newOrder);
                 createCookie("p", newOrder, 2);
 
                 if (!window.currentUser.isAnonymous) {
