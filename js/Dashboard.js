@@ -31,7 +31,7 @@ var ui = {
     tile_selector: '.tile',
     tile_color: 'bg-color-blue',
     tile_icon_size: 'tile-icon-large',
-    tile_icon_src: 'img/update.png',
+    tile_icon_src: 'img/Update.png',
     tile_subContent_color: 'bg-color-blueDark',
     tile_multi_content_selector: '.tile-multi-content',
     tile_multi_content: 'tile-multi-content',

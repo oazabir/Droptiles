@@ -1,19 +1,19 @@
 <%@ Page Language="C#" AutoEventWireup="true" CodeFile="DynamicTile.aspx.cs" Inherits="Tiles_DynamicTile_DynamicTile" %>
-<%@ OutputCache NoStore="true" Location="None" %>
+<%@ OutputCache NoStore="true" Duration="360" Location="None" VaryByParam="None" %>
 <!-- Copyright 2012, Omar AL Zabir -->
 <style>
 #DynamicTable table {  border-collapse: collapse; }
-#DynamicTable td, th { 
-    text-align: center; 
-    border: 1px solid #ddd; 
-    padding:2px 5px; 
+#DynamicTable td, th {
+    text-align: center;
+    border: 1px solid #ddd;
+    padding:2px 5px;
  }
     #DynamicTable {
         margin-bottom: 20px;
-    }   
-    
-    
-    
+    }
+
+
+
     #DynamicTable caption {margin: 0 0 .5em; font-weight: bold; font-size: 14pt; }
 </style>
 

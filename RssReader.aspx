@@ -1,19 +1,19 @@
 <%@ Page Language="C#" AutoEventWireup="true"  CodeFile="RssReader.aspx.cs" Inherits="RssReader" MasterPageFile="~/Droptiles.master" %>
-<%@ OutputCache NoStore="true" Location="None"  %>
+<%@ OutputCache NoStore="true" Duration="360" Location="None" VaryByParam="None"  %>
 <asp:Content ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" type="text/css" href="css/rssreader.css?v=14" />
+    <link rel="stylesheet" type="text/css" href="css/RssReader.css?v=14" />
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="scripts" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
-    
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
     <script type="text/javascript" src="js/TheCore.js?v=14"></script>
     <script type="text/javascript" src="RssTiles.ashx"></script>
     <script type="text/javascript" src="js/RssReader.js?v=14"></script>
 
     <script type="text/ecmascript">
-        
+
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-33406100-1']);
         _gaq.push(['_trackPageview']);
@@ -25,11 +25,11 @@
         })();
 
     </script>
-    
+
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
-    <div id="body" class="unselectable">        
+    <div id="body" class="unselectable">
         <div id="content" style="visibility: hidden">
             <div id="metro-sections-container" class="metro">
                 <div id="trash" class="trashcan">
@@ -75,7 +75,7 @@
                     </div>
 
                 </div>
-                
+
             </div>
         </div>
     </div>
