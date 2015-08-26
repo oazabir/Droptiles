@@ -27,7 +27,7 @@ public static class SecurityContextManager
             else
             {
                 var userName = FormsAuthentication.Decrypt(authCookie.Value).Name;
-                var userProfile = LoginProvider.GetUserProfile(context.Server.MapPath("~/App_Code"), userName);
+                var userProfile = LoginProvider.GetUserProfile(context.Server.MapPath("~/App_Data"), userName);
                 context.Items["Profile"] = userProfile;
                 return userProfile;
             }

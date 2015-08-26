@@ -24,7 +24,7 @@ public partial class Settings : System.Web.UI.Page
 
     protected void Save_Button_Click(object sender, EventArgs e)
     {
-        var userStorePath = Server.MapPath("~/App_Code");
+        var userStorePath = Server.MapPath("~/App_Data");
 
         var firstName = Request["firstname"];
         var lastname = Request["lastname"];

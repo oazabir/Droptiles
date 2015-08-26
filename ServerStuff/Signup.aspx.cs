@@ -41,7 +41,7 @@ public partial class Signup : System.Web.UI.Page
                 Password = password,
                 ProfileData = cookie == null ? string.Empty : cookie.Value
             };
-            LoginProvider.CreateProfile(Server.MapPath("~/App_Code"), userProfile);
+            LoginProvider.CreateProfile(Server.MapPath("~/App_Data"), userProfile);
 
             Response.Cookies.Add(FormsAuthentication.GetAuthCookie(email, rememberMe));
             Response.Redirect("Breakout.aspx");
