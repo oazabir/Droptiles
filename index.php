@@ -13,7 +13,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/droptiles.css?v=14">
+    <link rel="stylesheet" type="text/css" href="css/Droptiles.css?v=14">
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -192,7 +192,7 @@
         forget to update the ?v=14#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
     <script type="text/javascript" src="js/TheCore.js?v=14"></script>
-    <script type="text/javascript" src="tiles/tiles.js?v=14"></script>
+    <script type="text/javascript" src="Tiles/Tiles.js?v=14"></script>
     <script type="text/javascript" src="js/Dashboard.js?v=14"></script>
     
 

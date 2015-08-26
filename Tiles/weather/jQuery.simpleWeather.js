@@ -1,6 +1,6 @@
 ﻿/*
  * simpleWeather
- * 
+ *
  * A simple jQuery plugin to display the weather information
  * for a location. Weather is pulled from the public Yahoo!
  * Weather feed via their api.

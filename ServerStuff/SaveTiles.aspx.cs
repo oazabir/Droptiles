@@ -15,9 +15,9 @@ public partial class SaveTiles : System.Web.UI.Page
         if (ticket != null && profileCookie != null)
         {
             var username = FormsAuthentication.Decrypt(ticket.Value).Name;
-            var profile = LoginProvider.GetUserProfile(Server.MapPath("~/App_Data"), username);
+            var profile = LoginProvider.GetUserProfile(Server.MapPath("~/App_Code"), username);
             profile.ProfileData = profileCookie.Value;
-            LoginProvider.UpdateProfile(Server.MapPath("~/App_Data"), profile);
+            LoginProvider.UpdateProfile(Server.MapPath("~/App_Code"), profile);
         }
     }
 }

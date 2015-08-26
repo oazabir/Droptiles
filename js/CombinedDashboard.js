@@ -395,8 +395,8 @@ window.TileBuilders = {
             appTitle: "Weather App",
             appUrl: "http://www.bbc.co.uk/weather/",
             size: "tile-double",
-            scriptSrc: ["tiles/weather/jQuery.simpleWeather.js", "tiles/weather/weather.js"],
-            cssSrc: ["tiles/weather/weather.css"],
+            scriptSrc: ["Tiles/weather/jQuery.simpleWeather.js", "Tiles/weather/weather.js"],
+            cssSrc: ["Tiles/weather/weather.css"],
             initFunc: "load_weather",
             initParams: {
                 location: 'London, UK'
@@ -506,11 +506,11 @@ window.TileBuilders = {
             label: "Flickr",
             size: "tile-double tile-double-vertical",
             color: "bg-color-darken",
-            appUrl: "Tiles/Flickr/App/FlickrApp.html",
-            cssSrc: ["tiles/flickr/flickr.css"],
-            scriptSrc: ["tiles/flickr/flickr.js?v=1"],
-            //scriptSrc: ["tiles/flickr/flickr_interesting.js"],
-            //cssSrc: ["tiles/flickr/flickr_interesting.css"],            
+            appUrl: "Tiles/flickr/app/FlickrApp.html",
+            cssSrc: ["Tiles/flickr/flickr.css"],
+            scriptSrc: ["Tiles/flickr/flickr.js?v=1"],
+            //scriptSrc: ["Tiles/flickr/flickr_interesting.js"],
+            //cssSrc: ["Tiles/flickr/flickr_interesting.css"],            
             initFunc: "flickr_load"
         };
     },
@@ -543,7 +543,7 @@ window.TileBuilders = {
         return {
             uniqueId: uniqueId,
             name: "angrybirds",
-            tileImage: "img/Angrybirds.jpg",
+            tileImage: "img/AngryBirds.jpg",
             appUrl: "http://chrome.angrybirds.com/"
         };
     },
@@ -568,8 +568,8 @@ window.TileBuilders = {
             color: "bg-color-pink",
             size: "tile-double",
             appUrl: "http://www.bbc.co.uk/news/world/",
-            scriptSrc: ["tiles/news/news.js?v=1"],
-            cssSrc: ["tiles/news/news.css?v=1"],
+            scriptSrc: ["Tiles/news/news.js?v=1"],
+            cssSrc: ["Tiles/news/news.css?v=1"],
             initFunc: "load_news",
             initParams: { url: "http://feeds.bbci.co.uk/news/world/rss.xml" }
         };
@@ -583,8 +583,8 @@ window.TileBuilders = {
             color: "bg-color-blueDark",
             size: "tile-double",
             appUrl: "http://omaralzabir.com/",
-            scriptSrc: ["tiles/news/news.js?v=1"],
-            cssSrc: ["tiles/news/news.css?v=1"],
+            scriptSrc: ["Tiles/news/news.js?v=1"],
+            cssSrc: ["Tiles/news/news.css?v=1"],
             initFunc: "load_news",
             initParams: { url: "http://omaralzabir.com/feed" }
         };
@@ -597,10 +597,10 @@ window.TileBuilders = {
             color: "bg-color-green",
             size: "tile-double",
             appUrl: "http://oazabir.github.com/Droptiles/",
-            slidesFrom: ["tiles/features/feature1.html",
-                "tiles/features/feature2.html",
-                "tiles/features/feature3.html"],
-            cssSrc: ["tiles/features/features.css"]
+            slidesFrom: ["Tiles/features/feature1.html",
+                "Tiles/features/feature2.html",
+                "Tiles/features/feature3.html"],
+            cssSrc: ["Tiles/features/features.css"]
         };
     },
 
@@ -611,7 +611,7 @@ window.TileBuilders = {
             color: "bg-color-blue",
             size: "tile-triple tile-triple-vertical",
             appUrl: "http://oazabir.github.com/Droptiles/",
-            slidesFrom: ["tiles/features/howto.html?2"]
+            slidesFrom: ["Tiles/features/howto.html?2"]
         };
     },
 
@@ -622,10 +622,10 @@ window.TileBuilders = {
             color: "bg-color-darkBlue",
             size: "tile-triple tile-double-vertical",
             label: "Server side Tile in ASP.NET",
-            slidesFrom: ["tiles/DynamicTile/DynamicTile.aspx"]
-            //cssSrc: ["tiles/DynamicTile/visualize.css"],
-            //scriptSrc: ["tiles/DynamicTile/tablechart.js",
-            //    "tiles/DynamicTile/DynamicTile.js"],
+            slidesFrom: ["Tiles/DynamicTile/DynamicTile.aspx"]
+            //cssSrc: ["Tiles/DynamicTile/visualize.css"],
+            //scriptSrc: ["Tiles/DynamicTile/tablechart.js",
+            //    "Tiles/DynamicTile/DynamicTile.js"],
             //initFunc: "load_dynamic"
         }
     },
@@ -645,8 +645,8 @@ window.TileBuilders = {
             name: "buy",
             color: "bg-color-blueDark",
             size: 'tile-double tile-double-vertical',
-            slidesFrom: ["tiles/buy/buy.html?v=1"],
-            cssSrc: ["tiles/buy/buy.css"]
+            slidesFrom: ["Tiles/Buy/buy.html?v=1"],
+            cssSrc: ["Tiles/Buy/buy.css"]
         };       
     },
     
@@ -694,7 +694,7 @@ var ui = {
     tile_selector: '.tile',
     tile_color: 'bg-color-blue',
     tile_icon_size: 'tile-icon-large',
-    tile_icon_src: 'img/update.png',
+    tile_icon_src: 'img/Update.png',
     tile_subContent_color: 'bg-color-blueDark',
     tile_multi_content_selector: '.tile-multi-content',
     tile_multi_content: 'tile-multi-content',

@@ -61,7 +61,7 @@ window.TileBuilders = {
             name: "amazon",
             size: 'tile-double',
             color: 'bg-color-yellow',
-            iconSrc: 'img/amazon.png',
+            iconSrc: 'img/Amazon.png',
             label: 'Amazon, buy anything, from anywhere',
             onClick: 'addTile("amazon")'
         };
@@ -142,7 +142,7 @@ window.TileBuilders = {
         return {
             uniqueId: uniqueId,
             name: "angrybirds",
-            tileImage: "img/AppStore/Angrybirds.png",
+            tileImage: "img/AppStore/AngryBirds.png",
             size: 'tile-double tile-double-vertical'
         };
     },

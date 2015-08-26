@@ -1,21 +1,21 @@
 <%@ Page Language="C#" AutoEventWireup="true"  CodeFile="Default.aspx.cs" Inherits="_Default" MasterPageFile="~/Droptiles.master" %>
-<%@ OutputCache NoStore="true" Location="None"  %>
+<%@ OutputCache NoStore="true" Duration="360" Location="None" VaryByParam="None" %>
 
 <asp:Content ContentPlaceHolderID="scripts" runat="server">
     <!-- Copyright 2012 Omar AL Zabir -->
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>    
-    
-<% if (Request.IsLocal) { %>    
-    <!-- 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<% if (Request.IsLocal) { %>
+    <!--
         If you change any of the below javascript files, make sure you run the Combine.bat
         file in the /js folder to generate the CombinedDashboard.js file again. And then don't
         forget to update the ?v=14#. Otherwise user's will have cached copies in their browser
         and won't get the newly deployed file. -->
     <script type="text/javascript" src="js/TheCore.js?v=14"></script>
-    <script type="text/javascript" src="tiles/tiles.js?v=14"></script>
+    <script type="text/javascript" src="Tiles/Tiles.js?v=14"></script>
     <script type="text/javascript" src="js/Dashboard.js?v=14"></script>
-    
-<% } else { %>    
+
+<% } else { %>
     <script type="text/javascript" src="js/CombinedDashboard.js?v=14"></script>
 <% } %>
 
@@ -24,17 +24,17 @@
             <%= GetAlerts() %>
             });
     </script>
-    
+
 </asp:Content>
 
 <asp:Content ContentPlaceHolderID="body" runat="server">
     <div id="body" class="unselectable">
         <div id="navbar" class="navbar navbar-fixed-top navbar-inverse">
             <div class="navbar-inner">
-                <div class="container">                    
+                <div class="container">
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active">                                
+                            <li class="active">
                                 <a class="brand" href="?"><img src="img/avatar474_2.gif" style="max-height: 20px; margin-top: -2px; margin-right:5px; vertical-align: middle" />Droptiles</a>
                             </li>
                             <li><a class="active" href="?"><i class="icon-white icon-th-large"></i>Dashboard</a></li>
@@ -54,9 +54,9 @@
                                 <ul class="dropdown-menu">
                                     <li><a href="#" onclick="ui.switchTheme('theme-green')">Green</a></li>
                                     <li><a href="#" onclick="ui.switchTheme('theme-white')">White</a></li>
-                                    <li><a href="#" onclick="ui.switchTheme('theme-Bloom')">Bloom</a></li>                                    
+                                    <li><a href="#" onclick="ui.switchTheme('theme-Bloom')">Bloom</a></li>
                                 </ul>
-                            </li>                            
+                            </li>
                             <li data-bind="if: user().isAnonymous"><a onclick="ui.login()" href="#login"><i class="icon-white icon-user"></i>Login</a></li>
                             <li data-bind="if: !user().isAnonymous"><a href="ServerStuff/Logout.ashx"><i class="icon-white icon-user"></i>Logout</a></li>
                         </ul>
@@ -84,17 +84,17 @@
             <div id="CombinedScriptAlert" class="alert">
                 <button class="close" data-dismiss="alert">×</button>
                 <strong>Warning!</strong>
-                Combined javascript files are outdated. 
-                Please retun the js\Combine.bat file. 
+                Combined javascript files are outdated.
+                Please retun the js\Combine.bat file.
                 Otherwise it won't work when you will deploy on a server.
             </div>
             <div id="metro-sections-container" class="metro">
-                
+
                 <div class="metro-sections" data-bind="foreach: sections">
                     <%--<div class="metro-section" data-bind="attr: {id : uniqueId}, foreach: sortedTiles">--%>
                     <div class="metro-section" data-bind="sortable: { data: tiles }">
                         <div data-bind="attr: { id: uniqueId, 'class': tileClasses }">
-                            
+
                             <!-- ko if: tileImage -->
                             <div class="tile-image">
                                 <img data-bind="attr: { src: tileImage }" src="img/Internet%20Explorer.png" />
@@ -124,17 +124,17 @@
                                 subContent
                             </div>
                             <!-- /ko -->
-                            
-                        </div>   
-                        
+
+                        </div>
+
                     </div>
                 </div>
-            
+
                 <div id="trash" class="trashcan" data-bind="sortable: { data: trash }"></div>
             </div>
         </div>
-        <div id="copyright">            
-            Copyright 2012 <a href="http://omaralzabir.com/">Omar AL Zabir</a>. This is Open Source. 
+        <div id="copyright">
+            Copyright 2012 <a href="http://omaralzabir.com/">Omar AL Zabir</a>. This is Open Source.
             For license details and to get the code, <a href="http://oazabir.github.com/Droptiles/">See Droptiles GitHub</a>
         </div>
     </div>
